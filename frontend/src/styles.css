@@ -1,0 +1,364 @@
+:root {
+  color-scheme: light;
+  --ink: #171313;
+  --paper: #fbf8f2;
+  --soft: #f1ece3;
+  --wine: #751b3c;
+  --green: #245446;
+  --gold: #b9892d;
+  --coral: #d95f49;
+  --white: #ffffff;
+  --shadow: 0 24px 70px rgba(23, 19, 19, 0.18);
+  font-family:
+    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hero {
+  min-height: 76vh;
+  color: var(--white);
+  background:
+    linear-gradient(90deg, rgba(18, 11, 12, 0.82), rgba(18, 11, 12, 0.46)),
+    var(--hero-image) center / cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px;
+}
+
+.site-header {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  font-size: 0.95rem;
+}
+
+.site-nav a {
+  opacity: 0.86;
+}
+
+.site-nav a:hover {
+  opacity: 1;
+}
+
+.hero__content {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  padding: 96px 0 58px;
+}
+
+.hero__eyebrow,
+.section__eyebrow {
+  margin: 0 0 14px;
+  color: var(--gold);
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  max-width: 760px;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 5.5rem;
+  line-height: 0.94;
+}
+
+.hero__copy {
+  max-width: 620px;
+  margin: 26px 0 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 1.25rem;
+  line-height: 1.65;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.button {
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding: 12px 18px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.button--primary {
+  background: var(--coral);
+  color: var(--white);
+}
+
+.button--ghost {
+  border: 1px solid rgba(255, 255, 255, 0.44);
+  color: var(--white);
+}
+
+.status-badge {
+  width: max-content;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 7px 12px;
+  margin-bottom: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.status-badge__dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f5b85c;
+}
+
+.status-badge--online .status-badge__dot {
+  background: #6be28f;
+}
+
+.status-badge--offline .status-badge__dot {
+  background: #ff776c;
+}
+
+.section {
+  width: min(1180px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 74px 0;
+}
+
+.section__heading {
+  display: grid;
+  grid-template-columns: minmax(0, 680px) minmax(200px, 1fr);
+  gap: 32px;
+  align-items: end;
+  margin-bottom: 28px;
+}
+
+.section h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.35rem;
+  line-height: 1.12;
+}
+
+.section__note {
+  margin: 0;
+  justify-self: end;
+  color: #765b2b;
+  font-weight: 700;
+}
+
+.cocktail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.cocktail-card {
+  min-height: 310px;
+  border: 1px solid rgba(23, 19, 19, 0.1);
+  border-radius: 8px;
+  background: var(--white);
+  box-shadow: var(--shadow);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cocktail-card__topline {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--green);
+  font-size: 0.84rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cocktail-card__topline p,
+.cocktail-card__topline strong {
+  margin: 0;
+}
+
+.cocktail-card h3 {
+  margin: 28px 0 12px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.85rem;
+}
+
+.cocktail-card__description {
+  margin: 0;
+  color: #5b4d47;
+  line-height: 1.65;
+}
+
+.ingredient-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: auto 0 0;
+  list-style: none;
+}
+
+.ingredient-list li {
+  border-radius: 999px;
+  background: var(--soft);
+  color: #4d403d;
+  padding: 7px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.section--experience {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(280px, 0.7fr);
+  gap: 20px;
+  padding-top: 24px;
+}
+
+.experience-panel,
+.hours-panel {
+  min-height: 280px;
+  border-radius: 8px;
+  padding: 32px;
+}
+
+.experience-panel {
+  background: var(--green);
+  color: var(--white);
+}
+
+.experience-panel p:not(.section__eyebrow),
+.hours-panel p {
+  max-width: 620px;
+  margin: 18px 0 0;
+  line-height: 1.7;
+}
+
+.hours-panel {
+  background: var(--wine);
+  color: var(--white);
+}
+
+.hours-panel a {
+  display: inline-flex;
+  margin-top: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.55);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 900px) {
+  .hero h1 {
+    font-size: 4rem;
+  }
+
+  .section__heading,
+  .section--experience {
+    grid-template-columns: 1fr;
+  }
+
+  .section__note {
+    justify-self: start;
+  }
+
+  .cocktail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    min-height: 82vh;
+    padding: 18px;
+  }
+
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: space-between;
+    gap: 10px;
+    font-size: 0.88rem;
+  }
+
+  .hero__content {
+    padding: 64px 0 38px;
+  }
+
+  .hero h1 {
+    font-size: 3.1rem;
+  }
+
+  .hero__copy {
+    font-size: 1.05rem;
+  }
+
+  .section {
+    width: min(100% - 32px, 1180px);
+    padding: 56px 0;
+  }
+
+  .section h2 {
+    font-size: 2rem;
+  }
+
+  .experience-panel,
+  .hours-panel,
+  .cocktail-card {
+    padding: 22px;
+  }
+}
