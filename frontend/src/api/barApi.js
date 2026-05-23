@@ -18,6 +18,6 @@ export function fetchApiStatus() {
   return request('/status');
 }
 
-export function fetchSignatureCocktails() {
-  return request('/cocktails/signature');
+export function fetchMenuSections() {
+  return request('/menu/sections');
 }

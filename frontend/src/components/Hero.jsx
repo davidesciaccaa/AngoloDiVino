@@ -9,7 +9,11 @@ export function Hero({ status }) {
           L&apos;Angolo Di Vino
         </a>
         <nav className="site-nav" aria-label="Navigazione principale">
-          <a href="#signature">Carta</a>
+          <a href="#aperitivo">Aperitivo</a>
+          <a href="#drink">Drink</a>
+          <a href="#vini">Vini</a>
+          <a href="#superalcolici">Superalcolici</a>
+          <a href="#bevande">Bevande</a>
           <a href="#esperienza">Esperienza</a>
           <a href="#contatti">Contatti</a>
         </nav>
@@ -24,8 +28,8 @@ export function Hero({ status }) {
           senza fretta.
         </p>
         <div className="hero__actions" aria-label="Azioni principali">
-          <a className="button button--primary" href="#signature">
-            Scopri la carta
+          <a className="button button--primary" href="#aperitivo">
+            Scopri il menu
           </a>
           <a className="button button--ghost" href="#contatti">
             Prenota un tavolo

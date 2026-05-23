@@ -197,14 +197,40 @@ a {
   font-weight: 700;
 }
 
-.cocktail-grid {
+.menu-section-list {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.menu-section {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.42fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  scroll-margin-top: 20px;
+}
+
+.menu-section__heading {
+  border-left: 4px solid var(--gold);
+  padding: 22px 22px 22px 18px;
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.menu-section__heading h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.cocktail-card {
-  min-height: 310px;
+.menu-item-card {
+  min-height: 260px;
   border: 1px solid rgba(23, 19, 19, 0.1);
   border-radius: 8px;
   background: var(--white);
@@ -214,7 +240,7 @@ a {
   flex-direction: column;
 }
 
-.cocktail-card__topline {
+.menu-item-card__topline {
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -224,24 +250,24 @@ a {
   text-transform: uppercase;
 }
 
-.cocktail-card__topline p,
-.cocktail-card__topline strong {
+.menu-item-card__topline p,
+.menu-item-card__topline strong {
   margin: 0;
 }
 
-.cocktail-card h3 {
+.menu-item-card h4 {
   margin: 28px 0 12px;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.85rem;
 }
 
-.cocktail-card__description {
+.menu-item-card__description {
   margin: 0;
   color: #5b4d47;
   line-height: 1.65;
 }
 
-.ingredient-list {
+.note-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
@@ -250,7 +276,7 @@ a {
   list-style: none;
 }
 
-.ingredient-list li {
+.note-list li {
   border-radius: 999px;
   background: var(--soft);
   color: #4d403d;
@@ -303,7 +329,8 @@ a {
   }
 
   .section__heading,
-  .section--experience {
+  .section--experience,
+  .menu-section {
     grid-template-columns: 1fr;
   }
 
@@ -311,7 +338,7 @@ a {
     justify-self: start;
   }
 
-  .cocktail-grid {
+  .menu-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -330,7 +357,8 @@ a {
 
   .site-nav {
     width: 100%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     gap: 10px;
     font-size: 0.88rem;
   }
@@ -358,7 +386,8 @@ a {
 
   .experience-panel,
   .hours-panel,
-  .cocktail-card {
+  .menu-item-card,
+  .menu-section__heading {
     padding: 22px;
   }
 }

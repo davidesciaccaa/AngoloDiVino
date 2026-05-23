@@ -1,35 +1,119 @@
 import { useEffect, useState } from 'react';
-import { fetchApiStatus, fetchSignatureCocktails } from './api/barApi.js';
-import { CocktailCard } from './components/CocktailCard.jsx';
+import { fetchApiStatus, fetchMenuSections } from './api/barApi.js';
 import { Hero } from './components/Hero.jsx';
+import { MenuItemCard } from './components/MenuItemCard.jsx';
 
-const fallbackCocktails = [
+const fallbackMenuSections = [
   {
-    name: 'Rubino Sour',
-    subtitle: 'Vino rosso, agrumi',
-    description: 'Un sour vellutato con vino rosso ridotto, limone fresco e albume.',
-    ingredients: ['Vino rosso', 'Limone', 'Sciroppo speziato'],
-    price: '12 EUR'
+    id: 'aperitivo',
+    title: 'Aperitivo',
+    description: 'Calici, bollicine e assaggi pensati per aprire la serata con calma.',
+    items: [
+      {
+        name: 'Tagliere Salandra',
+        subtitle: 'Formaggi, conserve',
+        description: 'Selezione di formaggi locali, olive, focaccia calda e confettura della casa.',
+        notes: ['Vegetariano', 'Perfetto per due'],
+        price: '14 EUR'
+      },
+      {
+        name: 'Fritti di Corte',
+        subtitle: 'Croccanti, mediterranei',
+        description: 'Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.',
+        notes: ['Stuzzicheria', 'Servito caldo'],
+        price: '11 EUR'
+      }
+    ]
   },
   {
-    name: 'Spritz del Vicolo',
-    subtitle: 'Bitter, bollicine',
-    description: 'Aperitivo verticale, asciutto, con erbe amare e prosecco extra dry.',
-    ingredients: ['Bitter italiano', 'Prosecco', 'Soda'],
-    price: '10 EUR'
+    id: 'drink',
+    title: 'Drink',
+    description: 'Twist sui classici e miscelazione fresca per il dopo cena.',
+    items: [
+      {
+        name: 'Rubino Sour',
+        subtitle: 'Vino rosso, agrumi',
+        description: 'Un sour vellutato con vino rosso ridotto, limone fresco e albume.',
+        notes: ['Signature', 'Agrumato'],
+        price: '12 EUR'
+      },
+      {
+        name: 'Notturno Bianco',
+        subtitle: 'Gin, uva bianca',
+        description: "Gin floreale, mosto d'uva bianca e una chiusura fresca di salvia.",
+        notes: ['Floreale', 'Fresco'],
+        price: '13 EUR'
+      }
+    ]
   },
   {
-    name: 'Notturno Bianco',
-    subtitle: 'Gin, uva bianca',
-    description: "Gin floreale, mosto d'uva bianca e una chiusura fresca di salvia.",
-    ingredients: ['Gin', "Mosto d'uva", 'Salvia'],
-    price: '13 EUR'
+    id: 'vini',
+    title: 'Vini',
+    description: 'Etichette pugliesi e piccole cantine da scoprire al calice.',
+    items: [
+      {
+        name: 'Primitivo del Cortile',
+        subtitle: 'Rosso, Salento',
+        description: 'Calice morbido e speziato, ideale con assaggi sapidi e formaggi stagionati.',
+        notes: ['Calice', 'Corposo'],
+        price: '7 EUR'
+      },
+      {
+        name: 'Bianco di Pietra',
+        subtitle: 'Bianco, Nardò',
+        description: 'Bianco minerale, teso e luminoso, con finale di mandorla fresca.',
+        notes: ['Calice', 'Minerale'],
+        price: '6 EUR'
+      }
+    ]
+  },
+  {
+    id: 'superalcolici',
+    title: 'Superalcolici',
+    description: 'Distillati selezionati per degustazioni lente e bicchieri essenziali.',
+    items: [
+      {
+        name: 'Amaro dei Dotti',
+        subtitle: 'Erbe, radici',
+        description: "Amaro intenso con note balsamiche, scorza d'arancia e finale persistente.",
+        notes: ['Dopocena', 'Servito freddo'],
+        price: '6 EUR'
+      },
+      {
+        name: 'Rum Riserva 8',
+        subtitle: 'Morbido, speziato',
+        description: 'Rum ambrato con vaniglia, cacao e legno dolce.',
+        notes: ['Degustazione', 'Liscio'],
+        price: '9 EUR'
+      }
+    ]
+  },
+  {
+    id: 'bevande',
+    title: 'Bevande',
+    description: 'Analcolici, soft drink e alternative leggere per ogni momento.',
+    items: [
+      {
+        name: 'Limonata alla Menta',
+        subtitle: 'Agrumi, erbe',
+        description: 'Limonata fresca con menta, zest di limone e soda.',
+        notes: ['Analcolico', 'Rinfrescante'],
+        price: '5 EUR'
+      },
+      {
+        name: 'Tonica Mediterranea',
+        subtitle: 'Erbe, agrumi',
+        description: 'Tonica secca con rosmarino, pompelmo rosa e ghiaccio pieno.',
+        notes: ['Analcolico', 'Dry'],
+        price: '5 EUR'
+      }
+    ]
   }
 ];
 
 function App() {
   const [apiStatus, setApiStatus] = useState({ status: 'LOADING' });
-  const [cocktails, setCocktails] = useState(fallbackCocktails);
+  const [menuSections, setMenuSections] = useState(fallbackMenuSections);
   const [isUsingFallback, setIsUsingFallback] = useState(false);
 
   useEffect(() => {
@@ -37,9 +121,9 @@ function App() {
 
     async function loadHomeData() {
       try {
-        const [status, signatureCocktails] = await Promise.all([
+        const [status, sections] = await Promise.all([
           fetchApiStatus(),
-          fetchSignatureCocktails()
+          fetchMenuSections()
         ]);
 
         if (!isMounted) {
@@ -47,7 +131,7 @@ function App() {
         }
 
         setApiStatus(status);
-        setCocktails(signatureCocktails);
+        setMenuSections(sections);
         setIsUsingFallback(false);
       } catch {
         if (!isMounted) {
@@ -55,7 +139,7 @@ function App() {
         }
 
         setApiStatus({ status: 'DOWN' });
-        setCocktails(fallbackCocktails);
+        setMenuSections(fallbackMenuSections);
         setIsUsingFallback(true);
       }
     }
@@ -71,18 +155,28 @@ function App() {
     <main>
       <Hero status={apiStatus} />
 
-      <section className="section section--menu" id="signature">
+      <section className="section section--menu" aria-labelledby="menu-title">
         <div className="section__heading">
-          <p className="section__eyebrow">Carta signature</p>
-          <h2>Drink con carattere da enoteca e precisione da cocktail bar.</h2>
+          <p className="section__eyebrow">Menu</p>
+          <h2 id="menu-title">Aperitivo, drink, vini e bottiglie per ogni ritmo della serata.</h2>
           {isUsingFallback && (
-            <p className="section__note">Backend non raggiungibile: stai vedendo la carta locale.</p>
+            <p className="section__note">Backend non raggiungibile: stai vedendo il menu locale.</p>
           )}
         </div>
 
-        <div className="cocktail-grid">
-          {cocktails.map((cocktail) => (
-            <CocktailCard key={cocktail.name} cocktail={cocktail} />
+        <div className="menu-section-list">
+          {menuSections.map((section) => (
+            <section className="menu-section" id={section.id} key={section.id}>
+              <div className="menu-section__heading">
+                <p className="section__eyebrow">{section.title}</p>
+                <h3>{section.description}</h3>
+              </div>
+              <div className="menu-grid">
+                {section.items.map((item) => (
+                  <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
+                ))}
+              </div>
+            </section>
           ))}
         </div>
       </section>
@@ -90,17 +184,18 @@ function App() {
       <section className="section section--experience" id="esperienza">
         <div className="experience-panel">
           <p className="section__eyebrow">Esperienza</p>
-          <h2>Un banco intimo, una cantina viva, una lista corta e curata.</h2>
+          <h2>Piazza Salandra, Nardò: storia, calici e serate per tuttə.</h2>
           <p>
-            Ogni sera alterna twist sui classici, mescite al calice e pairing leggeri: pane caldo,
-            conserve, formaggi e note mediterranee.
+            Nel cuore barocco di Piazza Salandra, tra pietra leccese e palazzi che raccontano secoli
+            di incontri, il locale accoglie persone LGBTQ+ e ogni identità con rispetto, musica,
+            serate a tema e tavoli pensati per sentirsi liberə di restare.
           </p>
         </div>
         <div className="hours-panel" id="contatti">
           <p className="section__eyebrow">Contatti</p>
-          <h2>Mercoledi - Domenica</h2>
+          <h2>Tutti i giorni, 7 su 7</h2>
           <p>18:00 - 01:00</p>
-          <a href="mailto:prenotazioni@angolodivino.local">prenotazioni@angolodivino.local</a>
+          <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
         </div>
       </section>
     </main>

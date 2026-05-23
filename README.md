@@ -5,7 +5,7 @@ Applicazione full-stack per un cocktail bar, composta da:
 - `frontend`: React + Vite
 - `backend`: Spring Boot 3 + Java 21
 
-La homepage React consuma le API Spring Boot per stato servizio e cocktail signature. In sviluppo Vite usa un proxy verso il backend; il backend espone comunque CORS configurabile tramite variabili d'ambiente.
+La homepage React consuma le API Spring Boot per stato servizio e sezioni del menu. In sviluppo Vite usa un proxy verso il backend; il backend espone comunque CORS configurabile tramite variabili d'ambiente.
 
 ## Prerequisiti
 
@@ -37,7 +37,7 @@ URL principali:
 - Backend: `http://localhost:8080`
 - Health check: `http://localhost:8080/actuator/health`
 - API stato: `http://localhost:8080/api/status`
-- API cocktail: `http://localhost:8080/api/cocktails/signature`
+- API menu: `http://localhost:8080/api/menu/sections`
 
 ## Configurazione CORS
 
