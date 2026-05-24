@@ -184,16 +184,17 @@ function App() {
       <section className="section section--experience" id="esperienza">
         <div className="experience-panel">
           <p className="section__eyebrow">Esperienza</p>
-          <h2>Piazza Salandra, Nardò: storia, calici e serate per tuttə.</h2>
+          <h1>Piazza Salandra, Nardò: <br />calici e serate per tuttə.</h1>
+
           <p>
             Nel cuore barocco di Piazza Salandra, tra pietra leccese e palazzi che raccontano secoli
-            di incontri, il locale accoglie persone LGBTQ+ e ogni identità con rispetto, musica,
-            serate a tema e tavoli pensati per sentirsi liberə di restare.
+            di incontri, il locale accoglie ogni identità con rispetto, musica e
+            serate a tema, con tavoli pensati per sentirsi liberə di restare.
           </p>
         </div>
         <div className="hours-panel" id="contatti">
           <p className="section__eyebrow">Contatti</p>
-          <h2>Tutti i giorni, 7 su 7</h2>
+          <h1>Tutti i giorni, 7 su 7</h1>
           <p>18:00 - 01:00</p>
           <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
         </div>

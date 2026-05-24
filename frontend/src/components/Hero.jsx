@@ -24,8 +24,7 @@ export function Hero({ status }) {
         <p className="hero__eyebrow">Cocktail bar e vini selezionati</p>
         <h1>L&apos;Angolo Di Vino</h1>
         <p className="hero__copy">
-          Miscelazione elegante, calici curati e piccoli assaggi pensati per le serate che iniziano
-          senza fretta.
+          Drink avvolgenti, calici curati e piccoli assaggi pensati per serate che iniziano senza fretta.
         </p>
         <div className="hero__actions" aria-label="Azioni principali">
           <a className="button button--primary" href="#aperitivo">
