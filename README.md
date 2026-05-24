@@ -1,4 +1,4 @@
-# L'Angolo Di Vino
+# L'Angolo diVino
 
 Applicazione full-stack per un cocktail bar, composta da:
 

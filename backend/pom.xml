@@ -15,7 +15,7 @@
     <artifactId>angolo-di-vino-api</artifactId>
     <version>0.1.0</version>
     <name>angolo-di-vino-api</name>
-    <description>Backend API for L'Angolo Di Vino cocktail bar.</description>
+    <description>Backend API for L'Angolo diVino cocktail bar.</description>
 
     <properties>
         <java.version>21</java.version>

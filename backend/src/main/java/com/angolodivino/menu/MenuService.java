@@ -11,7 +11,7 @@ public class MenuService {
                 new MenuSectionResponse(
                         "aperitivo",
                         "Aperitivo",
-                        "Calici, bollicine e assaggi pensati per aprire la serata con calma.",
+                        "Assaggi pensati per aprire la serata con calma.",
                         List.of(
                                 new MenuItemResponse(
                                         "Tagliere Salandra",
@@ -32,7 +32,7 @@ public class MenuService {
                 new MenuSectionResponse(
                         "drink",
                         "Drink",
-                        "Twist sui classici e miscelazione fresca per il dopo cena.",
+                        "Semplice e diretto: Drink.",
                         List.of(
                                 new MenuItemResponse(
                                         "Rubino Sour",
@@ -53,7 +53,7 @@ public class MenuService {
                 new MenuSectionResponse(
                         "vini",
                         "Vini",
-                        "Etichette pugliesi e piccole cantine da scoprire al calice.",
+                        "Etichette salentine e vini locali aperti da scoprire al calice.",
                         List.of(
                                 new MenuItemResponse(
                                         "Primitivo del Cortile",
@@ -74,7 +74,7 @@ public class MenuService {
                 new MenuSectionResponse(
                         "superalcolici",
                         "Superalcolici",
-                        "Distillati selezionati per degustazioni lente e bicchieri essenziali.",
+                        "Distillati selezionati per degustazioni.",
                         List.of(
                                 new MenuItemResponse(
                                         "Amaro dei Dotti",
@@ -98,14 +98,14 @@ public class MenuService {
                         "Analcolici, soft drink e alternative leggere per ogni momento.",
                         List.of(
                                 new MenuItemResponse(
-                                        "Limonata alla Menta",
+                                        "Limonata",
                                         "Agrumi, erbe",
-                                        "Limonata fresca con menta, zest di limone e soda.",
+                                        "Limonata fresca, zest di limone.",
                                         List.of("Analcolico", "Rinfrescante"),
                                         "5 EUR"
                                 ),
                                 new MenuItemResponse(
-                                        "Tonica Mediterranea",
+                                        "Tonica",
                                         "Erbe, agrumi",
                                         "Tonica secca con rosmarino, pompelmo rosa e ghiaccio pieno.",
                                         List.of("Analcolico", "Dry"),

@@ -7,7 +7,7 @@ const fallbackMenuSections = [
   {
     id: 'aperitivo',
     title: 'Aperitivo',
-    description: 'Calici, bollicine e assaggi pensati per aprire la serata con calma.',
+    description: 'Assaggi pensati per aprire la serata con calma.',
     items: [
       {
         name: 'Tagliere Salandra',
@@ -28,7 +28,7 @@ const fallbackMenuSections = [
   {
     id: 'drink',
     title: 'Drink',
-    description: 'Twist sui classici e miscelazione fresca per il dopo cena.',
+    description: 'Semplice e diretto: Drink.',
     items: [
       {
         name: 'Rubino Sour',
@@ -49,7 +49,7 @@ const fallbackMenuSections = [
   {
     id: 'vini',
     title: 'Vini',
-    description: 'Etichette pugliesi e piccole cantine da scoprire al calice.',
+    description: 'Etichette salentine e vini locali aperti da scoprire al calice.',
     items: [
       {
         name: 'Primitivo del Cortile',
@@ -70,7 +70,7 @@ const fallbackMenuSections = [
   {
     id: 'superalcolici',
     title: 'Superalcolici',
-    description: 'Distillati selezionati per degustazioni lente e bicchieri essenziali.',
+    description: 'Distillati selezionati per degustazioni.',
     items: [
       {
         name: 'Amaro dei Dotti',
@@ -94,14 +94,14 @@ const fallbackMenuSections = [
     description: 'Analcolici, soft drink e alternative leggere per ogni momento.',
     items: [
       {
-        name: 'Limonata alla Menta',
+        name: 'Limonata',
         subtitle: 'Agrumi, erbe',
-        description: 'Limonata fresca con menta, zest di limone e soda.',
+        description: 'Limonata fresca, zest di limone.',
         notes: ['Analcolico', 'Rinfrescante'],
         price: '5 EUR'
       },
       {
-        name: 'Tonica Mediterranea',
+        name: 'Tonica',
         subtitle: 'Erbe, agrumi',
         description: 'Tonica secca con rosmarino, pompelmo rosa e ghiaccio pieno.',
         notes: ['Analcolico', 'Dry'],
@@ -184,12 +184,12 @@ function App() {
       <section className="section section--experience" id="esperienza">
         <div className="experience-panel">
           <p className="section__eyebrow">Esperienza</p>
-          <h1>Piazza Salandra, Nardò: <br />calici e serate per tuttə.</h1>
+          <h1>Piazza San Domenico, Nardò: <br />calici e serate per tutti.</h1>
 
           <p>
-            Nel cuore barocco di Piazza Salandra, tra pietra leccese e palazzi che raccontano secoli
+            Nel cuore barocco di Piazza San Domenico, tra pietra leccese e palazzi che raccontano secoli
             di incontri, il locale accoglie ogni identità con rispetto, musica e
-            serate a tema, con tavoli pensati per sentirsi liberə di restare.
+            serate a tema, con tavoli pensati per sentirsi liberi di restare.
           </p>
         </div>
         <div className="hours-panel" id="contatti">

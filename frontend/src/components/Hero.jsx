@@ -5,8 +5,8 @@ export function Hero({ status }) {
   return (
     <section className="hero" style={{ '--hero-image': `url(${heroImage})` }}>
       <header className="site-header" aria-label="Intestazione principale">
-        <a className="brand" href="#top" aria-label="L'Angolo Di Vino">
-          L&apos;Angolo Di Vino
+        <a className="brand" href="#top" aria-label="L'Angolo diVino">
+          L&apos;Angolo diVino
         </a>
         <nav className="site-nav" aria-label="Navigazione principale">
           <a href="#aperitivo">Aperitivo</a>
@@ -14,7 +14,6 @@ export function Hero({ status }) {
           <a href="#vini">Vini</a>
           <a href="#superalcolici">Superalcolici</a>
           <a href="#bevande">Bevande</a>
-          <a href="#esperienza">Esperienza</a>
           <a href="#contatti">Contatti</a>
         </nav>
       </header>
@@ -22,7 +21,7 @@ export function Hero({ status }) {
       <div className="hero__content" id="top">
         <StatusBadge status={status} />
         <p className="hero__eyebrow">Cocktail bar e vini selezionati</p>
-        <h1>L&apos;Angolo Di Vino</h1>
+        <h1>L&apos;Angolo diVino</h1>
         <p className="hero__copy">
           Drink avvolgenti, calici curati e piccoli assaggi pensati per serate che iniziano senza fretta.
         </p>
@@ -30,11 +29,11 @@ export function Hero({ status }) {
           <a className="button button--primary" href="#aperitivo">
             Scopri il menu
           </a>
-          <a className="button button--ghost" href="#contatti">
+          {/* <a className="button button--ghost" href="#contatti">
             Prenota un tavolo
-          </a>
+          </a> */}
         </div>
-      </div>
+      </div>  
     </section>
   );
 }
