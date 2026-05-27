@@ -391,3 +391,115 @@ a {
     padding: 22px;
   }
 }
+/* --- INCREMENTAL UPDATES FOR L'ANGOLO DIVINO --- */
+
+:root {
+  --wine-premium: #7B1E3A;
+  --font-brand: 'Cinzel', serif;
+  --font-serif: 'Playfair Display', Georgia, serif;
+}
+
+/* Branding & Typography */
+.brand {
+  font-family: var(--font-brand), Georgia, serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+}
+
+.brand-v {
+  font-size: 1.35em;
+  color: var(--wine-premium);
+  display: inline-block;
+  line-height: 0.8;
+  vertical-align: middle;
+  font-weight: 700;
+}
+
+.hero h1 {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.section h2, 
+.menu-section__heading h3, 
+.menu-item-card h4 {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+/* Menu Content & Category Images */
+.menu-content {
+  display: flex;
+  flex-direction: column;
+  gap: 56px; /* Aumentato spacing tra grid e immagine */
+  margin-top: 40px;
+}
+
+@media (min-width: 901px) {
+  .menu-content {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 72px; /* Respiro ottimale su desktop */
+  }
+}
+
+.section-image-container {
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+  aspect-ratio: 4 / 3;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto; /* Centering */
+}
+
+.section-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  display: block;
+}
+
+.section-image-container:hover .section-image {
+  transform: scale(1.05);
+}
+
+/* Experience Section with Parallax and Overlay */
+.experience-wrapper {
+  background: 
+    linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.75)),
+    url('./assets/images/sandomeniconardo.jpg') center / cover no-repeat;
+  background-attachment: fixed;
+  padding: 100px 0;
+  margin-top: 60px;
+}
+
+.experience-wrapper .section--experience {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.experience-wrapper .experience-panel {
+  background: rgba(36, 84, 70, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+}
+
+.experience-wrapper .hours-panel {
+  background: rgba(123, 30, 58, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--white);
+}
+
+@media (max-width: 900px) {
+  .experience-wrapper {
+    background-attachment: scroll;
+    padding: 60px 0;
+  }
+  
+  .menu-content {
+    gap: 20px;
+  }
+}

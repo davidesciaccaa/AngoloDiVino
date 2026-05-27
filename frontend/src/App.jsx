@@ -3,6 +3,23 @@ import { fetchApiStatus, fetchMenuSections } from './api/barApi.js';
 import { Hero } from './components/Hero.jsx';
 import { MenuItemCard } from './components/MenuItemCard.jsx';
 
+// Import immagini locali
+import aperitivoImg from './assets/images/aperitivo.jpeg';
+import drinkImg from './assets/images/drink.jpeg';
+import vinoImg from './assets/images/vino.jpeg';
+import amaroImg from './assets/images/amaro.jpeg';
+import bevandeImg from './assets/images/bevande.jpeg';
+import frullatiImg from './assets/images/frullati.jpeg';
+
+const sectionImages = {
+  aperitivo: aperitivoImg,
+  drink: drinkImg,
+  vini: vinoImg,
+  frullati: frullatiImg,
+  superalcolici: amaroImg,
+  bevande: bevandeImg
+};
+
 const fallbackMenuSections = [
   {
     id: 'aperitivo',
@@ -64,6 +81,27 @@ const fallbackMenuSections = [
         description: 'Bianco minerale, teso e luminoso, con finale di mandorla fresca.',
         notes: ['Calice', 'Minerale'],
         price: '6 EUR'
+      }
+    ]
+  },
+  {
+    id: 'frullati',
+    title: 'Frullati',
+    description: 'Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.',
+    items: [
+      {
+        name: 'Frullato Tropicale',
+        subtitle: 'Mango, Ananas, Cocco',
+        description: 'Un viaggio esotico cremoso e rinfrescante.',
+        notes: ['Fresco', 'Vitamina C'],
+        price: '7 EUR'
+      },
+      {
+        name: 'Frutti di Bosco',
+        subtitle: 'Mora, Lampone, Mirtillo',
+        description: 'Il sapore intenso del sottobosco in un mix vellutato.',
+        notes: ['Antiossidante'],
+        price: '7 EUR'
       }
     ]
   },
@@ -131,7 +169,14 @@ function App() {
         }
 
         setApiStatus(status);
-        setMenuSections(sections);
+        // Integrate locally added categories if not present in API
+        const hasFrullati = sections.some(s => s.id === 'frullati');
+        if (!hasFrullati) {
+           const frullatiSection = fallbackMenuSections.find(s => s.id === 'frullati');
+           setMenuSections([...sections, frullatiSection]);
+        } else {
+           setMenuSections(sections);
+        }
         setIsUsingFallback(false);
       } catch {
         if (!isMounted) {
@@ -158,7 +203,7 @@ function App() {
       <section className="section section--menu" aria-labelledby="menu-title">
         <div className="section__heading">
           <p className="section__eyebrow">Menu</p>
-          <h2 id="menu-title">Aperitivo, drink, vini e bottiglie per ogni ritmo della serata.</h2>
+          <h2 id="menu-title">Aperitivo, drink, vini e sapori freschi per ogni ritmo della serata.</h2>
           {isUsingFallback && (
             <p className="section__note">Backend non raggiungibile: stai vedendo il menu locale.</p>
           )}
@@ -171,34 +216,48 @@ function App() {
                 <p className="section__eyebrow">{section.title}</p>
                 <h3>{section.description}</h3>
               </div>
-              <div className="menu-grid">
-                {section.items.map((item) => (
-                  <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
-                ))}
+              <div className="menu-content">
+                <div className="menu-grid">
+                  {section.items.map((item) => (
+                    <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
+                  ))}
+                </div>
+                {sectionImages[section.id] && (
+                  <div className="section-image-container">
+                    <img 
+                      src={sectionImages[section.id]} 
+                      alt={section.title} 
+                      className="section-image" 
+                      loading="lazy"
+                    />
+                  </div>
+                )}
               </div>
             </section>
           ))}
         </div>
       </section>
 
-      <section className="section section--experience" id="esperienza">
-        <div className="experience-panel">
-          <p className="section__eyebrow">Esperienza</p>
-          <h1>Piazza San Domenico, Nardò: <br />calici e serate per tutti.</h1>
+      <div className="experience-wrapper">
+        <section className="section section--experience" id="esperienza">
+          <div className="experience-panel">
+            <p className="section__eyebrow">Esperienza</p>
+            <h1>Piazza San Domenico, Nardò: <br />calici e serate per tutti.</h1>
 
-          <p>
-            Nel cuore barocco di Piazza San Domenico, tra pietra leccese e palazzi che raccontano secoli
-            di incontri, il locale accoglie ogni identità con rispetto, musica e
-            serate a tema, con tavoli pensati per sentirsi liberi di restare.
-          </p>
-        </div>
-        <div className="hours-panel" id="contatti">
-          <p className="section__eyebrow">Contatti</p>
-          <h1>Tutti i giorni, 7 su 7</h1>
-          <p>18:00 - 01:00</p>
-          <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
-        </div>
-      </section>
+            <p>
+              Nel cuore barocco di Piazza San Domenico, tra pietra leccese e palazzi che raccontano secoli
+              di incontri, L&apos;Angolo di<span className="brand-v">V</span>ino accoglie ogni identità con rispetto, musica e
+              serate a tema, con tavoli pensati per sentirsi liberi di restare.
+            </p>
+          </div>
+          <div className="hours-panel" id="contatti">
+            <p className="section__eyebrow">Contatti</p>
+            <h1>Tutti i giorni, 7 su 7</h1>
+            <p>18:00 - 01:00</p>
+            <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
+          </div>
+        </section>
+      </div>
     </main>
   );
 }
