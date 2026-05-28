@@ -295,11 +295,15 @@ html {
 }
 
 .hero h1 {
-  max-width: 760px;
+  max-width: 900px;
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 5.5rem;
-  line-height: 0.94;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.5rem, 9.5vw, 7.8rem);
+  line-height: 0.85;
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.04em;
+  text-transform: none;
 }
 
 .hero__copy {
