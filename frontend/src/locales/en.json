@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "aperitivo": "Aperitif",
+    "drink": "Drinks",
+    "vini": "Wines",
+    "superalcolici": "Spirits",
+    "frullati": "Smoothies",
+    "bevande": "Beverages",
+    "contatti": "Contacts"
+  },
+  "hero": {
+    "eyebrow": "Cocktail bar and selected wines",
+    "copy": "Enveloping drinks, curated glasses and small tastings designed for evenings that start without haste.",
+    "button": "Discover the menu"
+  },
+  "menu": {
+    "title": "Author's selection.",
+    "fallback_note": "Backend unreachable: you are seeing the local menu.",
+    "sections": {
+      "aperitivo": {
+        "title": "Aperitif",
+        "description": "Tastings designed to start the evening calmly."
+      },
+      "drink": {
+        "title": "Cocktails",
+        "description": "The great classics and our mixed proposals."
+      },
+      "vini": {
+        "title": "Wines",
+        "description": "A refined selection of white, rosé and red wines, including organic ones."
+      },
+      "amari": {
+        "title": "Bitters",
+        "description": "Selection of bitters and liqueurs to end on a high note."
+      },
+      "superalcolici": {
+        "title": "Spirits and Rum",
+        "description": "A selection of fine spirits and meditation rums."
+      },
+      "frullati": {
+        "title": "Smoothies",
+        "description": "Vitaminic, healthy smoothies prepared with fresh seasonal ingredients."
+      },
+      "bevande": {
+        "title": "Beverages",
+        "description": "Soft drinks and light alternatives."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "title": "Piazza San Domenico, Nardò: glasses and evenings for everyone.",
+    "text": "In the baroque heart of Piazza San Domenico, between Leccese stone and buildings that tell centuries of encounters, L'Angolo diVino welcomes every identity with respect, music and themed evenings, with tables designed to feel free to stay."
+  },
+  "contacts": {
+    "eyebrow": "Contacts",
+    "title": "Every day, 7 out of 7",
+    "hours": "18:00 - 01:00"
+  }
+}

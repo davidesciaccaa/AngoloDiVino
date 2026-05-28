@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "menu": "Menu",
+    "aperitivo": "Aperitivo",
+    "drink": "Drink",
+    "vini": "Vini",
+    "superalcolici": "Superalcolici",
+    "frullati": "Frullati",
+    "bevande": "Bevande",
+    "contatti": "Contatti"
+  },
+  "hero": {
+    "eyebrow": "Cocktail bar e vini selezionati",
+    "copy": "Drink avvolgenti, calici curati e piccoli assaggi pensati per serate che iniziano senza fretta.",
+    "button": "Scopri il menu"
+  },
+  "menu": {
+    "title": "Selezione d'autore.",
+    "fallback_note": "Backend non raggiungibile: stai vedendo il menu locale.",
+    "sections": {
+      "aperitivo": {
+        "title": "Aperitivo",
+        "description": "Assaggi pensati per aprire la serata con calma."
+      },
+      "drink": {
+        "title": "Cocktails",
+        "description": "I grandi classici e le nostre proposte miscelate."
+      },
+      "vini": {
+        "title": "Vini",
+        "description": "Una selezione ricercata di vini bianchi, rosati e rossi, anche biologici."
+      },
+      "amari": {
+        "title": "Amari",
+        "description": "Selezione di amari e liquori per chiudere in bellezza."
+      },
+      "superalcolici": {
+        "title": "Distillati e Rum",
+        "description": "Una selezione di pregiati distillati e rum da meditazione."
+      },
+      "frullati": {
+        "title": "Frullati",
+        "description": "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione."
+      },
+      "bevande": {
+        "title": "Bevande",
+        "description": "Analcolici, soft drink e alternative leggere."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Esperienza",
+    "title": "Piazza San Domenico, Nardò: calici e serate per tutti.",
+    "text": "Nel cuore barocco di Piazza San Domenico, tra pietra leccese e palazzi che raccontano secoli di incontri, L'Angolo diVino accoglie ogni identità con rispetto, musica e serate a tema, con tavoli pensati per sentirsi liberi di restare."
+  },
+  "contacts": {
+    "eyebrow": "Contatti",
+    "title": "Tutti i giorni, 7 su 7",
+    "hours": "18:00 - 01:00"
+  }
+}

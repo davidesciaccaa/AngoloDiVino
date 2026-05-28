@@ -244,12 +244,18 @@ html {
 }
 
 .site-header {
-  width: min(1180px, 100%);
+  width: min(1320px, calc(100% - 48px));
   margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 32px;
 }
 
 .brand {
@@ -548,6 +554,13 @@ html {
     gap: 16px;
   }
 
+  .header-actions {
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
   .site-nav {
     width: 100%;
     flex-wrap: wrap;
@@ -728,5 +741,67 @@ html {
 .hero__copy {
   font-size: clamp(1.05rem, 1.3vw, 1.35rem);
   max-width: 36ch;
+}
+
+/* Language Switcher */
+.language-switcher {
+  display: flex;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  padding: 4px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  height: max-content;
+}
+
+.lang-button {
+  background: transparent;
+  border: none;
+  color: var(--white);
+  padding: 4px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  transition: all 0.3s ease;
+  opacity: 0.5;
+}
+
+.lang-button:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.lang-button.active {
+  opacity: 1;
+  background: var(--wine-premium);
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.lang-flag {
+  font-size: 0.9rem;
+}
+
+@media (max-width: 900px) {
+  .language-switcher {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 1001;
+    background: rgba(18, 11, 12, 0.6);
+  }
+  
+  .lang-label {
+    display: none;
+  }
+
+  .lang-button {
+    padding: 6px;
+  }
 }
 

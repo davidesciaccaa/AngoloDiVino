@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { fetchApiStatus, fetchMenuSections } from './api/barApi.js';
 import { Hero } from './components/Hero.jsx';
 import { MenuItemCard } from './components/MenuItemCard.jsx';
+import { LanguageSwitcher } from './components/LanguageSwitcher.jsx';
 
 // Import immagini locali
 import aperitivoImg from './assets/images/aperitivo.jpeg';
@@ -204,6 +206,7 @@ const fallbackMenuSections = [
 ];
 
 function App() {
+  const { t } = useTranslation();
   const [apiStatus, setApiStatus] = useState({ status: 'LOADING' });
   const [menuSections, setMenuSections] = useState(fallbackMenuSections);
   const [isUsingFallback, setIsUsingFallback] = useState(false);
@@ -256,10 +259,10 @@ function App() {
 
       <section className="section section--menu" id="menu" aria-labelledby="menu-title">
         <div className="section__heading">
-          <p className="section__eyebrow">Menu</p>
-          <h2 id="menu-title">Selezione d&apos;autore.</h2>
+          <p className="section__eyebrow">{t('nav.menu', { defaultValue: 'Menu' })}</p>
+          <h2 id="menu-title">{t('menu.title')}</h2>
           {isUsingFallback && (
-            <p className="section__note">Backend non raggiungibile: stai vedendo il menu locale.</p>
+            <p className="section__note">{t('menu.fallback_note')}</p>
           )}
         </div>
 
@@ -272,7 +275,7 @@ function App() {
                 href={`#${section.id}`} 
                 className="category-link"
               >
-                {section.title}
+                {t(`menu.sections.${section.id}.title`, { defaultValue: section.title })}
               </a>
             ))}
           </nav>
@@ -282,9 +285,13 @@ function App() {
           {menuSections.map((section) => (
             <section className="menu-section" id={section.id} key={section.id}>
               <div className="menu-section__header-editorial">
-                <p className="section__eyebrow">{section.title}</p>
-                <h3>{section.title}</h3>
-                {section.description && <p className="menu-item-editorial__description" style={{ marginTop: '4px' }}>{section.description}</p>}
+                <p className="section__eyebrow">{t(`menu.sections.${section.id}.title`, { defaultValue: section.title })}</p>
+                <h3>{t(`menu.sections.${section.id}.title`, { defaultValue: section.title })}</h3>
+                {section.description && (
+                  <p className="menu-item-editorial__description" style={{ marginTop: '4px' }}>
+                    {t(`menu.sections.${section.id}.description`, { defaultValue: section.description })}
+                  </p>
+                )}
               </div>
 
               <div className="menu-list-editorial">
@@ -292,15 +299,6 @@ function App() {
                   <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
                 ))}
               </div>
-
-              {/* {sectionImages[section.id] && (
-                <img 
-                  src={sectionImages[section.id]} 
-                  alt={section.title} 
-                  className="menu-thumbnail" 
-                  loading="lazy"
-                />
-              )} */}
             </section>
           ))}
         </div>
@@ -309,19 +307,17 @@ function App() {
       <div className="experience-wrapper">
         <section className="section section--experience" id="esperienza">
           <div className="experience-panel">
-            <p className="section__eyebrow">Esperienza</p>
-            <h1>Piazza San Domenico, Nardò: <br />calici e serate per tutti.</h1>
+            <p className="section__eyebrow">{t('experience.eyebrow')}</p>
+            <h1>{t('experience.title')}</h1>
 
             <p>
-              Nel cuore barocco di Piazza San Domenico, tra pietra leccese e palazzi che raccontano secoli
-              di incontri, L&apos;Angolo di<span className="brand-v">V</span>ino accoglie ogni identità con rispetto, musica e
-              serate a tema, con tavoli pensati per sentirsi liberi di restare.
+              {t('experience.text')}
             </p>
           </div>
           <div className="hours-panel" id="contatti">
-            <p className="section__eyebrow">Contatti</p>
-            <h1>Tutti i giorni, 7 su 7</h1>
-            <p>18:00 - 01:00</p>
+            <p className="section__eyebrow">{t('contacts.eyebrow')}</p>
+            <h1>{t('contacts.title')}</h1>
+            <p>{t('contacts.hours')}</p>
             <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
           </div>
         </section>

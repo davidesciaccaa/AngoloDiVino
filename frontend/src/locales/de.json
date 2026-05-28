@@ -1,0 +1,61 @@
+{
+  "nav": {
+    "menu": "Menü",
+    "aperitivo": "Aperitif",
+    "drink": "Drinks",
+    "vini": "Weine",
+    "superalcolici": "Spirituosen",
+    "frullati": "Smoothies",
+    "bevande": "Getränke",
+    "contatti": "Kontakte"
+  },
+  "hero": {
+    "eyebrow": "Cocktailbar und erlesene Weine",
+    "copy": "Einhüllende Drinks, kuratierte Gläser und kleine Kostproben für Abende, die ohne Eile beginnen.",
+    "button": "Entdecken Sie das Menü"
+  },
+  "menu": {
+    "title": "Auswahl des Autors.",
+    "fallback_note": "Backend nicht erreichbar: Sie sehen das lokale Menü.",
+    "sections": {
+      "aperitivo": {
+        "title": "Aperitif",
+        "description": "Kostproben, um den Abend in aller Ruhe zu beginnen."
+      },
+      "drink": {
+        "title": "Cocktails",
+        "description": "Die großen Klassiker und unsere gemischten Vorschläge."
+      },
+      "vini": {
+        "title": "Weine",
+        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen, auch aus biologischem Anbau."
+      },
+      "amari": {
+        "title": "Magenbitter",
+        "description": "Auswahl an Magenbittern und Likören für einen krönenden Abschluss."
+      },
+      "superalcolici": {
+        "title": "Spirituosen und Rum",
+        "description": "Eine Auswahl an feinen Spirituosen und Meditations-Rums."
+      },
+      "frullati": {
+        "title": "Smoothies",
+        "description": "Vitaminreiche, gesunde Smoothies, zubereitet mit frischen saisonalen Zutaten."
+      },
+      "bevande": {
+        "title": "Getränke",
+        "description": "Alkoholfreie Getränke, Softdrinks und leichte Alternativen."
+      }
+    }
+  },
+  "experience": {
+    "eyebrow": "Erlebnis",
+    "title": "Piazza San Domenico, Nardò: Gläser und Abende für alle.",
+    "text": "Im barocken Herzen der Piazza San Domenico, zwischen Leccese-Stein und Gebäuden, die von Jahrhunderten der Begegnung erzählen, begrüßt L'Angolo diVino jede Identität mit Respekt, Musik und Themenabenden, mit Tischen, an denen man sich frei fühlen kann, zu verweilen."
+  },
+  "contacts": {
+    "eyebrow": "Kontakte",
+    "title": "Jeden Tag, 7 von 7",
+    "hours": "18:00 - 01:00"
+  }
+}
