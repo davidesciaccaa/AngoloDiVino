@@ -14,21 +14,11 @@ class MenuServiceTest {
         List<MenuSectionResponse> sections = menuService.findMenuSections();
         assertThat(sections)
                 .extracting(MenuSectionResponse::id)
-                .containsExactly("aperitivo", "drink", "vini", "frullati", "superalcolici", "bevande");
+                .containsExactly("aperitivo", "drink", "vini", "amari", "frullati", "superalcolici", "bevande");
     }
 
     @Test
-    void aperitivoSectionIsPopulated() {
-        MenuSectionResponse aperitivo = menuService.findMenuSections().stream()
-                .filter(s -> "aperitivo".equals(s.id()))
-                .findFirst()
-                .orElseThrow();
-        
-        assertThat(aperitivo.items()).isNotEmpty();
-    }
-
-    @Test
-    void otherSectionsArePopulated() {
+    void allSectionsArePopulated() {
         List<MenuSectionResponse> sections = menuService.findMenuSections();
         
         sections.forEach(section -> {

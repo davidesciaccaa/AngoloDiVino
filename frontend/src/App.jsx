@@ -117,6 +117,27 @@ const fallbackMenuSections = [
     ]
   },
   {
+    id: 'amari',
+    title: 'Amari',
+    description: 'Selezione di amari e liquori per chiudere in bellezza.',
+    items: [
+      { name: 'Ramazzotti', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Cynar', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Montenegro', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Fernet Branca Menta', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Averna', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Petrus', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Jagermeister', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Jefferson', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Unicum', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Lucano', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Amaro del capo', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Sambuca', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Caffè borghetti', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Vena Caffè', subtitle: '', description: '', notes: [], price: '4 €' }
+    ]
+  },
+  {
     id: 'frullati',
     title: 'Frullati',
     description: 'Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.',

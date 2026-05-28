@@ -111,6 +111,27 @@ public class MenuService {
                         )
                 ),
                 new MenuSectionResponse(
+                        "amari",
+                        "Amari",
+                        "Selezione di amari e liquori per chiudere in bellezza.",
+                        List.of(
+                                new MenuItemResponse("Ramazzotti", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Cynar", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Montenegro", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Fernet Branca Menta", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Averna", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Petrus", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Jagermeister", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Jefferson", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Unicum", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Lucano", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Amaro del capo", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Sambuca", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Caffè borghetti", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("Vena Caffè", "", "", List.of(), "4 €")
+                        )
+                ),
+                new MenuSectionResponse(
                         "frullati",
                         "Frullati",
                         "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.",
@@ -133,7 +154,6 @@ public class MenuService {
                                 new MenuItemResponse("Oban", "Distillato", "", List.of(), "12 €"),
                                 new MenuItemResponse("Laphroaig", "Distillato", "", List.of(), "12 €"),
                                 new MenuItemResponse("Lagavulin", "Distillato", "", List.of(), "12 €"),
-                                new MenuItemResponse("Sambuca", "Distillato", "", List.of(), "5 €"),
                                 new MenuItemResponse("Martini Bianco / Rosso / Dry", "Distillato", "", List.of(), "5 €"),
                                 // Rum
                                 new MenuItemResponse("Bacardi", "Rum", "", List.of(), "5 €"),
