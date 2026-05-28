@@ -138,27 +138,6 @@ const fallbackMenuSections = [
     ]
   },
   {
-    id: 'frullati',
-    title: 'Frullati',
-    description: 'Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.',
-    items: [
-      {
-        name: 'Frullato Tropicale',
-        subtitle: 'Mango, Ananas, Cocco',
-        description: 'Un viaggio esotico cremoso e rinfrescante.',
-        notes: ['Fresco', 'Vitamina C'],
-        price: '7 EUR'
-      },
-      {
-        name: 'Frutti di Bosco',
-        subtitle: 'Mora, Lampone, Mirtillo',
-        description: 'Il sapore intenso del sottobosco in un mix vellutato.',
-        notes: ['Antiossidante'],
-        price: '7 EUR'
-      }
-    ]
-  },
-  {
     id: 'superalcolici',
     title: 'Distillati e Rum',
     description: 'Una selezione di pregiati distillati e rum da meditazione.',
@@ -180,6 +159,27 @@ const fallbackMenuSections = [
       { name: 'La Hechicera', subtitle: 'Rum', description: '', notes: [], price: '' },
       { name: 'Shot con Distillati Base (2 cl)', subtitle: 'Shot', description: '', notes: [], price: '3 €' },
       { name: 'Shot con Distillati Base (4 cl)', subtitle: 'Shot', description: '', notes: [], price: '5 €' }
+    ]
+  },
+  {
+    id: 'frullati',
+    title: 'Frullati',
+    description: 'Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.',
+    items: [
+      {
+        name: 'Frullato Tropicale',
+        subtitle: 'Mango, Ananas, Cocco',
+        description: 'Un viaggio esotico cremoso e rinfrescante.',
+        notes: ['Fresco', 'Vitamina C'],
+        price: '7 EUR'
+      },
+      {
+        name: 'Frutti di Bosco',
+        subtitle: 'Mora, Lampone, Mirtillo',
+        description: 'Il sapore intenso del sottobosco in un mix vellutato.',
+        notes: ['Antiossidante'],
+        price: '7 EUR'
+      }
     ]
   },
   {

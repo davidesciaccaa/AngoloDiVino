@@ -132,15 +132,6 @@ public class MenuService {
                         )
                 ),
                 new MenuSectionResponse(
-                        "frullati",
-                        "Frullati",
-                        "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.",
-                        List.of(
-                                new MenuItemResponse("Frullato Tropicale", "Mango, Ananas, Cocco", "Un viaggio esotico cremoso e rinfrescante.", List.of("Fresco", "Vitamina C"), "7 EUR"),
-                                new MenuItemResponse("Frutti di Bosco", "Mora, Lampone, Mirtillo", "Il sapore intenso del sottobosco in un mix vellutato.", List.of("Antiossidante"), "7 EUR")
-                        )
-                ),
-                new MenuSectionResponse(
                         "superalcolici",
                         "Distillati e Rum",
                         "Una selezione di pregiati distillati e rum da meditazione.",
@@ -163,6 +154,15 @@ public class MenuService {
                                 new MenuItemResponse("La Hechicera", "Rum", "", List.of(), ""),
                                 new MenuItemResponse("Shot con Distillati Base (2 cl)", "Shot", "", List.of(), "3 €"),
                                 new MenuItemResponse("Shot con Distillati Base (4 cl)", "Shot", "", List.of(), "5 €")
+                        )
+                ),
+                new MenuSectionResponse(
+                        "frullati",
+                        "Frullati",
+                        "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.",
+                        List.of(
+                                new MenuItemResponse("Frullato Tropicale", "Mango, Ananas, Cocco", "Un viaggio esotico cremoso e rinfrescante.", List.of("Fresco", "Vitamina C"), "7 EUR"),
+                                new MenuItemResponse("Frutti di Bosco", "Mora, Lampone, Mirtillo", "Il sapore intenso del sottobosco in un mix vellutato.", List.of("Antiossidante"), "7 EUR")
                         )
                 ),
                 new MenuSectionResponse(

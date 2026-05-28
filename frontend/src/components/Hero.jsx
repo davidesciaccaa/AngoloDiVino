@@ -12,8 +12,8 @@ export function Hero({ status }) {
           <a href="#aperitivo">Aperitivo</a>
           <a href="#drink">Drink</a>
           <a href="#vini">Vini</a>
-          <a href="#frullati">Frullati</a>
           <a href="#superalcolici">Superalcolici</a>
+          <a href="#frullati">Frullati</a>
           <a href="#bevande">Bevande</a>
           <a href="#contatti">Contatti</a>
         </nav>
