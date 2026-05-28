@@ -1,21 +1,21 @@
 export function MenuItemCard({ item }) {
   return (
-    <article className="menu-item-compact">
-      <div className="menu-item-compact__main">
+    <article className="menu-item-editorial">
+      {item.subtitle && (
+        <p className="menu-item-editorial__subtitle">{item.subtitle}</p>
+      )}
+      
+      <div className="menu-item-editorial__header">
         <h4>{item.name}</h4>
-        <div className="menu-item-compact__dots"></div>
-        <span className="menu-item-compact__price">{item.price}</span>
+        <span className="menu-item-editorial__price">{item.price}</span>
       </div>
 
-      {(item.description || item.subtitle) && (
-        <p className="menu-item-compact__description">
-          {item.subtitle ? <strong>{item.subtitle}. </strong> : ''}
-          {item.description}
-        </p>
+      {item.description && (
+        <p className="menu-item-editorial__description">{item.description}</p>
       )}
 
       {item.notes && item.notes.length > 0 && (
-        <ul className="note-list-minimal" aria-label={`Note di ${item.name}`}>
+        <ul className="note-list-editorial" aria-label={`Note di ${item.name}`}>
           {item.notes.map((note) => (
             <li key={note}>{note}</li>
           ))}

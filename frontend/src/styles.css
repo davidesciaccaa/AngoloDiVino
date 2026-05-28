@@ -41,37 +41,42 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* --- MENU REDESIGN: ULTRA-COMPACT MINIMAL PREMIUM --- */
+/* --- QUIET LUXURY REDESIGN: EDITORIAL & MINIMAL --- */
 
-.section--menu {
-  padding-top: 20px;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px; /* Fix for sticky nav covering headers */
 }
 
-/* Category Navigation (Ultra-Compact) */
+.section--menu {
+  padding-top: 30px;
+  max-width: 900px !important; /* Narrower, more focused desktop layout */
+}
+
+/* Minimal Category Navigation */
 .category-nav-wrapper {
   position: sticky;
   top: 0;
   z-index: 100;
   background: var(--paper);
-  border-bottom: 1px solid rgba(23, 19, 19, 0.08);
-  margin-bottom: 24px;
-  padding: 8px 0;
+  border-bottom: 1px solid rgba(23, 19, 19, 0.05);
+  margin-bottom: 40px;
+  padding: 12px 0;
 }
 
 .category-nav {
   display: flex;
   overflow-x: auto;
-  gap: 4px;
+  gap: 24px;
   scrollbar-width: none;
-  padding: 0 16px;
-  width: min(1320px, 100%);
-  margin: 0 auto;
+  padding: 0 24px;
   justify-content: center;
 }
 
 @media (max-width: 900px) {
   .category-nav {
     justify-content: flex-start;
+    gap: 16px;
   }
 }
 
@@ -80,149 +85,151 @@ a {
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.15em;
   color: var(--ink);
-  opacity: 0.5;
-  padding: 6px 12px;
-  border-radius: 4px;
-  transition: all 0.2s ease;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, color 0.3s ease;
+  padding: 4px 0;
+  position: relative;
+}
+
+.category-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1px;
+  background: var(--wine-premium);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
 }
 
 .category-link:hover,
 .category-link--active {
   opacity: 1;
   color: var(--wine-premium);
-  background: rgba(123, 30, 58, 0.04);
 }
 
-/* Section Adjustments - High Density */
+.category-link--active::after {
+  width: 100%;
+}
+
+/* Editorial Section Headers */
 .menu-section {
-  margin-bottom: 48px;
-  scroll-margin-top: 60px;
+  margin-bottom: 64px;
 }
 
-.menu-section__header-minimal {
-  margin-bottom: 20px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid rgba(23, 19, 19, 0.05);
+.menu-section__header-editorial {
+  margin-bottom: 32px;
+  text-align: left;
 }
 
-.menu-section__header-minimal h3 {
-  font-family: var(--font-brand), serif;
-  font-size: 1.15rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+.menu-section__header-editorial .section__eyebrow {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
   color: var(--gold);
-  margin: 0 0 4px;
+  margin-bottom: 8px;
 }
 
-.menu-section__header-minimal p {
-  font-size: 0.82rem;
-  color: rgba(23, 13, 13, 0.5);
+.menu-section__header-editorial h3 {
+  font-family: var(--font-serif), serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ink);
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
-.menu-grid-minimal {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 16px 40px;
-}
-
-/* Ultra-Compact Menu Item */
-.menu-item-compact {
+/* Editorial Menu List */
+.menu-list-editorial {
   display: flex;
   flex-direction: column;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(23, 19, 19, 0.03);
+  gap: 20px;
 }
 
-.menu-item-compact:last-child {
+.menu-item-editorial {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(23, 19, 19, 0.04);
+}
+
+.menu-item-editorial:last-child {
   border-bottom: none;
 }
 
-.menu-item-compact__main {
+.menu-item-editorial__header {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  gap: 8px;
+  gap: 16px;
+  margin-bottom: 4px;
 }
 
-.menu-item-compact h4 {
+.menu-item-editorial h4 {
   margin: 0;
   font-family: var(--font-serif), serif;
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--ink);
-  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
-.menu-item-compact__dots {
-  flex-grow: 1;
-  border-bottom: 1px dotted rgba(23, 19, 19, 0.1);
-  position: relative;
-  top: -4px;
-}
-
-.menu-item-compact__price {
+.menu-item-editorial__price {
   font-family: var(--font-brand), serif;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: var(--ink);
-  white-space: nowrap;
 }
 
-.menu-item-compact__description {
-  margin: 2px 0 0;
-  font-size: 0.82rem;
-  color: rgba(23, 13, 13, 0.55);
-  line-height: 1.4;
+.menu-item-editorial__subtitle {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+.menu-item-editorial__description {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(23, 13, 13, 0.6);
+  line-height: 1.5;
   font-weight: 400;
 }
 
-.note-list-minimal {
+.note-list-editorial {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
+  gap: 12px;
+  margin-top: 6px;
   padding: 0;
   list-style: none;
 }
 
-.note-list-minimal li {
+.note-list-editorial li {
   font-size: 0.6rem;
   font-weight: 700;
   text-transform: uppercase;
   color: var(--green);
-  opacity: 0.7;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
 }
 
-/* Layout - Pure List */
-.menu-content-minimal {
+/* Image Thumbnails (Discrete) */
+.menu-thumbnail {
   width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 2px;
+  margin-top: 24px;
+  opacity: 0.9;
+  filter: grayscale(0.2);
 }
 
-/* Mobile Adjustments */
-@media (max-width: 800px) {
-  .menu-grid-minimal {
-    grid-template-columns: 1fr;
-    gap: 0;
-  }
-
-  .menu-section {
-    margin-bottom: 32px;
-  }
-
-  .menu-item-compact h4 {
-    font-size: 0.95rem;
-  }
-
-  .menu-item-compact__price {
-    font-size: 0.9rem;
-  }
-}
-
-/* --- END MENU REDESIGN --- */
+/* --- END QUIET LUXURY REDESIGN --- */
 
 .hero {
   min-height: 76vh;

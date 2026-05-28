@@ -236,13 +236,13 @@ function App() {
       <section className="section section--menu" id="menu" aria-labelledby="menu-title">
         <div className="section__heading">
           <p className="section__eyebrow">Menu</p>
-          <h2 id="menu-title">Selezione dello staff</h2>
+          <h2 id="menu-title">Selezione d&apos;autore.</h2>
           {isUsingFallback && (
             <p className="section__note">Backend non raggiungibile: stai vedendo il menu locale.</p>
           )}
         </div>
 
-        {/* Ultra-Compact Category Navigation */}
+        {/* Minimal Category Navigation */}
         <div className="category-nav-wrapper">
           <nav className="category-nav">
             {menuSections.map((section) => (
@@ -260,19 +260,26 @@ function App() {
         <div className="menu-section-list">
           {menuSections.map((section) => (
             <section className="menu-section" id={section.id} key={section.id}>
-              <div className="menu-section__header-minimal">
+              <div className="menu-section__header-editorial">
                 <p className="section__eyebrow">{section.title}</p>
                 <h3>{section.title}</h3>
-                {section.description && <p>{section.description}</p>}
+                {section.description && <p className="menu-item-editorial__description" style={{ marginTop: '4px' }}>{section.description}</p>}
               </div>
 
-              <div className="menu-content-minimal">
-                <div className="menu-grid-minimal">
-                  {section.items.map((item) => (
-                    <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
-                  ))}
-                </div>
+              <div className="menu-list-editorial">
+                {section.items.map((item) => (
+                  <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
+                ))}
               </div>
+
+              {/* {sectionImages[section.id] && (
+                <img 
+                  src={sectionImages[section.id]} 
+                  alt={section.title} 
+                  className="menu-thumbnail" 
+                  loading="lazy"
+                />
+              )} */}
             </section>
           ))}
         </div>
