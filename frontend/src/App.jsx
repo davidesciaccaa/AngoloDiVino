@@ -29,7 +29,7 @@ const fallbackMenuSections = [
       {
         name: 'Tagliere Salandra',
         subtitle: 'Formaggi, conserve',
-        description: 'Selezione di formaggi locali, olive, focaccia calda e confettura della casa.',
+        description: 'Selezione di formaggi locali, olive, focaccia calda e con fettura della casa.',
         notes: ['Vegetariano', 'Perfetto per due'],
         price: '14 EUR'
       },
@@ -233,38 +233,45 @@ function App() {
     <main>
       <Hero status={apiStatus} />
 
-      <section className="section section--menu" aria-labelledby="menu-title">
+      <section className="section section--menu" id="menu" aria-labelledby="menu-title">
         <div className="section__heading">
           <p className="section__eyebrow">Menu</p>
-          <h2 id="menu-title">Aperitivo, drink, vini e sapori freschi per ogni ritmo della serata.</h2>
+          <h2 id="menu-title">Selezione dello staff</h2>
           {isUsingFallback && (
             <p className="section__note">Backend non raggiungibile: stai vedendo il menu locale.</p>
           )}
         </div>
 
+        {/* Ultra-Compact Category Navigation */}
+        <div className="category-nav-wrapper">
+          <nav className="category-nav">
+            {menuSections.map((section) => (
+              <a 
+                key={`nav-${section.id}`} 
+                href={`#${section.id}`} 
+                className="category-link"
+              >
+                {section.title}
+              </a>
+            ))}
+          </nav>
+        </div>
+
         <div className="menu-section-list">
           {menuSections.map((section) => (
             <section className="menu-section" id={section.id} key={section.id}>
-              <div className="menu-section__heading">
+              <div className="menu-section__header-minimal">
                 <p className="section__eyebrow">{section.title}</p>
-                <h3>{section.description}</h3>
+                <h3>{section.title}</h3>
+                {section.description && <p>{section.description}</p>}
               </div>
-              <div className="menu-content">
-                <div className="menu-grid">
+
+              <div className="menu-content-minimal">
+                <div className="menu-grid-minimal">
                   {section.items.map((item) => (
                     <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
                   ))}
                 </div>
-                {sectionImages[section.id] && (
-                  <div className="section-image-container">
-                    <img 
-                      src={sectionImages[section.id]} 
-                      alt={section.title} 
-                      className="section-image" 
-                      loading="lazy"
-                    />
-                  </div>
-                )}
               </div>
             </section>
           ))}

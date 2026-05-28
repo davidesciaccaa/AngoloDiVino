@@ -41,6 +41,189 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+/* --- MENU REDESIGN: ULTRA-COMPACT MINIMAL PREMIUM --- */
+
+.section--menu {
+  padding-top: 20px;
+}
+
+/* Category Navigation (Ultra-Compact) */
+.category-nav-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--paper);
+  border-bottom: 1px solid rgba(23, 19, 19, 0.08);
+  margin-bottom: 24px;
+  padding: 8px 0;
+}
+
+.category-nav {
+  display: flex;
+  overflow-x: auto;
+  gap: 4px;
+  scrollbar-width: none;
+  padding: 0 16px;
+  width: min(1320px, 100%);
+  margin: 0 auto;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .category-nav {
+    justify-content: flex-start;
+  }
+}
+
+.category-link {
+  white-space: nowrap;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  opacity: 0.5;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.category-link:hover,
+.category-link--active {
+  opacity: 1;
+  color: var(--wine-premium);
+  background: rgba(123, 30, 58, 0.04);
+}
+
+/* Section Adjustments - High Density */
+.menu-section {
+  margin-bottom: 48px;
+  scroll-margin-top: 60px;
+}
+
+.menu-section__header-minimal {
+  margin-bottom: 20px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(23, 19, 19, 0.05);
+}
+
+.menu-section__header-minimal h3 {
+  font-family: var(--font-brand), serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  margin: 0 0 4px;
+}
+
+.menu-section__header-minimal p {
+  font-size: 0.82rem;
+  color: rgba(23, 13, 13, 0.5);
+  margin: 0;
+}
+
+.menu-grid-minimal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 40px;
+}
+
+/* Ultra-Compact Menu Item */
+.menu-item-compact {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(23, 19, 19, 0.03);
+}
+
+.menu-item-compact:last-child {
+  border-bottom: none;
+}
+
+.menu-item-compact__main {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.menu-item-compact h4 {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.menu-item-compact__dots {
+  flex-grow: 1;
+  border-bottom: 1px dotted rgba(23, 19, 19, 0.1);
+  position: relative;
+  top: -4px;
+}
+
+.menu-item-compact__price {
+  font-family: var(--font-brand), serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.menu-item-compact__description {
+  margin: 2px 0 0;
+  font-size: 0.82rem;
+  color: rgba(23, 13, 13, 0.55);
+  line-height: 1.4;
+  font-weight: 400;
+}
+
+.note-list-minimal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+  padding: 0;
+  list-style: none;
+}
+
+.note-list-minimal li {
+  font-size: 0.6rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--green);
+  opacity: 0.7;
+}
+
+/* Layout - Pure List */
+.menu-content-minimal {
+  width: 100%;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 800px) {
+  .menu-grid-minimal {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .menu-section {
+    margin-bottom: 32px;
+  }
+
+  .menu-item-compact h4 {
+    font-size: 0.95rem;
+  }
+
+  .menu-item-compact__price {
+    font-size: 0.9rem;
+  }
+}
+
+/* --- END MENU REDESIGN --- */
+
 .hero {
   min-height: 76vh;
   color: var(--white);

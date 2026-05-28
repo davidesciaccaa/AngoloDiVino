@@ -12,7 +12,22 @@ public class MenuService {
                         "aperitivo",
                         "Aperitivo",
                         "Assaggi pensati per aprire la serata con calma.",
-                        List.of()
+                        List.of(
+                                new MenuItemResponse(
+                                        "Tagliere Salandra",
+                                        "Formaggi, conserve",
+                                        "Selezione di formaggi locali, olive, focaccia calda e confettura della casa.",
+                                        List.of("Vegetariano", "Perfetto per due"),
+                                        "14 EUR"
+                                ),
+                                new MenuItemResponse(
+                                        "Fritti di Corte",
+                                        "Croccanti, mediterranei",
+                                        "Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.",
+                                        List.of("Stuzzicheria", "Servito caldo"),
+                                        "11 EUR"
+                                )
+                        )
                 ),
                 new MenuSectionResponse(
                         "drink",

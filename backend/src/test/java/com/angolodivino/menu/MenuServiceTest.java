@@ -18,26 +18,24 @@ class MenuServiceTest {
     }
 
     @Test
-    void aperitivoSectionIsEmpty() {
+    void aperitivoSectionIsPopulated() {
         MenuSectionResponse aperitivo = menuService.findMenuSections().stream()
                 .filter(s -> "aperitivo".equals(s.id()))
                 .findFirst()
                 .orElseThrow();
         
-        assertThat(aperitivo.items()).isEmpty();
+        assertThat(aperitivo.items()).isNotEmpty();
     }
 
     @Test
     void otherSectionsArePopulated() {
         List<MenuSectionResponse> sections = menuService.findMenuSections();
         
-        sections.stream()
-                .filter(s -> !"aperitivo".equals(s.id()))
-                .forEach(section -> {
-                    assertThat(section.items()).isNotEmpty();
-                    assertThat(section.items()).allSatisfy(item -> {
-                        assertThat(item.name()).isNotBlank();
-                    });
-                });
+        sections.forEach(section -> {
+            assertThat(section.items()).isNotEmpty();
+            assertThat(section.items()).allSatisfy(item -> {
+                assertThat(item.name()).isNotBlank();
+            });
+        });
     }
 }
