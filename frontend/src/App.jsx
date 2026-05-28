@@ -44,44 +44,76 @@ const fallbackMenuSections = [
   },
   {
     id: 'drink',
-    title: 'Drink',
-    description: 'Semplice e diretto: Drink.',
+    title: 'Cocktails',
+    description: 'I grandi classici e le nostre proposte miscelate.',
     items: [
-      {
-        name: 'Rubino Sour',
-        subtitle: 'Vino rosso, agrumi',
-        description: 'Un sour vellutato con vino rosso ridotto, limone fresco e albume.',
-        notes: ['Signature', 'Agrumato'],
-        price: '12 EUR'
-      },
-      {
-        name: 'Notturno Bianco',
-        subtitle: 'Gin, uva bianca',
-        description: "Gin floreale, mosto d'uva bianca e una chiusura fresca di salvia.",
-        notes: ['Floreale', 'Fresco'],
-        price: '13 EUR'
-      }
+      { name: 'Aperol Spritz', subtitle: '', description: '(4 cl Aperol, 1 dl Prosecco, Sprite q.b., arancia)', notes: [], price: '' },
+      { name: 'Campari Spritz', subtitle: '', description: '(4 cl Campari, 1 dl Prosecco, acqua tonica q.b.)', notes: [], price: '' },
+      { name: 'Campari & Prosecco', subtitle: '', description: '(4 cl Campari, 1 dl Prosecco, arancia)', notes: [], price: '' },
+      { name: 'Caipirinha', subtitle: '', description: '(4 cl Cachaça, zucchero di canna, lime, ghiaccio tritato)', notes: [], price: '' },
+      { name: 'Caipiroska alla Fragola', subtitle: '', description: '', notes: [], price: '' },
+      { name: 'Gin Tonic', subtitle: '', description: '(4 cl Gin, acqua tonica)', notes: [], price: '' },
+      { name: 'Hugo', subtitle: '', description: '(2 cl succo di lime, 2 cl sciroppo di sambuco, 1 dl Prosecco, Sprite q.b., menta)', notes: [], price: '' },
+      { name: 'Moscow Mule', subtitle: '', description: '(1,5 cl succo di lime, 4 cl Vodka, Ginger Beer)', notes: [], price: '' },
+      { name: 'London Mule', subtitle: '', description: '(1,5 cl succo di lime, 4 cl Gin, Ginger Beer)', notes: [], price: '' },
+      { name: 'Long Island Iced Tea', subtitle: '', description: '(3 cl succo di lime, 2 cl zucchero di canna, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)', notes: [], price: '' },
+      { name: 'Japan Iced Tea', subtitle: '', description: '(1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Sweet & Sour al limone)', notes: [], price: '' },
+      { name: 'Mojito Scuro', subtitle: '', description: '(zucchero di canna, lime, menta, rum scuro, acqua frizzante)', notes: [], price: '' },
+      { name: 'Negroni', subtitle: '', description: '(3 cl Gin, 3 cl Campari, 3 cl Vermouth rosso, arancia)', notes: [], price: '' },
+      { name: 'Negroni Sbagliato', subtitle: '', description: '(3 cl Prosecco, 3 cl Bitter, 3 cl Vermouth rosso)', notes: [], price: '' },
+      { name: 'Sex on the Beach', subtitle: '', description: '(4 cl Vodka, 2 cl liquore alla pesca, 4 cl succo d’arancia, 4 cl succo di mirtillo)', notes: [], price: '' },
+      { name: 'Martini Cocktail', subtitle: '', description: '(6 cl Gin, 1 cl Martini Dry, scorza di lime, olive)', notes: [], price: '' },
+      { name: 'Espresso Martini', subtitle: '', description: '(5 cl Vodka, 2 cl caffè espresso, liquore al caffè, zucchero)', notes: [], price: '' },
+      { name: 'Cosmopolitan', subtitle: '', description: '(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)', notes: [], price: '' },
+      { name: 'Quattro Bianchi', subtitle: '', description: '(2 cl Gin, 2 cl Rum, 2 cl Vodka, 2 cl Tequila)', notes: [], price: '' }
     ]
   },
   {
     id: 'vini',
     title: 'Vini',
-    description: 'Etichette salentine e vini locali aperti da scoprire al calice.',
+    description: 'Una selezione ricercata di vini bianchi, rosati e rossi, anche biologici.',
     items: [
-      {
-        name: 'Primitivo del Cortile',
-        subtitle: 'Rosso, Salento',
-        description: 'Calice morbido e speziato, ideale con assaggi sapidi e formaggi stagionati.',
-        notes: ['Calice', 'Corposo'],
-        price: '7 EUR'
-      },
-      {
-        name: 'Bianco di Pietra',
-        subtitle: 'Bianco, Nardò',
-        description: 'Bianco minerale, teso e luminoso, con finale di mandorla fresca.',
-        notes: ['Calice', 'Minerale'],
-        price: '6 EUR'
-      }
+      { name: 'Calice di Vino', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Calice di Prosecco', subtitle: '', description: '', notes: [], price: '4 €' },
+      { name: 'Calavento IGP Salento', subtitle: 'Bianco', description: '', notes: [], price: '21 €' },
+      { name: 'Luna IGP Salento', subtitle: 'Bianco', description: '', notes: [], price: '21 €' },
+      { name: 'Leverano Vecchia Torre', subtitle: 'Bianco', description: '', notes: [], price: '16 €' },
+      { name: 'Müller Thurgau', subtitle: 'Bianco', description: '', notes: [], price: '21 €' },
+      { name: 'Gewürztraminer', subtitle: 'Bianco', description: '', notes: [], price: '21 €' },
+      { name: 'Trebbiano d’Abruzzo', subtitle: 'Bianco', description: '', notes: [], price: '16 €' },
+      { name: 'Verdeca Due Trulli', subtitle: 'Bianco', description: '', notes: [], price: '18 €' },
+      { name: 'Chardonnay', subtitle: 'Bianco', description: '', notes: [], price: '18 €' },
+      { name: 'Trebbiano d’Abruzzo Bio Vegano', subtitle: 'Bianco Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Passerina Bio Vegano', subtitle: 'Bianco Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Pecorino Bio', subtitle: 'Bianco Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Castel del Monte Bio', subtitle: 'Bianco Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Vitalba Bio', subtitle: 'Bianco Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Dharma Bio', subtitle: 'Bianco Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Novebolle D.O.C.', subtitle: 'Spumante Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Castel del Monte Bio', subtitle: 'Rosato Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Castel del Monte Bio', subtitle: 'Rosso Bio', description: '', notes: [], price: '19 €' },
+      { name: 'Leverano DOP Vecchia Torre', subtitle: 'Rosato', description: '', notes: [], price: '16 €' },
+      { name: 'Negroamaro Vecchia Torre', subtitle: 'Rosato', description: '', notes: [], price: '18 €' },
+      { name: 'Primitivo Rosato 1932', subtitle: 'Rosato', description: '', notes: [], price: '19 €' },
+      { name: 'Numero Zero Negroamaro Susumaniello', subtitle: 'Rosato', description: '', notes: [], price: '21 €' },
+      { name: 'Susumaniello Due Trulli', subtitle: 'Rosato', description: '', notes: [], price: '21 €' },
+      { name: 'Primitivo Vecchia Torre', subtitle: 'Rosso', description: '', notes: [], price: '16 €' },
+      { name: 'Primitivo Due Trulli', subtitle: 'Rosso', description: '', notes: [], price: '18 €' },
+      { name: 'Primitivo Vignaioli 68 IGP', subtitle: 'Rosso', description: '', notes: [], price: '28 €' },
+      { name: 'Primitivo di Manduria 1932', subtitle: 'Rosso', description: '', notes: [], price: '21 €' },
+      { name: 'Negroamaro Vecchia Torre', subtitle: 'Rosso', description: '', notes: [], price: '16 €' },
+      { name: 'Negroamaro Due Trulli', subtitle: 'Rosso', description: '', notes: [], price: '18 €' },
+      { name: 'Negroamaro Manorossa', subtitle: 'Rosso', description: '', notes: [], price: '60 €' },
+      { name: 'Negroamaro Susumaniello', subtitle: 'Rosso', description: '', notes: [], price: '34 €' },
+      { name: 'Susumaniello Vigna 14 IGP', subtitle: 'Rosso', description: '', notes: [], price: '18 €' },
+      { name: 'Nerotavola Sicilia DOC', subtitle: 'Rosso', description: '', notes: [], price: '28 €' },
+      { name: 'Nero di Troia', subtitle: 'Rosso', description: '', notes: [], price: '16 €' },
+      { name: 'Aglianico', subtitle: 'Rosso', description: '', notes: [], price: '18 €' },
+      { name: 'Cabernet Veneto', subtitle: 'Rosso', description: '', notes: [], price: '21 €' },
+      { name: 'Ripasso Negrar', subtitle: 'Rosso', description: '', notes: [], price: '26 €' },
+      { name: 'Chianti Classico', subtitle: 'Rosso', description: '', notes: [], price: '20 €' },
+      { name: 'Brunello', subtitle: 'Rosso', description: '', notes: [], price: '40 €' },
+      { name: 'Amarone', subtitle: 'Rosso', description: '', notes: [], price: '40 €' }
     ]
   },
   {
@@ -107,44 +139,45 @@ const fallbackMenuSections = [
   },
   {
     id: 'superalcolici',
-    title: 'Superalcolici',
-    description: 'Distillati selezionati per degustazioni.',
+    title: 'Distillati e Rum',
+    description: 'Una selezione di pregiati distillati e rum da meditazione.',
     items: [
-      {
-        name: 'Amaro dei Dotti',
-        subtitle: 'Erbe, radici',
-        description: "Amaro intenso con note balsamiche, scorza d'arancia e finale persistente.",
-        notes: ['Dopocena', 'Servito freddo'],
-        price: '6 EUR'
-      },
-      {
-        name: 'Rum Riserva 8',
-        subtitle: 'Morbido, speziato',
-        description: 'Rum ambrato con vaniglia, cacao e legno dolce.',
-        notes: ['Degustazione', 'Liscio'],
-        price: '9 EUR'
-      }
+      { name: 'Vecchia Romagna', subtitle: 'Distillato', description: '', notes: [], price: '5 €' },
+      { name: 'Cointreau', subtitle: 'Distillato', description: '', notes: [], price: '5 €' },
+      { name: 'Jack Daniel’s', subtitle: 'Distillato', description: '', notes: [], price: '6 €' },
+      { name: 'Jack Daniel’s Honey', subtitle: 'Distillato', description: '', notes: [], price: '6 €' },
+      { name: 'Cardinal Mendoza', subtitle: 'Distillato', description: '', notes: [], price: '12 €' },
+      { name: 'Oban', subtitle: 'Distillato', description: '', notes: [], price: '12 €' },
+      { name: 'Laphroaig', subtitle: 'Distillato', description: '', notes: [], price: '12 €' },
+      { name: 'Lagavulin', subtitle: 'Distillato', description: '', notes: [], price: '12 €' },
+      { name: 'Sambuca', subtitle: 'Distillato', description: '', notes: [], price: '5 €' },
+      { name: 'Martini Bianco / Rosso / Dry', subtitle: 'Distillato', description: '', notes: [], price: '5 €' },
+      { name: 'Bacardi', subtitle: 'Rum', description: '', notes: [], price: '5 €' },
+      { name: 'Don Papa', subtitle: 'Rum', description: '', notes: [], price: '9 €' },
+      { name: 'Zacapa 23 Anni', subtitle: 'Rum', description: '', notes: [], price: '12 €' },
+      { name: 'J. Bally', subtitle: 'Rum', description: '', notes: [], price: '' },
+      { name: 'La Hechicera', subtitle: 'Rum', description: '', notes: [], price: '' },
+      { name: 'Shot con Distillati Base (2 cl)', subtitle: 'Shot', description: '', notes: [], price: '3 €' },
+      { name: 'Shot con Distillati Base (4 cl)', subtitle: 'Shot', description: '', notes: [], price: '5 €' }
     ]
   },
   {
     id: 'bevande',
     title: 'Bevande',
-    description: 'Analcolici, soft drink e alternative leggere per ogni momento.',
+    description: 'Analcolici, soft drink e alternative leggere.',
     items: [
-      {
-        name: 'Limonata',
-        subtitle: 'Agrumi, erbe',
-        description: 'Limonata fresca, zest di limone.',
-        notes: ['Analcolico', 'Rinfrescante'],
-        price: '5 EUR'
-      },
-      {
-        name: 'Tonica',
-        subtitle: 'Erbe, agrumi',
-        description: 'Tonica secca con rosmarino, pompelmo rosa e ghiaccio pieno.',
-        notes: ['Analcolico', 'Dry'],
-        price: '5 EUR'
-      }
+      { name: 'Acqua Naturale / Frizzante', subtitle: '', description: '', notes: [], price: '2,50 €' },
+      { name: 'Coca-Cola / Coca-Cola Zero', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Fanta', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Succhi di Frutta', subtitle: '', description: '', notes: [], price: '3,50 €' },
+      { name: 'Chinotto', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Schweppes Lemon', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Tè Pesca / Limone', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'San Bitter Bianco / Rosso', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Cocktail San Pellegrino', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Crodino', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Acqua Tonica', subtitle: '', description: '', notes: [], price: '3 €' },
+      { name: 'Red Bull', subtitle: '', description: '', notes: [], price: '4 €' }
     ]
   }
 ];
