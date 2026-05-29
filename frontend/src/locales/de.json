@@ -15,7 +15,7 @@
     "button": "Entdecken Sie das Menü"
   },
   "menu": {
-    "title": "Auswahl des Autors.",
+    "title": "Exquisite Auswahl",
     "fallback_note": "Backend nicht erreichbar: Sie sehen das lokale Menü.",
     "sections": {
       "aperitivo": {
@@ -24,7 +24,7 @@
       },
       "drink": {
         "title": "Cocktails",
-        "description": "Die großen Klassiker und unsere gemischten Vorschläge."
+        "description": "Die großen Klassiker und unsere eigenen Kreationen."
       },
       "vini": {
         "title": "Weine",
@@ -36,26 +36,138 @@
       },
       "superalcolici": {
         "title": "Spirituosen und Rum",
-        "description": "Eine Auswahl an feinen Spirituosen und Meditations-Rums."
+        "description": "Eine Auswahl an feinen Spirituosen und erstklassigen Rums zum Genießen."
       },
       "frullati": {
         "title": "Smoothies",
-        "description": "Vitaminreiche, gesunde Smoothies, zubereitet mit frischen saisonalen Zutaten."
+        "description": "Vitaminreiche, gesunde Smoothies aus frischen saisonalen Zutaten."
       },
       "bevande": {
         "title": "Getränke",
         "description": "Alkoholfreie Getränke, Softdrinks und leichte Alternativen."
       }
+    },
+    "items": {
+      "tagliere_salandra": {
+        "name": "Salandra-Platte",
+        "subtitle": "Käse, Konserven",
+        "description": "Auswahl an lokalem Käse, Oliven, warmem Focaccia und hausgemachter Marmelade.",
+        "notes": {
+          "vegetariano": "Vegetarisch",
+          "perfetto_per_due": "Perfekt für zwei"
+        }
+      },
+      "fritti_di_corte": {
+        "name": "Frittiertes aus dem Hof",
+        "subtitle": "Knusprig, mediterran",
+        "description": "Kleine gemischte Frittier-Spezialitäten mit saisonalem Gemüse, Zitrusfrüchten und Kräutermayonnaise.",
+        "notes": {
+          "stuzzicheria": "Häppchen",
+          "servito_caldo": "Heiß serviert"
+        }
+      },
+      "vini_labels": {
+        "calice_vino": "Glas Wein",
+        "calice_prosecco": "Glas Prosecco",
+        "bianco": "Weiß",
+        "bianco_bio": "Bio-Weißwein",
+        "spumante_bio": "Bio-Schaumwein",
+        "rosato_bio": "Bio-Rosé",
+        "rosso_bio": "Bio-Rotwein",
+        "rosato": "Rosé",
+        "rosso": "Rot"
+      },
+      "superalcolici_labels": {
+        "distillato": "Spirituose",
+        "rum": "Rum",
+        "shot_2cl": "Shot mit Basis-Spirituosen (2 cl)",
+        "shot_4cl": "Shot mit Basis-Spirituosen (4 cl)"
+      },
+      "frullato_tropicale": {
+        "name": "Tropischer Smoothie",
+        "subtitle": "Mango, Ananas, Kokosnuss",
+        "description": "Eine cremige und erfrischende exotiche Reise.",
+        "notes": {
+          "fresco": "Frisch",
+          "vitamina_c": "Vitamin C"
+        }
+      },
+      "frutti_di_bosco": {
+        "name": "Waldbeeren",
+        "subtitle": "Brombeere, Himbeere, Blaubeere",
+        "description": "Der intensive Geschmack des Waldes in einem samtigen Mix.",
+        "notes": {
+          "antiossidante": "Antioxidans"
+        }
+      },
+      "bevande_labels": {
+        "acqua": "Stilles / Sprudelwasser",
+        "succhi": "Fruchtsäfte",
+        "te": "Pfirsich- / Zitronentee",
+        "san_bitter": "San Bitter Weiß / Rot",
+        "tonica": "Tonic Water"
+      },
+      "acqua": { "name": "Stilles / Sprudelwasser" },
+      "coca_cola": { "name": "Coca-Cola / Coca-Cola Zero" },
+      "fanta": { "name": "Fanta" },
+      "succhi": { "name": "Fruchtsäfte" },
+      "chinotto": { "name": "Chinotto" },
+      "schweppes_lemon": { "name": "Schweppes Lemon" },
+      "te": { "name": "Pfirsich- / Zitronentee" },
+      "san_bitter": { "name": "San Bitter Weiß / Rot" },
+      "cocktail_sp": { "name": "San Pellegrino Cocktail" },
+      "crodino": { "name": "Crodino" },
+      "tonica": { "name": "Tonic Water" },
+      "red_bull": { "name": "Red Bull" },
+      "calice_vino": { "name": "Glas Wein" },
+      "calice_prosecco": { "name": "Glas Prosecco" },
+      "shot_2cl": { "name": "Shot mit Basis-Spirituosen (2 cl)" },
+      "shot_4cl": { "name": "Shot mit Basis-Spirituosen (4 cl)" },
+      "cocktail_ingredients": {
+        "arancia": "Orange",
+        "acqua_tonica": "Tonic Water",
+        "zucchero_di_canna": "Rohrzucker",
+        "lime": "Limette",
+        "ghiaccio_tritato": "Crushed Ice",
+        "fragola": "Erdbeere",
+        "succo_di_lime": "Limettensaft",
+        "sciroppo_di_sambuco": "Holunderblütensirup",
+        "menta": "Minze",
+        "sweet_sour_limone": "Zitronen-Sweet & Sour",
+        "rum_scuro": "dunkler Rum",
+        "acqua_frizzante": "Sprudelwasser",
+        "vermouth_rosso": "roter Wermut",
+        "liquore_pesca": "Pfirsichlikör",
+        "succo_arancia": "Orangensaft",
+        "succo_mirtillo": "Cranberrysaft",
+        "scorza_lime": "Limettenschale",
+        "olive": "Oliven",
+        "caffe_espresso": "Espresso",
+        "liquore_caffe": "Kaffeelikör",
+        "zucchero": "Zucker",
+        "scorza_arancia": "Orangenschale",
+        "ribes_rosso": "rote Johannisbeere",
+        "qb": "nach Belieben"
+      },
+      "common_notes": {
+        "vegetariano": "Vegetarisch",
+        "perfetto_per_due": "Perfekt für zwei",
+        "stuzzicheria": "Häppchen",
+        "servito_caldo": "Heiß serviert",
+        "fresco": "Frisch",
+        "vitamina_c": "Vitamin C",
+        "antiossidante": "Antioxidans"
+      }
     }
   },
   "experience": {
     "eyebrow": "Erlebnis",
-    "title": "Piazza San Domenico, Nardò: Gläser und Abende für alle.",
-    "text": "Im barocken Herzen der Piazza San Domenico, zwischen Leccese-Stein und Gebäuden, die von Jahrhunderten der Begegnung erzählen, begrüßt L'Angolo diVino jede Identität mit Respekt, Musik und Themenabenden, mit Tischen, an denen man sich frei fühlen kann, zu verweilen."
+    "title": "Piazza San Domenico, Nardò: Wein und Abende für alle.",
+    "text": "Im barocken Herzen der Piazza San Domenico, umgeben von Lecce-Stein und geschichtsträchtigen Gebäuden, heißt L'Angolo diVino jeden mit Respekt, Musik und Themenabenden willkommen – an Tischen, die zum Verweilen einladen."
   },
   "contacts": {
     "eyebrow": "Kontakte",
-    "title": "Jeden Tag, 7 von 7",
+    "title": "Täglich geöffnet",
     "hours": "18:00 - 01:00"
   }
 }

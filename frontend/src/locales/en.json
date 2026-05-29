@@ -15,47 +15,159 @@
     "button": "Discover the menu"
   },
   "menu": {
-    "title": "Author's selection.",
-    "fallback_note": "Backend unreachable: you are seeing the local menu.",
+    "title": "Curated Selection",
+    "fallback_note": "Backend unreachable: showing local menu.",
     "sections": {
       "aperitivo": {
         "title": "Aperitif",
-        "description": "Tastings designed to start the evening calmly."
+        "description": "Tastings designed to start the evening with ease."
       },
       "drink": {
         "title": "Cocktails",
-        "description": "The great classics and our mixed proposals."
+        "description": "The great classics and our signature creations."
       },
       "vini": {
         "title": "Wines",
-        "description": "A refined selection of white, rosé and red wines, including organic ones."
+        "description": "A refined selection of white, rosé and red wines, including organic labels."
       },
       "amari": {
         "title": "Bitters",
-        "description": "Selection of bitters and liqueurs to end on a high note."
+        "description": "A selection of bitters and liqueurs for a perfect finish."
       },
       "superalcolici": {
         "title": "Spirits and Rum",
-        "description": "A selection of fine spirits and meditation rums."
+        "description": "A selection of fine spirits and premium sipping rums."
       },
       "frullati": {
         "title": "Smoothies",
-        "description": "Vitaminic, healthy smoothies prepared with fresh seasonal ingredients."
+        "description": "Vitamin-rich, healthy smoothies prepared with fresh seasonal ingredients."
       },
       "bevande": {
         "title": "Beverages",
         "description": "Soft drinks and light alternatives."
       }
+    },
+    "items": {
+      "tagliere_salandra": {
+        "name": "Salandra Platter",
+        "subtitle": "Cheeses, preserves",
+        "description": "Selection of local cheeses, olives, warm focaccia and homemade jam.",
+        "notes": {
+          "vegetariano": "Vegetarian",
+          "perfetto_per_due": "Perfect for two"
+        }
+      },
+      "fritti_di_corte": {
+        "name": "Court's Fried Treats",
+        "subtitle": "Crispy, Mediterranean",
+        "description": "Small mixed fried treats with seasonal vegetables, citrus and herb mayonnaise.",
+        "notes": {
+          "stuzzicheria": "Appetizers",
+          "servito_caldo": "Served hot"
+        }
+      },
+      "vini_labels": {
+        "calice_vino": "Glass of Wine",
+        "calice_prosecco": "Glass of Prosecco",
+        "bianco": "White",
+        "bianco_bio": "Organic White",
+        "spumante_bio": "Organic Sparkling",
+        "rosato_bio": "Organic Rosé",
+        "rosso_bio": "Organic Red",
+        "rosato": "Rosé",
+        "rosso": "Red"
+      },
+      "superalcolici_labels": {
+        "distillato": "Spirit",
+        "rum": "Rum",
+        "shot_2cl": "Shot with House Spirits (2 cl)",
+        "shot_4cl": "Shot with House Spirits (4 cl)"
+      },
+      "frullato_tropicale": {
+        "name": "Tropical Smoothie",
+        "subtitle": "Mango, Pineapple, Coconut",
+        "description": "A creamy and refreshing exotic journey.",
+        "notes": {
+          "fresco": "Fresh",
+          "vitamina_c": "Vitamin C"
+        }
+      },
+      "frutti_di_bosco": {
+        "name": "Wild Berries",
+        "subtitle": "Blackberry, Raspberry, Blueberry",
+        "description": "The intense flavor of the forest in a velvety mix.",
+        "notes": {
+          "antiossidante": "Antioxidant"
+        }
+      },
+      "bevande_labels": {
+        "acqua": "Still / Sparkling Water",
+        "succhi": "Fruit Juices",
+        "te": "Peach / Lemon Tea",
+        "san_bitter": "San Bitter White / Red",
+        "tonica": "Tonic Water"
+      },
+      "acqua": { "name": "Still / Sparkling Water" },
+      "coca_cola": { "name": "Coca-Cola / Coca-Cola Zero" },
+      "fanta": { "name": "Fanta" },
+      "succhi": { "name": "Fruit Juices" },
+      "chinotto": { "name": "Chinotto" },
+      "schweppes_lemon": { "name": "Schweppes Lemon" },
+      "te": { "name": "Peach / Lemon Tea" },
+      "san_bitter": { "name": "San Bitter White / Red" },
+      "cocktail_sp": { "name": "San Pellegrino Cocktail" },
+      "crodino": { "name": "Crodino" },
+      "tonica": { "name": "Tonic Water" },
+      "red_bull": { "name": "Red Bull" },
+      "calice_vino": { "name": "Glass of Wine" },
+      "calice_prosecco": { "name": "Glass of Prosecco" },
+      "shot_2cl": { "name": "Shot with House Spirits (2 cl)" },
+      "shot_4cl": { "name": "Shot with House Spirits (4 cl)" },
+      "cocktail_ingredients": {
+        "arancia": "orange",
+        "acqua_tonica": "tonic water",
+        "zucchero_di_canna": "brown sugar",
+        "lime": "lime",
+        "ghiaccio_tritato": "crushed ice",
+        "fragola": "strawberry",
+        "succo_di_lime": "lime juice",
+        "sciroppo_di_sambuco": "elderflower syrup",
+        "menta": "mint",
+        "sweet_sour_limone": "lemon Sweet & Sour",
+        "rum_scuro": "dark rum",
+        "acqua_frizzante": "sparkling water",
+        "vermouth_rosso": "red Vermouth",
+        "liquore_pesca": "peach liqueur",
+        "succo_arancia": "orange juice",
+        "succo_mirtillo": "cranberry juice",
+        "scorza_lime": "lime zest",
+        "olive": "olives",
+        "caffe_espresso": "espresso coffee",
+        "liquore_caffe": "coffee liqueur",
+        "zucchero": "sugar",
+        "scorza_arancia": "orange zest",
+        "ribes_rosso": "redcurrant",
+        "qb": "to taste"
+      },
+      "common_notes": {
+        "vegetariano": "Vegetarian",
+        "perfetto_per_due": "Perfect for two",
+        "stuzzicheria": "Appetizers",
+        "servito_caldo": "Served hot",
+        "fresco": "Fresh",
+        "vitamina_c": "Vitamin C",
+        "antiossidante": "Antioxidant"
+      }
     }
   },
   "experience": {
     "eyebrow": "Experience",
-    "title": "Piazza San Domenico, Nardò: glasses and evenings for everyone.",
-    "text": "In the baroque heart of Piazza San Domenico, between Leccese stone and buildings that tell centuries of encounters, L'Angolo diVino welcomes every identity with respect, music and themed evenings, with tables designed to feel free to stay."
+    "title": "Piazza San Domenico, Nardò: wine and evenings for everyone.",
+    "text": "In the baroque heart of Piazza San Domenico, amidst Lecce stone and buildings echoing centuries of history, L'Angolo diVino welcomes everyone with respect, music and themed evenings, with an atmosphere that invites you to stay."
   },
   "contacts": {
     "eyebrow": "Contacts",
-    "title": "Every day, 7 out of 7",
+    "title": "Open daily",
     "hours": "18:00 - 01:00"
   }
 }

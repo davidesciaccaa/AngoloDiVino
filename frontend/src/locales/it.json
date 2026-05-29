@@ -46,6 +46,118 @@
         "title": "Bevande",
         "description": "Analcolici, soft drink e alternative leggere."
       }
+    },
+    "items": {
+      "tagliere_salandra": {
+        "name": "Tagliere Salandra",
+        "subtitle": "Formaggi, conserve",
+        "description": "Selezione di formaggi locali, olive, focaccia calda e confettura della casa.",
+        "notes": {
+          "vegetariano": "Vegetariano",
+          "perfetto_per_due": "Perfetto per due"
+        }
+      },
+      "fritti_di_corte": {
+        "name": "Fritti di Corte",
+        "subtitle": "Croccanti, mediterranei",
+        "description": "Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.",
+        "notes": {
+          "stuzzicheria": "Stuzzicheria",
+          "servito_caldo": "Servito caldo"
+        }
+      },
+      "vini_labels": {
+        "calice_vino": "Calice di Vino",
+        "calice_prosecco": "Calice di Prosecco",
+        "bianco": "Bianco",
+        "bianco_bio": "Bianco Bio",
+        "spumante_bio": "Spumante Bio",
+        "rosato_bio": "Rosato Bio",
+        "rosso_bio": "Rosso Bio",
+        "rosato": "Rosato",
+        "rosso": "Rosso"
+      },
+      "superalcolici_labels": {
+        "distillato": "Distillato",
+        "rum": "Rum",
+        "shot_2cl": "Shot con Distillati Base (2 cl)",
+        "shot_4cl": "Shot con Distillati Base (4 cl)"
+      },
+      "frullato_tropicale": {
+        "name": "Frullato Tropicale",
+        "subtitle": "Mango, Ananas, Cocco",
+        "description": "Un viaggio esotico cremoso e rinfrescante.",
+        "notes": {
+          "fresco": "Fresco",
+          "vitamina_c": "Vitamina C"
+        }
+      },
+      "frutti_di_bosco": {
+        "name": "Frutti di Bosco",
+        "subtitle": "Mora, Lampone, Mirtillo",
+        "description": "Il sapore intenso del sottobosco in un mix vellutato.",
+        "notes": {
+          "antiossidante": "Antiossidante"
+        }
+      },
+      "bevande_labels": {
+        "acqua": "Acqua Naturale / Frizzante",
+        "succhi": "Succhi di Frutta",
+        "te": "Tè Pesca / Limone",
+        "san_bitter": "San Bitter Bianco / Rosso",
+        "tonica": "Acqua Tonica"
+      },
+      "acqua": { "name": "Acqua Naturale / Frizzante" },
+      "coca_cola": { "name": "Coca-Cola / Coca-Cola Zero" },
+      "fanta": { "name": "Fanta" },
+      "succhi": { "name": "Succhi di Frutta" },
+      "chinotto": { "name": "Chinotto" },
+      "schweppes_lemon": { "name": "Schweppes Lemon" },
+      "te": { "name": "Tè Pesca / Limone" },
+      "san_bitter": { "name": "San Bitter Bianco / Rosso" },
+      "cocktail_sp": { "name": "Cocktail San Pellegrino" },
+      "crodino": { "name": "Crodino" },
+      "tonica": { "name": "Acqua Tonica" },
+      "red_bull": { "name": "Red Bull" },
+      "calice_vino": { "name": "Calice di Vino" },
+      "calice_prosecco": { "name": "Calice di Prosecco" },
+      "shot_2cl": { "name": "Shot con Distillati Base (2 cl)" },
+      "shot_4cl": { "name": "Shot con Distillati Base (4 cl)" },
+      "cocktail_ingredients": {
+        "arancia": "arancia",
+        "acqua_tonica": "acqua tonica",
+        "zucchero_di_canna": "zucchero di canna",
+        "lime": "lime",
+        "ghiaccio_tritato": "ghiaccio tritato",
+        "fragola": "fragola",
+        "succo_di_lime": "succo di lime",
+        "sciroppo_di_sambuco": "sciroppo di sambuco",
+        "menta": "menta",
+        "sweet_sour_limone": "Sweet & Sour al limone",
+        "rum_scuro": "rum scuro",
+        "acqua_frizzante": "acqua frizzante",
+        "vermouth_rosso": "Vermouth rosso",
+        "liquore_pesca": "liquore alla pesca",
+        "succo_arancia": "succo d'arancia",
+        "succo_mirtillo": "succo di mirtillo",
+        "scorza_lime": "scorza di lime",
+        "olive": "olive",
+        "caffe_espresso": "caffè espresso",
+        "liquore_caffe": "liquore al caffè",
+        "zucchero": "zucchero",
+        "scorza_arancia": "scorza d'arancia",
+        "ribes_rosso": "ribes rosso",
+        "qb": "q.b."
+      },
+      "common_notes": {
+        "vegetariano": "Vegetariano",
+        "perfetto_per_due": "Perfetto per due",
+        "stuzzicheria": "Stuzzicheria",
+        "servito_caldo": "Servito caldo",
+        "fresco": "Fresco",
+        "vitamina_c": "Vitamina C",
+        "antiossidante": "Antiossidante"
+      }
     }
   },
   "experience": {
