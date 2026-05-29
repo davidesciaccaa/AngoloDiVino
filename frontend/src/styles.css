@@ -232,11 +232,11 @@ html {
 /* --- END QUIET LUXURY REDESIGN --- */
 
 .hero {
-  min-height: 76vh;
+  min-height: 100dvh; 
   color: var(--white);
   background:
-    linear-gradient(90deg, rgba(18, 11, 12, 0.82), rgba(18, 11, 12, 0.46)),
-    var(--hero-image) center / cover;
+    linear-gradient(90deg, rgba(18, 11, 12, 0.8), rgba(18, 11, 12, 0.4)),
+    var(--hero-image) center bottom / 100% auto no-repeat #120b0c; /* Sostituito 'contain' con '100% auto' */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -736,10 +736,6 @@ html {
 
 .hero h1 {
   font-size: clamp(3.4rem, 6vw, 6.8rem);
-}
-
-.hero {
-  min-height: 100svh;
 }
 
 .hero__copy {
