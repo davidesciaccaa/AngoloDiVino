@@ -609,18 +609,22 @@ html {
   font-size: 1.75rem;
   letter-spacing: 0.05em;
   font-weight: 700;
+  flex-shrink: 0;
+  white-space: nowrap;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
   gap: 22px;
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-family: var(--font-brand), Georgia, serif;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
 .site-nav a {
   opacity: 1;
+  white-space: nowrap;
   transition: color 0.2s ease;
 }
 
@@ -641,6 +645,10 @@ html {
   font-family: var(--font-serif), Georgia, serif;
   font-weight: 900;
   letter-spacing: -0.02em;
+}
+
+.hero h1 .brand-v {
+  transform: translateY(-0.14em);
 }
 
 .section h2, 
@@ -747,6 +755,7 @@ html {
 .language-switcher {
   display: flex;
   gap: 4px;
+  margin-left: 12px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(10px);
   padding: 4px;
@@ -765,8 +774,9 @@ html {
   display: flex;
   align-items: center;
   gap: 6px;
+  font-family: var(--font-brand), Georgia, serif;
   font-size: 0.7rem;
-  font-weight: 800;
+  font-weight: 700;
   transition: all 0.3s ease;
   opacity: 0.5;
 }
@@ -787,12 +797,32 @@ html {
   font-size: 0.9rem;
 }
 
+@media (max-width: 1320px) and (min-width: 901px) {
+  .brand {
+    font-size: 1.45rem;
+  }
+
+  .site-nav {
+    gap: 14px;
+    font-size: 0.88rem;
+  }
+
+  .language-switcher {
+    margin-left: 8px;
+  }
+
+  .lang-button {
+    padding: 4px 8px;
+  }
+}
+
 @media (max-width: 900px) {
   .language-switcher {
     position: fixed;
     top: 16px;
     right: 16px;
     z-index: 1001;
+    margin-left: 0;
     background: rgba(18, 11, 12, 0.6);
   }
   
@@ -804,4 +834,3 @@ html {
     padding: 6px;
   }
 }
-
