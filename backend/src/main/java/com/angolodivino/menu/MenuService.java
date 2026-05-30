@@ -36,12 +36,11 @@ public class MenuService {
                         "Cocktails",
                         "I grandi classici e le nostre proposte miscelate.",
                         List.of(
-                                new MenuItemResponse("aperol_spritz", "Aperol Spritz", "", "(4 cl Aperol, 1 dl Prosecco, Sprite q.b., arancia)", List.of(), ""),
-                                new MenuItemResponse("campari_spritz", "Campari Spritz", "", "(4 cl Campari, 1 dl Prosecco, acqua tonica q.b.)", List.of(), ""),
-                                new MenuItemResponse("campari_prosecco", "Campari & Prosecco", "", "(4 cl Campari, 1 dl Prosecco, arancia)", List.of(), ""),
-                                new MenuItemResponse("caipirinha", "Caipirinha", "", "(4 cl Cachaça, zucchero di canna, lime, ghiaccio tritato)", List.of(), ""),
-                                new MenuItemResponse("caipiroska_fragola", "Caipiroska alla Fragola", "", "", List.of(), ""),
-                                new MenuItemResponse("gin_tonic", "Gin Tonic", "", "(4 cl Gin, acqua tonica)", List.of(), ""),
+                                new MenuItemResponse("aperol_spritz", "Aperol Spritz", "", "(4 cl Aperol, 1 dl Prosecco, Sprite q.b., arancia)", List.of(), "6 €"),
+                                new MenuItemResponse("campari_spritz", "Campari Spritz", "", "(4 cl Campari, 1 dl Prosecco, acqua tonica q.b.)", List.of(), "6 €"),
+                                new MenuItemResponse("caipirinha", "Caipirinha", "", "(4 cl Cachaça, zucchero di canna, lime, ghiaccio tritato)", List.of(), "7 €"),
+                                new MenuItemResponse("caipiroska_fragola", "Caipiroska alla Fragola", "", "", List.of(), "7 €"),
+                                new MenuItemResponse("gin_tonic", "Gin Tonic", "", "(4 cl Gin, acqua tonica)", List.of(), "6 € - 20 €"),
                                 new MenuItemResponse("hugo", "Hugo", "", "(2 cl succo di lime, 2 cl sciroppo di sambuco, 1 dl Prosecco, Sprite q.b., menta)", List.of(), ""),
                                 new MenuItemResponse("moscow_mule", "Moscow Mule", "", "(1,5 cl succo di lime, 4 cl Vodka, Ginger Beer)", List.of(), ""),
                                 new MenuItemResponse("london_mule", "London Mule", "", "(1,5 cl succo di lime, 4 cl Gin, Ginger Beer)", List.of(), ""),
@@ -53,63 +52,25 @@ public class MenuService {
                                 new MenuItemResponse("sex_on_the_beach", "Sex on the Beach", "", "(4 cl Vodka, 2 cl liquore alla pesca, 4 cl succo d’arancia, 4 cl succo di mirtillo)", List.of(), ""),
                                 new MenuItemResponse("martini_cocktail", "Martini Cocktail", "", "(6 cl Gin, 1 cl Martini Dry, scorza di lime, olive)", List.of(), ""),
                                 new MenuItemResponse("espresso_martini", "Espresso Martini", "", "(5 cl Vodka, 2 cl caffè espresso, liquore al caffè, zucchero)", List.of(), ""),
-                                new MenuItemResponse("cosmopolitan", "Cosmopolitan", "", "(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)", List.of(), ""),
-                                new MenuItemResponse("quattro_bianchi", "Quattro Bianchi", "", "(2 cl Gin, 2 cl Rum, 2 cl Vodka, 2 cl Tequila)", List.of(), "")
+                                new MenuItemResponse("cosmopolitan", "Cosmopolitan", "", "(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)", List.of(), "")
                         )
                 ),
                 new MenuSectionResponse(
                         "vini",
                         "Vini",
-                        "Una selezione ricercata di vini bianchi, rosati e rossi, anche biologici.",
+                        "Una selezione ricercata di vini bianchi, rosati e rossi dalla Cantina Sampietrana e Verdeca.",
                         List.of(
-                                new MenuItemResponse("calice_vino", "Calice di Vino", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("calice_prosecco", "Calice di Prosecco", "", "", List.of(), "4 €"),
-                                // Vini Bianchi
-                                new MenuItemResponse("calavento", "Calavento IGP Salento", "Bianco", "", List.of(), "21 €"),
-                                new MenuItemResponse("luna", "Luna IGP Salento", "Bianco", "", List.of(), "21 €"),
-                                new MenuItemResponse("leverano_bianco", "Leverano Vecchia Torre", "Bianco", "", List.of(), "16 €"),
-                                new MenuItemResponse("muller_thurgau", "Müller Thurgau", "Bianco", "", List.of(), "21 €"),
-                                new MenuItemResponse("gewurztraminer", "Gewürztraminer", "Bianco", "", List.of(), "21 €"),
-                                new MenuItemResponse("trebbiano_abruzzo", "Trebbiano d’Abruzzo", "Bianco", "", List.of(), "16 €"),
-                                new MenuItemResponse("verdeca", "Verdeca Due Trulli", "Bianco", "", List.of(), "18 €"),
-                                new MenuItemResponse("chardonnay", "Chardonnay", "Bianco", "", List.of(), "18 €"),
-                                // Vini Bianchi Bio
-                                new MenuItemResponse("trebbiano_bio", "Trebbiano d’Abruzzo Bio Vegano", "Bianco Bio", "", List.of(), "19 €"),
-                                new MenuItemResponse("passerina_bio", "Passerina Bio Vegano", "Bianco Bio", "", List.of(), "19 €"),
-                                new MenuItemResponse("pecorino_bio", "Pecorino Bio", "Bianco Bio", "", List.of(), "19 €"),
-                                new MenuItemResponse("castel_del_monte_bianco_bio", "Castel del Monte Bio", "Bianco Bio", "", List.of(), "19 €"),
-                                new MenuItemResponse("vitalba_bio", "Vitalba Bio", "Bianco Bio", "", List.of(), "19 €"),
-                                new MenuItemResponse("dharma_bio", "Dharma Bio", "Bianco Bio", "", List.of(), "19 €"),
-                                // Spumante Bio
-                                new MenuItemResponse("novebolle", "Novebolle D.O.C.", "Spumante Bio", "", List.of(), "19 €"),
-                                // Vino Rosato Bio
-                                new MenuItemResponse("castel_del_monte_rosato_bio", "Castel del Monte Bio", "Rosato Bio", "", List.of(), "19 €"),
-                                // Vino Rosso Bio
-                                new MenuItemResponse("castel_del_monte_rosso_bio", "Castel del Monte Bio", "Rosso Bio", "", List.of(), "19 €"),
-                                // Vini Rosati
-                                new MenuItemResponse("leverano_rosato", "Leverano DOP Vecchia Torre", "Rosato", "", List.of(), "16 €"),
-                                new MenuItemResponse("negroamaro_rosato", "Negroamaro Vecchia Torre", "Rosato", "", List.of(), "18 €"),
-                                new MenuItemResponse("primitivo_rosato_1932", "Primitivo Rosato 1932", "Rosato", "", List.of(), "19 €"),
-                                new MenuItemResponse("numero_zero", "Numero Zero Negroamaro Susumaniello", "Rosato", "", List.of(), "21 €"),
-                                new MenuItemResponse("susumaniello_rosato", "Susumaniello Due Trulli", "Rosato", "", List.of(), "21 €"),
-                                // Vini Rossi
-                                new MenuItemResponse("primitivo_rosso", "Primitivo Vecchia Torre", "Rosso", "", List.of(), "16 €"),
-                                new MenuItemResponse("primitivo_due_trulli", "Primitivo Due Trulli", "Rosso", "", List.of(), "18 €"),
-                                new MenuItemResponse("primitivo_vignaioli", "Primitivo Vignaioli 68 IGP", "Rosso", "", List.of(), "28 €"),
-                                new MenuItemResponse("primitivo_1932", "Primitivo di Manduria 1932", "Rosso", "", List.of(), "21 €"),
-                                new MenuItemResponse("negroamaro_rosso", "Negroamaro Vecchia Torre", "Rosso", "", List.of(), "16 €"),
-                                new MenuItemResponse("negroamaro_due_trulli", "Negroamaro Due Trulli", "Rosso", "", List.of(), "18 €"),
-                                new MenuItemResponse("negroamaro_manorossa", "Negroamaro Manorossa", "Rosso", "", List.of(), "60 €"),
-                                new MenuItemResponse("negroamaro_susumaniello", "Negroamaro Susumaniello", "Rosso", "", List.of(), "34 €"),
-                                new MenuItemResponse("susumaniello_rosso", "Susumaniello Vigna 14 IGP", "Rosso", "", List.of(), "18 €"),
-                                new MenuItemResponse("nerotavola", "Nerotavola Sicilia DOC", "Rosso", "", List.of(), "28 €"),
-                                new MenuItemResponse("nero_di_troia", "Nero di Troia", "Rosso", "", List.of(), "16 €"),
-                                new MenuItemResponse("aglianico", "Aglianico", "Rosso", "", List.of(), "18 €"),
-                                new MenuItemResponse("cabernet", "Cabernet Veneto", "Rosso", "", List.of(), "21 €"),
-                                new MenuItemResponse("ripasso_negrar", "Ripasso Negrar", "Rosso", "", List.of(), "26 €"),
-                                new MenuItemResponse("chianti", "Chianti Classico", "Rosso", "", List.of(), "20 €"),
-                                new MenuItemResponse("brunello", "Brunello", "Rosso", "", List.of(), "40 €"),
-                                new MenuItemResponse("amarone", "Amarone", "Rosso", "", List.of(), "40 €")
+                                // Bianchi
+                                new MenuItemResponse("tacco_barocco_bianco", "Tacco Barocco - Negroamaro Bianco Primitivo", "Bianchi", "Note di fiori bianchi e agrumi, fresco e persistente. Cantina Sampietrana. 750ml", List.of(), "5 € / 22 €"),
+                                new MenuItemResponse("verdeca_salento", "Verdeca del Salento", "", "Vino autoctono dal bouquet delicato e sapore secco. Cantina Verdeca. 750ml", List.of(), "5 € / 18 €"),
+                                new MenuItemResponse("verdeca_itria", "Verdeca Valle d'Itria", "", "Fresco, fruttato e con una piacevole sapidità. Cantina Verdeca. 750ml", List.of(), "5 € / 18 €"),
+                                // Rossi
+                                new MenuItemResponse("tacco_barocco_negroamaro", "Tacco Barocco - Negroamaro", "Rossi", "Rosso rubino intenso con sentori di piccoli frutti rossi. Cantina Sampietrana. 750ml", List.of(), "5 € / 22 €"),
+                                new MenuItemResponse("tacco_barocco_puglia_igp", "Tacco Barocco - Puglia IGP", "", "Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml", List.of(), "20 €"),
+                                // Rosati
+                                new MenuItemResponse("rosato_salento", "Rosato del Salento", "Rosati", "Fresco, fruttato, con note di ciliegia e lampone. 750ml", List.of(), "5 € / 18 €"),
+                                // Bollicine
+                                new MenuItemResponse("prosecco_doc", "Prosecco D.O.C.", "Bollicine", "Perlage fine e persistente, ideale come aperitivo. 750ml", List.of(), "4 € / 16 €")
                         )
                 ),
                 new MenuSectionResponse(

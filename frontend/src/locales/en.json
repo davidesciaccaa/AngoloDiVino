@@ -15,7 +15,7 @@
     "button": "Discover the menu"
   },
   "menu": {
-    "title": "Curated Selection",
+    "title": "Curated Selection.",
     "fallback_note": "Backend unreachable: showing local menu.",
     "sections": {
       "aperitivo": {
@@ -28,7 +28,7 @@
       },
       "vini": {
         "title": "Wines",
-        "description": "A refined selection of white, rosé and red wines, including organic labels."
+        "description": "A refined selection of white, rosé and red wines from Cantina Sampietrana and Verdeca."
       },
       "amari": {
         "title": "Bitters",
@@ -69,11 +69,11 @@
       "vini_labels": {
         "calice_vino": "Glass of Wine",
         "calice_prosecco": "Glass of Prosecco",
+        "bianchi": "Whites",
+        "rossi": "Reds",
+        "rosati": "Rosés",
+        "bollicine": "Bubbles",
         "bianco": "White",
-        "bianco_bio": "Organic White",
-        "spumante_bio": "Organic Sparkling",
-        "rosato_bio": "Organic Rosé",
-        "rosso_bio": "Organic Red",
         "rosato": "Rosé",
         "rosso": "Red"
       },

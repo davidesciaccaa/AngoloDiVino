@@ -15,7 +15,7 @@
     "button": "Entdecken Sie das Menü"
   },
   "menu": {
-    "title": "Exquisite Auswahl",
+    "title": "Exquisite Auswahl.",
     "fallback_note": "Backend nicht erreichbar: Sie sehen das lokale Menü.",
     "sections": {
       "aperitivo": {
@@ -28,7 +28,7 @@
       },
       "vini": {
         "title": "Weine",
-        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen, auch aus biologischem Anbau."
+        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen der Weinkellerei Cantina Sampietrana und Verdeca."
       },
       "amari": {
         "title": "Magenbitter",
@@ -69,11 +69,11 @@
       "vini_labels": {
         "calice_vino": "Glas Wein",
         "calice_prosecco": "Glas Prosecco",
+        "bianchi": "Weißweine",
+        "rossi": "Rotweine",
+        "rosati": "Roséweine",
+        "bollicine": "Schaumweine",
         "bianco": "Weiß",
-        "bianco_bio": "Bio-Weißwein",
-        "spumante_bio": "Bio-Schaumwein",
-        "rosato_bio": "Bio-Rosé",
-        "rosso_bio": "Bio-Rotwein",
         "rosato": "Rosé",
         "rosso": "Rot"
       },

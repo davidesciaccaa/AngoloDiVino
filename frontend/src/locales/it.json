@@ -28,7 +28,7 @@
       },
       "vini": {
         "title": "Vini",
-        "description": "Una selezione ricercata di vini bianchi, rosati e rossi, anche biologici."
+        "description": "Una selezione ricercata di vini bianchi, rosati e rossi dalla Cantina Sampietrana e Verdeca."
       },
       "amari": {
         "title": "Amari",
@@ -69,11 +69,11 @@
       "vini_labels": {
         "calice_vino": "Calice di Vino",
         "calice_prosecco": "Calice di Prosecco",
+        "bianchi": "Bianchi",
+        "rossi": "Rossi",
+        "rosati": "Rosati",
+        "bollicine": "Bollicine",
         "bianco": "Bianco",
-        "bianco_bio": "Bianco Bio",
-        "spumante_bio": "Spumante Bio",
-        "rosato_bio": "Rosato Bio",
-        "rosso_bio": "Rosso Bio",
         "rosato": "Rosato",
         "rosso": "Rosso"
       },

@@ -301,7 +301,7 @@ html {
   font-size: clamp(3.5rem, 9.5vw, 7.8rem);
   line-height: 0.85;
   font-weight: 800;
-  font-style: italic;
+  font-style: normal;
   letter-spacing: -0.04em;
   text-transform: none;
 }
