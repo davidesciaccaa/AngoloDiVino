@@ -11,12 +11,20 @@ const fallbackMenuSections = [
     description: 'Assaggi pensati per aprire la serata con calma.',
     items: [
       {
+        id: 'tris',
+        name: 'Tris',
+        subtitle: 'Assaggi locali',
+        description: 'Una piccola selezione di stuzzichini del giorno.',
+        notes: [],
+        price: '1 €'
+      },
+      {
         id: 'tagliere_salandra',
         name: 'Tagliere Salandra',
         subtitle: 'Formaggi, conserve',
         description: 'Selezione di formaggi locali, olive, focaccia calda e con fettura della casa.',
         notes: ['Vegetariano', 'Perfetto per due'],
-        price: '14 EUR'
+        price: '14 €'
       },
       {
         id: 'fritti_di_corte',
@@ -24,7 +32,15 @@ const fallbackMenuSections = [
         subtitle: 'Croccanti, mediterranei',
         description: 'Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.',
         notes: ['Stuzzicheria', 'Servito caldo'],
-        price: '11 EUR'
+        price: '11 €'
+      },
+      {
+        id: 'ostriche',
+        name: 'Ostriche',
+        subtitle: 'Specialità di mare',
+        description: 'Ostriche fresche servite con limone e pepe nero.',
+        notes: ['Fresco', 'Mare'],
+        price: '8 €'
       }
     ]
   },
@@ -61,7 +77,7 @@ const fallbackMenuSections = [
       { id: 'verdeca_salento', name: 'Verdeca del Salento', subtitle: '', description: 'Vino autoctono dal bouquet delicato e sapore secco. Cantina Verdeca. 750ml', notes: [], price: '5 € / 18 €' },
       { id: 'verdeca_itria', name: 'Verdeca Valle d\'Itria', subtitle: '', description: 'Fresco, fruttato e con una piacevole sapidità. Cantina Verdeca. 750ml', notes: [], price: '5 € / 18 €' },
       { id: 'tacco_barocco_negroamaro', name: 'Tacco Barocco - Negroamaro', subtitle: 'Rossi', description: 'Rosso rubino intenso con sentori di piccoli frutti rossi. Cantina Sampietrana. 750ml', notes: [], price: '5 € / 22 €' },
-      { id: 'tacco_barocco_puglia_igp', name: 'Tacco Barocco - Puglia IGP', subtitle: '', description: 'Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml', notes: [], price: '20 €' },
+      { id: 'tacco_barocco_puglia_igp', name: 'Tacco Barocco - Puglia IGP', subtitle: '', description: 'Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml', notes: [], price: '6 € - 20 €' },
       { id: 'rosato_salento', name: 'Rosato del Salento', subtitle: 'Rosati', description: 'Fresco, fruttato, con note di ciliegia e lampone. 750ml', notes: [], price: '5 € / 18 €' },
       { id: 'prosecco_doc', name: 'Prosecco D.O.C.', subtitle: 'Bollicine', description: 'Perlage fine e persistente, ideale come aperitivo. 750ml', notes: [], price: '4 € / 16 €' }
     ]
@@ -113,7 +129,7 @@ const fallbackMenuSections = [
   },
   {
     id: 'frullati',
-    title: 'Frullati',
+    title: 'Frullati e Centrifughe',
     description: 'Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.',
     items: [
       {
@@ -122,7 +138,7 @@ const fallbackMenuSections = [
         subtitle: 'Mango, Ananas, Cocco',
         description: 'Un viaggio esotico cremoso e rinfrescante.',
         notes: ['Fresco', 'Vitamina C'],
-        price: '7 EUR'
+        price: '7 €'
       },
       {
         id: 'frutti_di_bosco',
@@ -130,7 +146,7 @@ const fallbackMenuSections = [
         subtitle: 'Mora, Lampone, Mirtillo',
         description: 'Il sapore intenso del sottobosco in un mix vellutato.',
         notes: ['Antiossidante'],
-        price: '7 EUR'
+        price: '7 €'
       }
     ]
   },
@@ -245,6 +261,13 @@ function App() {
               </div>
 
               <div className="menu-list-editorial">
+                {section.id === 'vini' && (
+                  <div className="menu-item-editorial__header" style={{ justifyContent: 'flex-end', marginBottom: '-10px', opacity: 0.6 }}>
+                    <span className="menu-item-editorial__price" style={{ fontSize: '0.7rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                      {t(`menu.sections.${section.id}.price_header`)}
+                    </span>
+                  </div>
+                )}
                 {section.items.map((item) => (
                   <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
                 ))}

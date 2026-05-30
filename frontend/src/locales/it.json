@@ -5,7 +5,7 @@
     "drink": "Drink",
     "vini": "Vini",
     "superalcolici": "Superalcolici",
-    "frullati": "Frullati",
+    "frullati": "Frullati e Centrifughe",
     "bevande": "Bevande",
     "contatti": "Contatti"
   },
@@ -28,7 +28,8 @@
       },
       "vini": {
         "title": "Vini",
-        "description": "Una selezione ricercata di vini bianchi, rosati e rossi dalla Cantina Sampietrana e Verdeca."
+        "description": "Una selezione ricercata di vini bianchi, rosati e rossi dalla Cantina Sampietrana e Verdeca.",
+        "price_header": "Al calice / Bottiglia"
       },
       "amari": {
         "title": "Amari",
@@ -39,7 +40,7 @@
         "description": "Una selezione di pregiati distillati e rum da meditazione."
       },
       "frullati": {
-        "title": "Frullati",
+        "title": "Frullati e Centrifughe",
         "description": "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione."
       },
       "bevande": {

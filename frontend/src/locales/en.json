@@ -28,7 +28,8 @@
       },
       "vini": {
         "title": "Wines",
-        "description": "A refined selection of white, rosé and red wines from Cantina Sampietrana and Verdeca."
+        "description": "A refined selection of white, rosé and red wines from Cantina Sampietrana and Verdeca.",
+        "price_header": "By the glass / Bottle"
       },
       "amari": {
         "title": "Bitters",

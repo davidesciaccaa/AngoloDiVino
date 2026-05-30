@@ -28,7 +28,8 @@
       },
       "vini": {
         "title": "Weine",
-        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen der Weinkellerei Cantina Sampietrana und Verdeca."
+        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen der Weinkellerei Cantina Sampietrana und Verdeca.",
+        "price_header": "Glas / Flasche"
       },
       "amari": {
         "title": "Magenbitter",

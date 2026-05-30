@@ -14,12 +14,20 @@ public class MenuService {
                         "Assaggi pensati per aprire la serata con calma.",
                         List.of(
                                 new MenuItemResponse(
+                                        "tris",
+                                        "Tris",
+                                        "Assaggi locali",
+                                        "Una piccola selezione di stuzzichini del giorno.",
+                                        List.of(),
+                                        "1 €"
+                                ),
+                                new MenuItemResponse(
                                         "tagliere_salandra",
                                         "Tagliere Salandra",
                                         "Formaggi, conserve",
                                         "Selezione di formaggi locali, olive, focaccia calda e confettura della casa.",
                                         List.of("Vegetariano", "Perfetto per due"),
-                                        "14 EUR"
+                                        "14 €"
                                 ),
                                 new MenuItemResponse(
                                         "fritti_di_corte",
@@ -27,7 +35,15 @@ public class MenuService {
                                         "Croccanti, mediterranei",
                                         "Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.",
                                         List.of("Stuzzicheria", "Servito caldo"),
-                                        "11 EUR"
+                                        "11 €"
+                                ),
+                                new MenuItemResponse(
+                                        "ostriche",
+                                        "Ostriche",
+                                        "Specialità di mare",
+                                        "Ostriche fresche servite con limone e pepe nero.",
+                                        List.of("Fresco", "Mare"),
+                                        "8 €"
                                 )
                         )
                 ),
@@ -66,7 +82,7 @@ public class MenuService {
                                 new MenuItemResponse("verdeca_itria", "Verdeca Valle d'Itria", "", "Fresco, fruttato e con una piacevole sapidità. Cantina Verdeca. 750ml", List.of(), "5 € / 18 €"),
                                 // Rossi
                                 new MenuItemResponse("tacco_barocco_negroamaro", "Tacco Barocco - Negroamaro", "Rossi", "Rosso rubino intenso con sentori di piccoli frutti rossi. Cantina Sampietrana. 750ml", List.of(), "5 € / 22 €"),
-                                new MenuItemResponse("tacco_barocco_puglia_igp", "Tacco Barocco - Puglia IGP", "", "Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml", List.of(), "20 €"),
+                                new MenuItemResponse("tacco_barocco_puglia_igp", "Tacco Barocco - Puglia IGP", "", "Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml", List.of(), "6 € - 20 €"),
                                 // Rosati
                                 new MenuItemResponse("rosato_salento", "Rosato del Salento", "Rosati", "Fresco, fruttato, con note di ciliegia e lampone. 750ml", List.of(), "5 € / 18 €"),
                                 // Bollicine
@@ -121,11 +137,11 @@ public class MenuService {
                 ),
                 new MenuSectionResponse(
                         "frullati",
-                        "Frullati",
+                        "Frullati e Centrifughe",
                         "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.",
                         List.of(
-                                new MenuItemResponse("frullato_tropicale", "Frullato Tropicale", "Mango, Ananas, Cocco", "Un viaggio esotico cremoso e rinfrescante.", List.of("Fresco", "Vitamina C"), "7 EUR"),
-                                new MenuItemResponse("frutti_di_bosco", "Frutti di Bosco", "Mora, Lampone, Mirtillo", "Il sapore intenso del sottobosco in un mix vellutato.", List.of("Antiossidante"), "7 EUR")
+                                new MenuItemResponse("frullato_tropicale", "Frullato Tropicale", "Mango, Ananas, Cocco", "Un viaggio esotico cremoso e rinfrescante.", List.of("Fresco", "Vitamina C"), "7 €"),
+                                new MenuItemResponse("frutti_di_bosco", "Frutti di Bosco", "Mora, Lampone, Mirtillo", "Il sapore intenso del sottobosco in un mix vellutato.", List.of("Antiossidante"), "7 €")
                         )
                 ),
                 new MenuSectionResponse(
