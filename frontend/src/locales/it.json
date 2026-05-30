@@ -36,7 +36,7 @@
         "description": "Selezione di amari e liquori per chiudere in bellezza."
       },
       "superalcolici": {
-        "title": "Distillati e Rum",
+        "title": "Superalcolici",
         "description": "Una selezione di pregiati distillati e rum da meditazione."
       },
       "frullati": {
@@ -156,6 +156,7 @@
         "stuzzicheria": "Stuzzicheria",
         "servito_caldo": "Servito caldo",
         "fresco": "Fresco",
+        "mare": "Mare",
         "vitamina_c": "Vitamina C",
         "antiossidante": "Antiossidante"
       }

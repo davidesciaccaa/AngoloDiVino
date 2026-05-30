@@ -1,58 +1,63 @@
 {
   "nav": {
     "menu": "Menü",
-    "aperitivo": "Aperitif",
-    "drink": "Drinks",
+    "aperitivo": "Aperitivo",
+    "drink": "Cocktails",
     "vini": "Weine",
     "superalcolici": "Spirituosen",
-    "frullati": "Smoothies",
-    "bevande": "Getränke",
-    "contatti": "Kontakte"
+    "frullati": "Smoothies & Säfte",
+    "bevande": "Alkoholfrei",
+    "contatti": "Kontakt"
   },
   "hero": {
-    "eyebrow": "Cocktailbar und erlesene Weine",
-    "copy": "Einhüllende Drinks, kuratierte Gläser und kleine Kostproben für Abende, die ohne Eile beginnen.",
-    "button": "Entdecken Sie das Menü"
+    "eyebrow": "Cocktailbar und ausgewählte Weine",
+    "copy": "Einladende Drinks, sorgfältig ausgewählte Gläser und kleine Häppchen für Abende, die ganz entspannt beginnen.",
+    "button": "Menü entdecken"
   },
   "menu": {
-    "title": "Exquisite Auswahl.",
-    "fallback_note": "Backend nicht erreichbar: Sie sehen das lokale Menü.",
+    "title": "Auswahl des Hauses.",
+    "fallback_note": "Backend nicht erreichbar: Das lokale Menü wird angezeigt.",
     "sections": {
       "aperitivo": {
-        "title": "Aperitif",
-        "description": "Kostproben, um den Abend in aller Ruhe zu beginnen."
+        "title": "Aperitivo",
+        "description": "Kleine Häppchen, um entspannt in den Abend zu starten."
       },
       "drink": {
         "title": "Cocktails",
-        "description": "Die großen Klassiker und unsere eigenen Kreationen."
+        "description": "Große Klassiker und unsere gemixten Favoriten des Hauses."
       },
       "vini": {
         "title": "Weine",
-        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen der Weinkellerei Cantina Sampietrana und Verdeca.",
+        "description": "Eine feine Auswahl an Weiß-, Rosé- und Rotweinen von Cantina Sampietrana und Verdeca.",
         "price_header": "Glas / Flasche"
       },
       "amari": {
-        "title": "Magenbitter",
-        "description": "Auswahl an Magenbittern und Likören für einen krönenden Abschluss."
+        "title": "Bitter",
+        "description": "Eine Auswahl an Amari und Likören für einen gelungenen Abschluss."
       },
       "superalcolici": {
-        "title": "Spirituosen und Rum",
-        "description": "Eine Auswahl an feinen Spirituosen und erstklassigen Rums zum Genießen."
+        "title": "Spirituosen",
+        "description": "Eine Auswahl feiner Spirituosen und Rums zum Genießen."
       },
       "frullati": {
-        "title": "Smoothies",
-        "description": "Vitaminreiche, gesunde Smoothies aus frischen saisonalen Zutaten."
+        "title": "Smoothies & Säfte",
+        "description": "Vitaminreiche, leichte Smoothies mit frischen saisonalen Zutaten."
       },
       "bevande": {
-        "title": "Getränke",
+        "title": "Alkoholfreie Getränke",
         "description": "Alkoholfreie Getränke, Softdrinks und leichte Alternativen."
       }
     },
     "items": {
+      "tris": {
+        "name": "Dreierlei",
+        "subtitle": "Lokale Häppchen",
+        "description": "Eine kleine Auswahl der herzhaften Häppchen des Tages."
+      },
       "tagliere_salandra": {
         "name": "Salandra-Platte",
-        "subtitle": "Käse, Konserven",
-        "description": "Auswahl an lokalem Käse, Oliven, warmem Focaccia und hausgemachter Marmelade.",
+        "subtitle": "Käse, Eingemachtes",
+        "description": "Auswahl lokaler Käsesorten, Oliven, warme Focaccia und hausgemachte Konfitüre.",
         "notes": {
           "vegetariano": "Vegetarisch",
           "perfetto_per_due": "Perfekt für zwei"
@@ -61,12 +66,141 @@
       "fritti_di_corte": {
         "name": "Frittiertes aus dem Hof",
         "subtitle": "Knusprig, mediterran",
-        "description": "Kleine gemischte Frittier-Spezialitäten mit saisonalem Gemüse, Zitrusfrüchten und Kräutermayonnaise.",
+        "description": "Kleine gemischte Frittier-Spezialitäten mit saisonalem Gemüse, Zitrusnoten und Kräutermayonnaise.",
         "notes": {
           "stuzzicheria": "Häppchen",
-          "servito_caldo": "Heiß serviert"
+          "servito_caldo": "Warm serviert"
         }
       },
+      "ostriche": {
+        "name": "Austern",
+        "subtitle": "Spezialität aus dem Meer",
+        "description": "Frische Austern mit Zitrone und schwarzem Pfeffer."
+      },
+      "aperol_spritz": {
+        "name": "Aperol Spritz",
+        "description": "(4 cl Aperol, 1 dl Prosecco, Sprite nach Belieben, Orange)"
+      },
+      "campari_spritz": {
+        "name": "Campari Spritz",
+        "description": "(4 cl Campari, 1 dl Prosecco, Tonic Water nach Belieben)"
+      },
+      "caipirinha": {
+        "name": "Caipirinha",
+        "description": "(4 cl Cachaça, Rohrzucker, Limette, Crushed Ice)"
+      },
+      "caipiroska_fragola": {
+        "name": "Erdbeer-Caipiroska"
+      },
+      "gin_tonic": {
+        "name": "Gin Tonic",
+        "description": "(4 cl Gin, Tonic Water)"
+      },
+      "hugo": {
+        "name": "Hugo",
+        "description": "(2 cl Limettensaft, 2 cl Holunderblütensirup, 1 dl Prosecco, Sprite nach Belieben, Minze)"
+      },
+      "moscow_mule": {
+        "name": "Moscow Mule",
+        "description": "(1,5 cl Limettensaft, 4 cl Wodka, Ginger Beer)"
+      },
+      "london_mule": {
+        "name": "London Mule",
+        "description": "(1,5 cl Limettensaft, 4 cl Gin, Ginger Beer)"
+      },
+      "long_island": {
+        "name": "Long Island Iced Tea",
+        "description": "(3 cl Limettensaft, 2 cl Rohrzucker, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Wodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)"
+      },
+      "japan_iced_tea": {
+        "name": "Japan Iced Tea",
+        "description": "(1,5 cl Wodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Zitronen-Sweet-&-Sour)"
+      },
+      "mojito_scuro": {
+        "name": "Dunkler Mojito",
+        "description": "(Rohrzucker, Limette, Minze, dunkler Rum, Sprudelwasser)"
+      },
+      "negroni": {
+        "name": "Negroni",
+        "description": "(3 cl Gin, 3 cl Campari, 3 cl roter Wermut, Orange)"
+      },
+      "negroni_sbagliato": {
+        "name": "Negroni Sbagliato",
+        "description": "(3 cl Prosecco, 3 cl Bitter, 3 cl roter Wermut)"
+      },
+      "sex_on_the_beach": {
+        "name": "Sex on the Beach",
+        "description": "(4 cl Wodka, 2 cl Pfirsichlikör, 4 cl Orangensaft, 4 cl Cranberrysaft)"
+      },
+      "martini_cocktail": {
+        "name": "Martini Cocktail",
+        "description": "(6 cl Gin, 1 cl Martini Dry, Limettenschale, Oliven)"
+      },
+      "espresso_martini": {
+        "name": "Espresso Martini",
+        "description": "(5 cl Wodka, 2 cl Espresso, Kaffeelikör, Zucker)"
+      },
+      "cosmopolitan": {
+        "name": "Cosmopolitan",
+        "description": "(4 cl Wodka, 1,5 cl Triple Sec, 3 cl Cranberrysaft, 1,5 cl Limettensaft, Orangenschale, rote Johannisbeere)"
+      },
+      "tacco_barocco_bianco": {
+        "name": "Tacco Barocco - Negroamaro Bianco Primitivo",
+        "description": "Noten von weißen Blüten und Zitrusfrüchten, frisch und anhaltend. Cantina Sampietrana. 750 ml"
+      },
+      "verdeca_salento": {
+        "name": "Verdeca del Salento",
+        "description": "Ein autochthoner Wein mit feinem Bouquet und trockenem Geschmack. Cantina Verdeca. 750 ml"
+      },
+      "verdeca_itria": {
+        "name": "Verdeca Valle d'Itria",
+        "description": "Frisch und fruchtig, mit angenehmer Würze. Cantina Verdeca. 750 ml"
+      },
+      "tacco_barocco_negroamaro": {
+        "name": "Tacco Barocco - Negroamaro",
+        "description": "Intensives Rubinrot mit Noten kleiner roter Früchte. Cantina Sampietrana. 750 ml"
+      },
+      "tacco_barocco_puglia_igp": {
+        "name": "Tacco Barocco - Puglia IGP",
+        "description": "Vollmundig und ausgewogen, perfekt zu Platten zum Teilen. Cantina Sampietrana. 750 ml"
+      },
+      "rosato_salento": {
+        "name": "Rosé aus dem Salento",
+        "description": "Frisch und fruchtig, mit Noten von Kirsche und Himbeere. 750 ml"
+      },
+      "prosecco_doc": {
+        "name": "Prosecco DOC",
+        "description": "Feine, anhaltende Perlage, ideal als Aperitif. 750 ml"
+      },
+      "ramazzotti": { "name": "Ramazzotti" },
+      "cynar": { "name": "Cynar" },
+      "montenegro": { "name": "Montenegro" },
+      "fernet": { "name": "Fernet Branca Menta" },
+      "averna": { "name": "Averna" },
+      "petrus": { "name": "Petrus" },
+      "jagermeister": { "name": "Jagermeister" },
+      "jefferson": { "name": "Jefferson" },
+      "unicum": { "name": "Unicum" },
+      "lucano": { "name": "Lucano" },
+      "del_capo": { "name": "Amaro del Capo" },
+      "sambuca": { "name": "Sambuca" },
+      "borghetti": { "name": "Caffè Borghetti" },
+      "vena_caffe": { "name": "Vena Caffè" },
+      "vecchia_romagna": { "name": "Vecchia Romagna" },
+      "cointreau": { "name": "Cointreau" },
+      "jack_daniels": { "name": "Jack Daniel's" },
+      "jack_daniels_honey": { "name": "Jack Daniel's Honey" },
+      "cardinal_mendoza": { "name": "Cardinal Mendoza" },
+      "oban": { "name": "Oban" },
+      "laphroaig": { "name": "Laphroaig" },
+      "lagavulin": { "name": "Lagavulin" },
+      "sambuca_superalcolico": { "name": "Sambuca" },
+      "martini": { "name": "Martini Bianco / Rosso / Dry" },
+      "bacardi": { "name": "Bacardi" },
+      "don_papa": { "name": "Don Papa" },
+      "zacapa": { "name": "Zacapa 23 Jahre" },
+      "j_bally": { "name": "J. Bally" },
+      "la_hechicera": { "name": "La Hechicera" },
       "vini_labels": {
         "calice_vino": "Glas Wein",
         "calice_prosecco": "Glas Prosecco",
@@ -81,24 +215,25 @@
       "superalcolici_labels": {
         "distillato": "Spirituose",
         "rum": "Rum",
+        "shot": "Shot",
         "shot_2cl": "Shot mit Basis-Spirituosen (2 cl)",
         "shot_4cl": "Shot mit Basis-Spirituosen (4 cl)"
       },
       "frullato_tropicale": {
         "name": "Tropischer Smoothie",
         "subtitle": "Mango, Ananas, Kokosnuss",
-        "description": "Eine cremige und erfrischende exotiche Reise.",
+        "description": "Ein cremiger und erfrischender exotischer Mix.",
         "notes": {
           "fresco": "Frisch",
           "vitamina_c": "Vitamin C"
         }
       },
       "frutti_di_bosco": {
-        "name": "Waldbeeren",
+        "name": "Waldbeer-Smoothie",
         "subtitle": "Brombeere, Himbeere, Blaubeere",
-        "description": "Der intensive Geschmack des Waldes in einem samtigen Mix.",
+        "description": "Der intensive Geschmack von Waldbeeren in einem samtigen Mix.",
         "notes": {
-          "antiossidante": "Antioxidans"
+          "antiossidante": "Antioxidativ"
         }
       },
       "bevande_labels": {
@@ -134,7 +269,7 @@
         "succo_di_lime": "Limettensaft",
         "sciroppo_di_sambuco": "Holunderblütensirup",
         "menta": "Minze",
-        "sweet_sour_limone": "Zitronen-Sweet & Sour",
+        "sweet_sour_limone": "Zitronen-Sweet-&-Sour",
         "rum_scuro": "dunkler Rum",
         "acqua_frizzante": "Sprudelwasser",
         "vermouth_rosso": "roter Wermut",
@@ -154,20 +289,21 @@
         "vegetariano": "Vegetarisch",
         "perfetto_per_due": "Perfekt für zwei",
         "stuzzicheria": "Häppchen",
-        "servito_caldo": "Heiß serviert",
+        "servito_caldo": "Warm serviert",
         "fresco": "Frisch",
+        "mare": "Aus dem Meer",
         "vitamina_c": "Vitamin C",
-        "antiossidante": "Antioxidans"
+        "antiossidante": "Antioxidativ"
       }
     }
   },
   "experience": {
     "eyebrow": "Erlebnis",
-    "title": "Piazza San Domenico, Nardò: Wein und Abende für alle.",
-    "text": "Im barocken Herzen der Piazza San Domenico, umgeben von Lecce-Stein und geschichtsträchtigen Gebäuden, heißt L'Angolo diVino jeden mit Respekt, Musik und Themenabenden willkommen – an Tischen, die zum Verweilen einladen."
+    "title": "Piazza San Domenico, Nardò: Gläser und Abende für alle.",
+    "text": "Im barocken Herzen der Piazza San Domenico, zwischen Lecce-Stein und geschichtsträchtigen Gebäuden, heißt L'Angolo diVino alle Menschen mit Respekt, Musik und Themenabenden willkommen - in einer Atmosphäre, die zum Bleiben einlädt."
   },
   "contacts": {
-    "eyebrow": "Kontakte",
+    "eyebrow": "Kontakt",
     "title": "Täglich geöffnet",
     "hours": "18:00 - 01:00"
   }

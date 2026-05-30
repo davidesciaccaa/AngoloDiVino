@@ -57,18 +57,18 @@ public class MenuService {
                                 new MenuItemResponse("caipirinha", "Caipirinha", "", "(4 cl Cachaça, zucchero di canna, lime, ghiaccio tritato)", List.of(), "7 €"),
                                 new MenuItemResponse("caipiroska_fragola", "Caipiroska alla Fragola", "", "", List.of(), "7 €"),
                                 new MenuItemResponse("gin_tonic", "Gin Tonic", "", "(4 cl Gin, acqua tonica)", List.of(), "6 € - 20 €"),
-                                new MenuItemResponse("hugo", "Hugo", "", "(2 cl succo di lime, 2 cl sciroppo di sambuco, 1 dl Prosecco, Sprite q.b., menta)", List.of(), ""),
-                                new MenuItemResponse("moscow_mule", "Moscow Mule", "", "(1,5 cl succo di lime, 4 cl Vodka, Ginger Beer)", List.of(), ""),
-                                new MenuItemResponse("london_mule", "London Mule", "", "(1,5 cl succo di lime, 4 cl Gin, Ginger Beer)", List.of(), ""),
-                                new MenuItemResponse("long_island", "Long Island Iced Tea", "", "(3 cl succo di lime, 2 cl zucchero di canna, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)", List.of(), ""),
-                                new MenuItemResponse("japan_iced_tea", "Japan Iced Tea", "", "(1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Sweet & Sour al limone)", List.of(), ""),
-                                new MenuItemResponse("mojito_scuro", "Mojito Scuro", "", "(zucchero di canna, lime, menta, rum scuro, acqua frizzante)", List.of(), ""),
-                                new MenuItemResponse("negroni", "Negroni", "", "(3 cl Gin, 3 cl Campari, 3 cl Vermouth rosso, arancia)", List.of(), ""),
-                                new MenuItemResponse("negroni_sbagliato", "Negroni Sbagliato", "", "(3 cl Prosecco, 3 cl Bitter, 3 cl Vermouth rosso)", List.of(), ""),
-                                new MenuItemResponse("sex_on_the_beach", "Sex on the Beach", "", "(4 cl Vodka, 2 cl liquore alla pesca, 4 cl succo d’arancia, 4 cl succo di mirtillo)", List.of(), ""),
-                                new MenuItemResponse("martini_cocktail", "Martini Cocktail", "", "(6 cl Gin, 1 cl Martini Dry, scorza di lime, olive)", List.of(), ""),
-                                new MenuItemResponse("espresso_martini", "Espresso Martini", "", "(5 cl Vodka, 2 cl caffè espresso, liquore al caffè, zucchero)", List.of(), ""),
-                                new MenuItemResponse("cosmopolitan", "Cosmopolitan", "", "(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)", List.of(), "")
+                                new MenuItemResponse("hugo", "Hugo", "", "(2 cl succo di lime, 2 cl sciroppo di sambuco, 1 dl Prosecco, Sprite q.b., menta)", List.of(), "6 €"),
+                                new MenuItemResponse("moscow_mule", "Moscow Mule", "", "(1,5 cl succo di lime, 4 cl Vodka, Ginger Beer)", List.of(), "6 €"),
+                                new MenuItemResponse("london_mule", "London Mule", "", "(1,5 cl succo di lime, 4 cl Gin, Ginger Beer)", List.of(), "6 €"),
+                                new MenuItemResponse("long_island", "Long Island Iced Tea", "", "(3 cl succo di lime, 2 cl zucchero di canna, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)", List.of(), "6 €"),
+                                new MenuItemResponse("japan_iced_tea", "Japan Iced Tea", "", "(1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Sweet & Sour al limone)", List.of(), "6 €"),
+                                new MenuItemResponse("mojito_scuro", "Mojito Scuro", "", "(zucchero di canna, lime, menta, rum scuro, acqua frizzante)", List.of(), "6 €"),
+                                new MenuItemResponse("negroni", "Negroni", "", "(3 cl Gin, 3 cl Campari, 3 cl Vermouth rosso, arancia)", List.of(), "6 €"),
+                                new MenuItemResponse("negroni_sbagliato", "Negroni Sbagliato", "", "(3 cl Prosecco, 3 cl Bitter, 3 cl Vermouth rosso)", List.of(), "6 €"),
+                                new MenuItemResponse("sex_on_the_beach", "Sex on the Beach", "", "(4 cl Vodka, 2 cl liquore alla pesca, 4 cl succo d’arancia, 4 cl succo di mirtillo)", List.of(), "6 €"),
+                                new MenuItemResponse("martini_cocktail", "Martini Cocktail", "", "(6 cl Gin, 1 cl Martini Dry, scorza di lime, olive)", List.of(), "6 €"),
+                                new MenuItemResponse("espresso_martini", "Espresso Martini", "", "(5 cl Vodka, 2 cl caffè espresso, liquore al caffè, zucchero)", List.of(), "6 €"),
+                                new MenuItemResponse("cosmopolitan", "Cosmopolitan", "", "(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)", List.of(), "6 €")
                         )
                 ),
                 new MenuSectionResponse(
@@ -112,7 +112,7 @@ public class MenuService {
                 ),
                 new MenuSectionResponse(
                         "superalcolici",
-                        "Distillati e Rum",
+                        "Superalcolici",
                         "Una selezione di pregiati distillati e rum da meditazione.",
                         List.of(
                                 // Distillati
@@ -129,8 +129,8 @@ public class MenuService {
                                 new MenuItemResponse("bacardi", "Bacardi", "Rum", "", List.of(), "5 €"),
                                 new MenuItemResponse("don_papa", "Don Papa", "Rum", "", List.of(), "9 €"),
                                 new MenuItemResponse("zacapa", "Zacapa 23 Anni", "Rum", "", List.of(), "12 €"),
-                                new MenuItemResponse("j_bally", "J. Bally", "Rum", "", List.of(), ""),
-                                new MenuItemResponse("la_hechicera", "La Hechicera", "Rum", "", List.of(), ""),
+                                new MenuItemResponse("j_bally", "J. Bally", "Rum", "", List.of(), "10 €"),
+                                new MenuItemResponse("la_hechicera", "La Hechicera", "Rum", "", List.of(), "12 €"),
                                 new MenuItemResponse("shot_2cl", "Shot con Distillati Base (2 cl)", "Shot", "", List.of(), "3 €"),
                                 new MenuItemResponse("shot_4cl", "Shot con Distillati Base (4 cl)", "Shot", "", List.of(), "5 €")
                         )

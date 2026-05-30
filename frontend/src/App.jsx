@@ -54,18 +54,18 @@ const fallbackMenuSections = [
       { id: 'caipirinha', name: 'Caipirinha', subtitle: '', description: '(4 cl Cachaça, zucchero di canna, lime, ghiaccio tritato)', notes: [], price: '7 €' },
       { id: 'caipiroska_fragola', name: 'Caipiroska alla Fragola', subtitle: '', description: '', notes: [], price: '7 €' },
       { id: 'gin_tonic', name: 'Gin Tonic', subtitle: '', description: '(4 cl Gin, acqua tonica)', notes: [], price: '6 € - 20 €' },
-      { id: 'hugo', name: 'Hugo', subtitle: '', description: '(2 cl succo di lime, 2 cl sciroppo di sambuco, 1 dl Prosecco, Sprite q.b., menta)', notes: [], price: '' },
-      { id: 'moscow_mule', name: 'Moscow Mule', subtitle: '', description: '(1,5 cl succo di lime, 4 cl Vodka, Ginger Beer)', notes: [], price: '' },
-      { id: 'london_mule', name: 'London Mule', subtitle: '', description: '(1,5 cl succo di lime, 4 cl Gin, Ginger Beer)', notes: [], price: '' },
-      { id: 'long_island', name: 'Long Island Iced Tea', subtitle: '', description: '(3 cl succo di lime, 2 cl zucchero di canna, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)', notes: [], price: '' },
-      { id: 'japan_iced_tea', name: 'Japan Iced Tea', subtitle: '', description: '(1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Sweet & Sour al limone)', notes: [], price: '' },
-      { id: 'mojito_scuro', name: 'Mojito Scuro', subtitle: '', description: '(zucchero di canna, lime, menta, rum scuro, acqua frizzante)', notes: [], price: '' },
-      { id: 'negroni', name: 'Negroni', subtitle: '', description: '(3 cl Gin, 3 cl Campari, 3 cl Vermouth rosso, arancia)', notes: [], price: '' },
-      { id: 'negroni_sbagliato', name: 'Negroni Sbagliato', subtitle: '', description: '(3 cl Prosecco, 3 cl Bitter, 3 cl Vermouth rosso)', notes: [], price: '' },
-      { id: 'sex_on_the_beach', name: 'Sex on the Beach', subtitle: '', description: '(4 cl Vodka, 2 cl liquore alla pesca, 4 cl succo d’arancia, 4 cl succo di mirtillo)', notes: [], price: '' },
-      { id: 'martini_cocktail', name: 'Martini Cocktail', subtitle: '', description: '(6 cl Gin, 1 cl Martini Dry, scorza di lime, olive)', notes: [], price: '' },
-      { id: 'espresso_martini', name: 'Espresso Martini', subtitle: '', description: '(5 cl Vodka, 2 cl caffè espresso, liquore al caffè, zucchero)', notes: [], price: '' },
-      { id: 'cosmopolitan', name: 'Cosmopolitan', subtitle: '', description: '(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)', notes: [], price: '' }
+      { id: 'hugo', name: 'Hugo', subtitle: '', description: '(2 cl succo di lime, 2 cl sciroppo di sambuco, 1 dl Prosecco, Sprite q.b., menta)', notes: [], price: '6 €' },
+      { id: 'moscow_mule', name: 'Moscow Mule', subtitle: '', description: '(1,5 cl succo di lime, 4 cl Vodka, Ginger Beer)', notes: [], price: '6 €' },
+      { id: 'london_mule', name: 'London Mule', subtitle: '', description: '(1,5 cl succo di lime, 4 cl Gin, Ginger Beer)', notes: [], price: '6 €' },
+      { id: 'long_island', name: 'Long Island Iced Tea', subtitle: '', description: '(3 cl succo di lime, 2 cl zucchero di canna, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)', notes: [], price: '6 €' },
+      { id: 'japan_iced_tea', name: 'Japan Iced Tea', subtitle: '', description: '(1,5 cl Vodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Sweet & Sour al limone)', notes: [], price: '6 €' },
+      { id: 'mojito_scuro', name: 'Mojito Scuro', subtitle: '', description: '(zucchero di canna, lime, menta, rum scuro, acqua frizzante)', notes: [], price: '6 €' },
+      { id: 'negroni', name: 'Negroni', subtitle: '', description: '(3 cl Gin, 3 cl Campari, 3 cl Vermouth rosso, arancia)', notes: [], price: '6 €' },
+      { id: 'negroni_sbagliato', name: 'Negroni Sbagliato', subtitle: '', description: '(3 cl Prosecco, 3 cl Bitter, 3 cl Vermouth rosso)', notes: [], price: '6 €' },
+      { id: 'sex_on_the_beach', name: 'Sex on the Beach', subtitle: '', description: '(4 cl Vodka, 2 cl liquore alla pesca, 4 cl succo d’arancia, 4 cl succo di mirtillo)', notes: [], price: '6 €' },
+      { id: 'martini_cocktail', name: 'Martini Cocktail', subtitle: '', description: '(6 cl Gin, 1 cl Martini Dry, scorza di lime, olive)', notes: [], price: '6 €' },
+      { id: 'espresso_martini', name: 'Espresso Martini', subtitle: '', description: '(5 cl Vodka, 2 cl caffè espresso, liquore al caffè, zucchero)', notes: [], price: '6 €' },
+      { id: 'cosmopolitan', name: 'Cosmopolitan', subtitle: '', description: '(4 cl Vodka, 1,5 cl Triple Sec, 3 cl succo di mirtillo, 1,5 cl succo di lime, scorza d’arancia, ribes rosso)', notes: [], price: '6 €' }
     ]
   },
   {
@@ -105,7 +105,7 @@ const fallbackMenuSections = [
   },
   {
     id: 'superalcolici',
-    title: 'Distillati e Rum',
+    title: 'Superalcolici',
     description: 'Una selezione di pregiati distillati e rum da meditazione.',
     items: [
       { id: 'vecchia_romagna', name: 'Vecchia Romagna', subtitle: 'Distillato', description: '', notes: [], price: '5 €' },
@@ -121,8 +121,8 @@ const fallbackMenuSections = [
       { id: 'bacardi', name: 'Bacardi', subtitle: 'Rum', description: '', notes: [], price: '5 €' },
       { id: 'don_papa', name: 'Don Papa', subtitle: 'Rum', description: '', notes: [], price: '9 €' },
       { id: 'zacapa', name: 'Zacapa 23 Anni', subtitle: 'Rum', description: '', notes: [], price: '12 €' },
-      { id: 'j_bally', name: 'J. Bally', subtitle: 'Rum', description: '', notes: [], price: '' },
-      { id: 'la_hechicera', name: 'La Hechicera', subtitle: 'Rum', description: '', notes: [], price: '' },
+      { id: 'j_bally', name: 'J. Bally', subtitle: 'Rum', description: '', notes: [], price: '10 €' },
+      { id: 'la_hechicera', name: 'La Hechicera', subtitle: 'Rum', description: '', notes: [], price: '12 €' },
       { id: 'shot_2cl', name: 'Shot con Distillati Base (2 cl)', subtitle: 'Shot', description: '', notes: [], price: '3 €' },
       { id: 'shot_4cl', name: 'Shot con Distillati Base (4 cl)', subtitle: 'Shot', description: '', notes: [], price: '5 €' }
     ]
