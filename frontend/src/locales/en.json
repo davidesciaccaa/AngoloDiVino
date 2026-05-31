@@ -10,21 +10,21 @@
     "contatti": "Contact"
   },
   "hero": {
-    "eyebrow": "Cocktail bar and curated wines",
-    "copy": "Inviting drinks, carefully chosen glasses and small bites for evenings that begin unhurriedly.",
-    "button": "Discover the menu"
+    "eyebrow": "Cocktail bar & selected wines",
+    "copy": "Inviting drinks, fine wines and small bites designed for evenings that start without haste.",
+    "button": "Explore the menu"
   },
   "menu": {
-    "title": "Signature selection.",
-    "fallback_note": "Backend unreachable: showing the local menu.",
+    "title": "A signature selection.",
+    "fallback_note": "Backend unreachable: showing local menu.",
     "sections": {
       "aperitivo": {
         "title": "Aperitivo",
-        "description": "Small bites designed to ease you into the evening."
+        "description": "Small bites designed to open the evening with ease."
       },
       "drink": {
         "title": "Cocktails",
-        "description": "The great classics and our mixed house favourites."
+        "description": "Great classics and our signature mixed drinks."
       },
       "vini": {
         "title": "Wines",
@@ -32,12 +32,12 @@
         "price_header": "By the glass / Bottle"
       },
       "amari": {
-        "title": "Bitters",
-        "description": "A selection of bitters and liqueurs to close the evening well."
+        "title": "Amari",
+        "description": "Selection of bitters and liqueurs for a perfect finish."
       },
       "superalcolici": {
         "title": "Spirits",
-        "description": "A selection of fine spirits and sipping rums."
+        "description": "A selection of fine spirits and meditation rums."
       },
       "frullati": {
         "title": "Smoothies & Juices",
@@ -49,11 +49,6 @@
       }
     },
     "items": {
-      "tris": {
-        "name": "Trio",
-        "subtitle": "Local bites",
-        "description": "A small selection of the day's savoury bites."
-      },
       "tagliere_salandra": {
         "name": "Salandra Platter",
         "subtitle": "Cheeses, preserves",
@@ -64,18 +59,23 @@
         }
       },
       "fritti_di_corte": {
-        "name": "Courtyard Fried Bites",
+        "name": "Fried Specialties",
         "subtitle": "Crispy, Mediterranean",
-        "description": "Small mixed fried bites with seasonal vegetables, citrus and herb mayonnaise.",
+        "description": "Small mixed fried seasonal vegetables, citrus and herb mayonnaise.",
         "notes": {
           "stuzzicheria": "Bar bites",
-          "servito_caldo": "Served hot"
+          "servito_caldo": "Served warm"
         }
       },
       "ostriche": {
         "name": "Oysters",
-        "subtitle": "Seafood speciality",
+        "subtitle": "Seafood specialty",
         "description": "Fresh oysters served with lemon and black pepper."
+      },
+      "tris": {
+        "name": "Trio",
+        "subtitle": "Local tastes",
+        "description": "A small selection of daily snacks."
       },
       "americano": { "name": "Americano", "description": "(Red Vermouth, Campari, Soda)" },
       "bellini": { "name": "Bellini", "description": "(Prosecco, Peach juice)" },
@@ -98,11 +98,11 @@
       "rossini": { "name": "Rossini", "description": "(Prosecco, Strawberry)" },
       "aperol_spritz": {
         "name": "Aperol Spritz",
-        "description": "(4 cl Aperol, 1 dl Prosecco, Sprite to taste, orange)"
+        "description": "(Prosecco, Aperol, Soda)"
       },
       "campari_spritz": {
         "name": "Campari Spritz",
-        "description": "(4 cl Campari, 1 dl Prosecco, tonic water to taste)"
+        "description": "(Prosecco, Campari, Soda)"
       },
       "manhattan": { "name": "Manhattan", "description": "(Rye whiskey, Red Vermouth, Angostura, Cherry)" },
       "manhattan_varianti": { "name": "Manhattan Variations", "description": "(Dry, Perfect, Rob Roy, Presidente)" },
@@ -114,9 +114,9 @@
       "alexander": { "name": "Alexander", "description": "(Brandy, Cream, Dark crème de cacao)" },
       "black_russian": { "name": "Black Russian", "description": "(Vodka, Kahlua)" },
       "white_russian": { "name": "White Russian", "description": "(Vodka, Kahlua, Cream)" },
-      "caipirinha": {
-        "name": "Caipirinha",
-        "description": "(4 cl Cachaça, brown sugar, lime, crushed ice)"
+      "cosmopolitan": {
+        "name": "Cosmopolitan",
+        "description": "(Vodka, Triple Sec, Cranberry, Lemon)"
       },
       "daiquiri": { "name": "Daiquiri", "description": "(Rum, Lemon or lime juice, Sugar syrup)" },
       "french_connection": { "name": "French connection", "description": "(Cognac, Disaronno)" },
@@ -141,18 +141,10 @@
       "pina_colada": { "name": "Pina colada", "description": "(Rum, Coconut cream, Pineapple)" },
       "pina_colada_varianti": { "name": "Pina Colada Variations" },
       "screwdriver": { "name": "Screwdriver", "description": "(Vodka, Orange juice)" },
+      "sex_on_the_beach": { "name": "Sex on the beach", "description": "(Vodka, Peach liqueur, Orange juice, Cranberry juice)" },
       "tequila_sunrise": { "name": "Tequila sunrise", "description": "(Tequila, Orange juice, Grenadine)" },
       "singapore_sling": { "name": "Singapore sling", "description": "(Gin, Cherry brandy, Lemon or lime juice, Soda water)" },
       "sloe_gin": { "name": "Sloe gin", "description": "(Gin-based liqueur flavored with sloe or Grenadine)" },
-
-      "caipiroska": { "name": "Caipiroska", "description": "(Vodka, Lime, Brown sugar)" },
-      "strawberry_caipiroska": { "name": "Strawberry Caipiroska", "description": "(Vodka, Lime, Brown sugar, Strawberry)" },
-      "caipirissima": { "name": "Caipirissima", "description": "(Rum, Lime, Brown sugar)" },
-      "caipiriteqa": { "name": "Caipiriteqa", "description": "(Tequila, Lime, Brown sugar)" },
-      "mojito": { "name": "Mojito", "description": "(Rum, Lime, Mint leaves, Soda water)" },
-      "frozen_slammer": { "name": "Frozen slammer", "description": "(Southern comfort, Disaronno, Strawberry, Syrup and fruit)" },
-      "frozen_daiquiri": { "name": "Frozen daiquiri", "description": "(Rum, Strawberry, Banana, Pineapple, etc, Sweet & Sour)" },
-      "frozen_margarita": { "name": "Frozen margarita", "description": "(Tequila, Strawberry, Banana, Pineapple, etc, Sweet & Sour)" },
 
       "long_island_iced_tea": {
         "name": "Long Island Iced Tea",
@@ -178,65 +170,57 @@
         "name": "Invisible",
         "description": "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour)"
       },
-      "hugo": {
-        "name": "Hugo",
-        "description": "(2 cl lime juice, 2 cl elderflower syrup, 1 dl Prosecco, Sprite to taste, mint)"
+
+      "caipiroska": { "name": "Caipiroska", "description": "(Vodka, Lime, Brown sugar)" },
+      "strawberry_caipiroska": { "name": "Strawberry Caipiroska", "description": "(Vodka, Lime, Brown sugar, Strawberry)" },
+      "caipirissima": { "name": "Caipirissima", "description": "(Rum, Lime, Brown sugar)" },
+      "caipiriteqa": { "name": "Caipiriteqa", "description": "(Tequila, Lime, Brown sugar)" },
+      "mojito": { "name": "Mojito", "description": "(Rum, Lime, Mint leaves, Soda water)" },
+      "frozen_slammer": { "name": "Frozen slammer", "description": "(Southern comfort, Disaronno, Strawberry, Syrup and fruit)" },
+      "frozen_daiquiri": { "name": "Frozen daiquiri", "description": "(Rum, Strawberry, Banana, Pineapple, etc, Sweet & Sour)" },
+      "frozen_margarita": { "name": "Frozen margarita", "description": "(Tequila, Strawberry, Banana, Pineapple, etc, Sweet & Sour)" },
+
+      "virgin_colada": {
+        "name": "Virgin Colada",
+        "description": "(Coconut milk or Pina colada mix, orange juice)"
       },
-      "moscow_mule": {
-        "name": "Moscow Mule",
-        "description": "(1.5 cl lime juice, 4 cl vodka, ginger beer)"
+      "daiquiri_strawberry": {
+        "name": "Strawberry Daiquiri",
+        "description": "(Strawberry syrup, lime or lemon juice)"
       },
-      "london_mule": {
-        "name": "London Mule",
-        "description": "(1.5 cl lime juice, 4 cl gin, ginger beer)"
+      "florida": {
+        "name": "Florida",
+        "description": "(Grapefruit juice, orange juice, lime or lemon juice, sugar syrup, soda water)"
       },
-      "long_island": {
-        "name": "Long Island Iced Tea",
-        "description": "(3 cl lime juice, 2 cl brown sugar, 1.5 cl Triple Sec, 1.5 cl gin, 1.5 cl vodka, 1.5 cl rum, 1.5 cl tequila, cola)"
+      "shirley_temple": {
+        "name": "Shirley Temple",
+        "description": "(Ginger ale, grenadine syrup)"
       },
-      "japan_iced_tea": {
-        "name": "Japan Iced Tea",
-        "description": "(1.5 cl vodka, 1.5 cl rum, 1.5 cl gin, 1.5 cl Midori, 6 cl lemon Sweet & Sour)"
+      "red_peach": {
+        "name": "Red Peach",
+        "description": "(Strawberry syrup, peach juice, pineapple juice)"
       },
-      "mojito_scuro": {
-        "name": "Dark Mojito",
-        "description": "(brown sugar, lime, mint, dark rum, sparkling water)"
+      "sweet_strawberry": {
+        "name": "Sweet Strawberry",
+        "description": "(Strawberry syrup, orange juice, top of Sprite)"
       },
-      "negroni": {
-        "name": "Negroni",
-        "description": "(3 cl gin, 3 cl Campari, 3 cl red vermouth, orange)"
-      },
-      "negroni_sbagliato": {
-        "name": "Negroni Sbagliato",
-        "description": "(3 cl Prosecco, 3 cl bitter, 3 cl red vermouth)"
-      },
-      "sex_on_the_beach": {
-        "name": "Sex on the Beach",
-        "description": "(4 cl vodka, 2 cl peach liqueur, 4 cl orange juice, 4 cl cranberry juice)"
-      },
-      "martini_cocktail": {
-        "name": "Martini Cocktail",
-        "description": "(6 cl gin, 1 cl Martini Dry, lime zest, olives)"
-      },
-      "espresso_martini": {
-        "name": "Espresso Martini",
-        "description": "(5 cl vodka, 2 cl espresso coffee, coffee liqueur, sugar)"
-      },
-      "cosmopolitan": {
-        "name": "Cosmopolitan",
-        "description": "(4 cl vodka, 1.5 cl Triple Sec, 3 cl cranberry juice, 1.5 cl lime juice, orange zest, redcurrant)"
-      },
+
+      "montenegro": { "name": "Montenegro" },
+      "jagermeister": { "name": "Jagermeister" },
+      "unicum": { "name": "Unicum" },
+      "del_capo": { "name": "Amaro del Capo" },
+
       "tacco_barocco_bianco": {
         "name": "Tacco Barocco - Negroamaro Bianco Primitivo",
         "description": "Notes of white flowers and citrus, fresh and persistent. Cantina Sampietrana. 750 ml"
       },
       "verdeca_salento": {
         "name": "Verdeca del Salento",
-        "description": "A native wine with a delicate bouquet and dry flavour. Cantina Verdeca. 750 ml"
+        "description": "An indigenous wine with a delicate bouquet and dry taste. Cantina Verdeca. 750 ml"
       },
       "verdeca_itria": {
         "name": "Verdeca Valle d'Itria",
-        "description": "Fresh and fruity, with pleasant savoury notes. Cantina Verdeca. 750 ml"
+        "description": "Fresh, fruity and with a pleasant savoriness. Cantina Verdeca. 750 ml"
       },
       "tacco_barocco_negroamaro": {
         "name": "Tacco Barocco - Negroamaro",
@@ -254,35 +238,7 @@
         "name": "Prosecco DOC",
         "description": "Fine, persistent bubbles, ideal as an aperitif. 750 ml"
       },
-      "ramazzotti": { "name": "Ramazzotti" },
-      "cynar": { "name": "Cynar" },
-      "montenegro": { "name": "Montenegro" },
-      "fernet": { "name": "Fernet Branca Menta" },
-      "averna": { "name": "Averna" },
-      "petrus": { "name": "Petrus" },
-      "jagermeister": { "name": "Jagermeister" },
-      "jefferson": { "name": "Jefferson" },
-      "unicum": { "name": "Unicum" },
-      "lucano": { "name": "Lucano" },
-      "del_capo": { "name": "Amaro del Capo" },
-      "sambuca": { "name": "Sambuca" },
-      "borghetti": { "name": "Caffè Borghetti" },
-      "vena_caffe": { "name": "Vena Caffè" },
-      "vecchia_romagna": { "name": "Vecchia Romagna" },
-      "cointreau": { "name": "Cointreau" },
-      "jack_daniels": { "name": "Jack Daniel's" },
-      "jack_daniels_honey": { "name": "Jack Daniel's Honey" },
-      "cardinal_mendoza": { "name": "Cardinal Mendoza" },
-      "oban": { "name": "Oban" },
-      "laphroaig": { "name": "Laphroaig" },
-      "lagavulin": { "name": "Lagavulin" },
-      "sambuca_superalcolico": { "name": "Sambuca" },
-      "martini": { "name": "Martini Bianco / Rosso / Dry" },
-      "bacardi": { "name": "Bacardi" },
-      "don_papa": { "name": "Don Papa" },
-      "zacapa": { "name": "Zacapa 23 Years" },
-      "j_bally": { "name": "J. Bally" },
-      "la_hechicera": { "name": "La Hechicera" },
+
       "vini_labels": {
         "calice_vino": "Glass of Wine",
         "calice_prosecco": "Glass of Prosecco",
@@ -301,19 +257,56 @@
         "long_drinks": "Long Drinks",
         "iced_tea": "Iced Tea",
         "pestati_e_frozen": "Muddled & Frozen",
-        "soft_drink": "Soft drink"
+        "soft_drink": "Soft drinks"
       },
       "superalcolici_labels": {
-        "distillato": "Spirit",
+        "whisky": "Whisky",
+        "vodka": "Vodka",
         "rum": "Rum",
+        "gin": "Gin",
+        "tequila": "Tequila & Mezcal",
+        "grappe_cognac": "Grappa, Cognac, Brandy & Armagnac",
         "shot": "Shot",
         "shot_2cl": "Shot with House Spirits (2 cl)",
         "shot_4cl": "Shot with House Spirits (4 cl)"
       },
+      "jack_daniels": { "name": "Jack Daniel's", "description": "4cl" },
+      "johnnie_walker": { "name": "Johnnie Walker", "description": "4cl" },
+      "lagavulin": { "name": "Lagavulin", "description": "4cl" },
+      "absolut": { "name": "Absolut" },
+      "moskovskaya": { "name": "Moskovskaya" },
+      "stolichnaya": { "name": "Stolichnaya" },
+      "ciroc": { "name": "Cîroc" },
+      "aniversario": { "name": "Pampero Aniversario" },
+      "havana_3": { "name": "Havana Club 3" },
+      "havana_7": { "name": "Havana Club 7" },
+      "zacapa": { "name": "Zacapa" },
+      "kraken": { "name": "Kraken" },
+      "tanqueray": { "name": "Tanqueray" },
+      "bombay": { "name": "Bombay Sapphire" },
+      "gin_mare": { "name": "Gin Mare" },
+      "hendricks": { "name": "Hendrick's" },
+      "malfy_originale": { "name": "Malfy Originale" },
+      "malfy_pompelmo": { "name": "Malfy Pompelmo" },
+      "malfy_arancia": { "name": "Malfy Arancia" },
+      "cubical": { "name": "Cubical" },
+      "citadelle": { "name": "Gin Citadelle" },
+      "roku": { "name": "Roku" },
+      "nordes": { "name": "Nordés" },
+      "jose_cuervo": { "name": "Jose Cuervo" },
+      "fortaleza": { "name": "Fortaleza" },
+      "grappa_bianca": { "name": "White Grappa" },
+      "grappa_barricata": { "name": "Barricaded Grappa Amarone della Valpolicella" },
+      "vecchia_romagna": { "name": "Vecchia Romagna" },
+      "martell": { "name": "Martell" },
+      "armagnac": { "name": "Armagnac", "description": "Coming soon" },
+      "shot_2cl": { "name": "Shot with House Spirits (2 cl)" },
+      "shot_4cl": { "name": "Shot with House Spirits (4 cl)" },
+
       "frullato_tropicale": {
         "name": "Tropical Smoothie",
         "subtitle": "Mango, Pineapple, Coconut",
-        "description": "A creamy, refreshing exotic blend.",
+        "description": "A creamy and refreshing exotic mix.",
         "notes": {
           "fresco": "Fresh",
           "vitamina_c": "Vitamin C"
@@ -322,7 +315,7 @@
       "frutti_di_bosco": {
         "name": "Wild Berry Smoothie",
         "subtitle": "Blackberry, Raspberry, Blueberry",
-        "description": "The intense flavour of wild berries in a velvety blend.",
+        "description": "The intense flavor of wild berries in a velvety mix.",
         "notes": {
           "antiossidante": "Antioxidant"
         }
@@ -348,32 +341,7 @@
       "red_bull": { "name": "Red Bull" },
       "calice_vino": { "name": "Glass of Wine" },
       "calice_prosecco": { "name": "Glass of Prosecco" },
-      "shot_2cl": { "name": "Shot with House Spirits (2 cl)" },
-      "shot_4cl": { "name": "Shot with House Spirits (4 cl)" },
-      "virgin_colada": {
-        "name": "Virgin Colada",
-        "description": "(Coconut milk or Pina colada mix, orange juice)"
-      },
-      "daiquiri_strawberry": {
-        "name": "Strawberry Daiquiri",
-        "description": "(Strawberry syrup, lime or lemon juice)"
-      },
-      "florida": {
-        "name": "Florida",
-        "description": "(Grapefruit juice, orange juice, lime or lemon juice, sugar syrup, soda water)"
-      },
-      "shirley_temple": {
-        "name": "Shirley Temple",
-        "description": "(Ginger ale, grenadine syrup)"
-      },
-      "red_peach": {
-        "name": "Red Peach",
-        "description": "(Strawberry syrup, peach juice, pineapple juice)"
-      },
-      "sweet_strawberry": {
-        "name": "Sweet Strawberry",
-        "description": "(Strawberry syrup, orange juice, top of Sprite)"
-      },
+
       "cocktail_ingredients": {
         "arancia": "orange",
         "acqua_tonica": "tonic water",
@@ -470,7 +438,7 @@
         "vegetariano": "Vegetarian",
         "perfetto_per_due": "Perfect for two",
         "stuzzicheria": "Bar bites",
-        "servito_caldo": "Served hot",
+        "servito_caldo": "Served warm",
         "fresco": "Fresh",
         "mare": "Seafood",
         "vitamina_c": "Vitamin C",
@@ -481,7 +449,7 @@
   "experience": {
     "eyebrow": "Experience",
     "title": "Piazza San Domenico, Nardò: glasses and evenings for everyone.",
-    "text": "In the baroque heart of Piazza San Domenico, among Lecce stone and buildings layered with history, L'Angolo diVino welcomes everyone with respect, music and themed evenings, in a setting that makes you want to stay."
+    "text": "In the Baroque heart of Piazza San Domenico, between Lecce stone and historic buildings, L'Angolo diVino welcomes everyone with respect, music and themed evenings, in a setting that makes you want to stay."
   },
   "contacts": {
     "eyebrow": "Contact",

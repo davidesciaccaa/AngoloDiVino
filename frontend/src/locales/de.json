@@ -6,67 +6,62 @@
     "vini": "Weine",
     "superalcolici": "Spirituosen",
     "frullati": "Smoothies & Säfte",
-    "bevande": "Alkoholfrei",
+    "bevande": "Softdrinks",
     "contatti": "Kontakt"
   },
   "hero": {
-    "eyebrow": "Cocktailbar und ausgewählte Weine",
-    "copy": "Einladende Drinks, sorgfältig ausgewählte Gläser und kleine Häppchen für Abende, die ganz entspannt beginnen.",
+    "eyebrow": "Cocktailbar & ausgewählte Weine",
+    "copy": "Einladende Drinks, edle Weine und kleine Häppchen für Abende, die ohne Eile beginnen.",
     "button": "Menü entdecken"
   },
   "menu": {
-    "title": "Auswahl des Hauses.",
-    "fallback_note": "Backend nicht erreichbar: Das lokale Menü wird angezeigt.",
+    "title": "Eine exzellente Auswahl.",
+    "fallback_note": "Backend nicht erreichbar: Sie sehen das lokale Menü.",
     "sections": {
       "aperitivo": {
         "title": "Aperitivo",
-        "description": "Kleine Häppchen, um entspannt in den Abend zu starten."
+        "description": "Kleine Häppchen, um den Abend entspannt zu beginnen."
       },
       "drink": {
         "title": "Cocktails",
-        "description": "Große Klassiker und unsere gemixten Favoriten des Hauses."
+        "description": "Große Klassiker und unsere eigenen Mix-Kreationen."
       },
       "vini": {
         "title": "Weine",
-        "description": "Eine feine Auswahl an Weiß-, Rosé- und Rotweinen von Cantina Sampietrana und Verdeca.",
+        "description": "Eine erlesene Auswahl an Weiß-, Rosé- und Rotweinen der Weingüter Sampietrana und Verdeca.",
         "price_header": "Glas / Flasche"
       },
       "amari": {
-        "title": "Bitter",
-        "description": "Eine Auswahl an Amari und Likören für einen gelungenen Abschluss."
+        "title": "Amari",
+        "description": "Auswahl an Bitterlikören für den perfekten Abschluss."
       },
       "superalcolici": {
         "title": "Spirituosen",
-        "description": "Eine Auswahl feiner Spirituosen und Rums zum Genießen."
+        "description": "Eine Auswahl an edlen Destillaten und Rum zum Genießen."
       },
       "frullati": {
         "title": "Smoothies & Säfte",
-        "description": "Vitaminreiche, leichte Smoothies mit frischen saisonalen Zutaten."
+        "description": "Vitaminreiche, gesunde Smoothies, frisch mit saisonalen Zutaten zubereitet."
       },
       "bevande": {
-        "title": "Alkoholfreie Getränke",
-        "description": "Alkoholfreie Getränke, Softdrinks und leichte Alternativen."
+        "title": "Softdrinks",
+        "description": "Alkoholfreie Getränke, Mocktails und leichte Alternativen."
       }
     },
     "items": {
-      "tris": {
-        "name": "Dreierlei",
-        "subtitle": "Lokale Häppchen",
-        "description": "Eine kleine Auswahl der herzhaften Häppchen des Tages."
-      },
       "tagliere_salandra": {
         "name": "Salandra-Platte",
-        "subtitle": "Käse, Eingemachtes",
-        "description": "Auswahl lokaler Käsesorten, Oliven, warme Focaccia und hausgemachte Konfitüre.",
+        "subtitle": "Käse, Eingelegtes",
+        "description": "Auswahl an lokalem Käse, Oliven, warmem Focaccia und hausgemachter Marmelade.",
         "notes": {
           "vegetariano": "Vegetarisch",
           "perfetto_per_due": "Perfekt für zwei"
         }
       },
       "fritti_di_corte": {
-        "name": "Frittiertes aus dem Hof",
+        "name": "Frittierte Spezialitäten",
         "subtitle": "Knusprig, mediterran",
-        "description": "Kleine gemischte Frittier-Spezialitäten mit saisonalem Gemüse, Zitrusnoten und Kräutermayonnaise.",
+        "description": "Kleine gemischte frittierte saisonale Gemüsevariationen, Zitrusfrüchte und Kräutermayonnaise.",
         "notes": {
           "stuzzicheria": "Häppchen",
           "servito_caldo": "Warm serviert"
@@ -74,8 +69,13 @@
       },
       "ostriche": {
         "name": "Austern",
-        "subtitle": "Spezialität aus dem Meer",
-        "description": "Frische Austern mit Zitrone und schwarzem Pfeffer."
+        "subtitle": "Meeresdelikatesse",
+        "description": "Frische Austern serviert mit Zitrone und schwarzem Pfeffer."
+      },
+      "tris": {
+        "name": "Trio",
+        "subtitle": "Lokale Kostproben",
+        "description": "Eine kleine Auswahl an täglichen Häppchen."
       },
       "americano": { "name": "Americano", "description": "(roter Wermut, Campari, Soda)" },
       "bellini": { "name": "Bellini", "description": "(Prosecco, Pfirsichsaft)" },
@@ -98,11 +98,11 @@
       "rossini": { "name": "Rossini", "description": "(Prosecco, Erdbeere)" },
       "aperol_spritz": {
         "name": "Aperol Spritz",
-        "description": "(4 cl Aperol, 1 dl Prosecco, Sprite nach Belieben, Orange)"
+        "description": "(Prosecco, Aperol, Soda)"
       },
       "campari_spritz": {
         "name": "Campari Spritz",
-        "description": "(4 cl Campari, 1 dl Prosecco, Tonic Water nach Belieben)"
+        "description": "(Prosecco, Campari, Soda)"
       },
       "manhattan": { "name": "Manhattan", "description": "(Rye Whiskey, roter Wermut, Angostura, Kirsche)" },
       "manhattan_varianti": { "name": "Manhattan-Varianten", "description": "(Trocken, Perfect, Rob Roy, Presidente)" },
@@ -114,9 +114,9 @@
       "alexander": { "name": "Alexander", "description": "(Brandy, Sahne, dunkle Crème de Cacao)" },
       "black_russian": { "name": "Black Russian", "description": "(Wodka, Kahlua)" },
       "white_russian": { "name": "White Russian", "description": "(Wodka, Kahlua, Sahne)" },
-      "caipirinha": {
-        "name": "Caipirinha",
-        "description": "(4 cl Cachaça, Rohrzucker, Limette, Crushed Ice)"
+      "cosmopolitan": {
+        "name": "Cosmopolitan",
+        "description": "(Wodka, Triple Sec, Cranberry, Zitrone)"
       },
       "daiquiri": { "name": "Daiquiri", "description": "(Rum, Limetten- oder Zitronensaft, Zuckersirup)" },
       "french_connection": { "name": "French Connection", "description": "(Cognac, Disaronno)" },
@@ -141,18 +141,10 @@
       "pina_colada": { "name": "Pina Colada", "description": "(Rum, Kokoscreme, Ananas)" },
       "pina_colada_varianti": { "name": "Pina-Colada-Varianten" },
       "screwdriver": { "name": "Screwdriver", "description": "(Wodka, Orangensaft)" },
+      "sex_on_the_beach": { "name": "Sex on the Beach", "description": "(Wodka, Pfirsichlikör, Orangensaft, Cranberrysaft)" },
       "tequila_sunrise": { "name": "Tequila Sunrise", "description": "(Tequila, Orangensaft, Grenadine)" },
       "singapore_sling": { "name": "Singapore Sling", "description": "(Gin, Cherry Brandy, Limetten- oder Zitronensaft, Sodawasser)" },
       "sloe_gin": { "name": "Sloe Gin", "description": "(Schlehenlikör auf Gin-Basis oder Grenadine)" },
-
-      "caipiroska": { "name": "Caipiroska", "description": "(Wodka, Limette, Rohrzucker)" },
-      "strawberry_caipiroska": { "name": "Strawberry Caipiroska", "description": "(Wodka, Limette, Rohrzucker, Erdbeere)" },
-      "caipirissima": { "name": "Caipirissima", "description": "(Rum, Limette, Rohrzucker)" },
-      "caipiriteqa": { "name": "Caipiriteqa", "description": "(Tequila, Limette, Rohrzucker)" },
-      "mojito": { "name": "Mojito", "description": "(Rum, Limette, Minzblätter, Sodawasser)" },
-      "frozen_slammer": { "name": "Frozen Slammer", "description": "(Southern Comfort, Disaronno, Erdbeere, Sirup und Früchte)" },
-      "frozen_daiquiri": { "name": "Frozen Daiquiri", "description": "(Rum, Erdbeere, Banane, Ananas, usw., Sweet & Sour)" },
-      "frozen_margarita": { "name": "Frozen Margarita", "description": "(Tequila, Erdbeere, Banane, Ananas, usw., Sweet & Sour)" },
 
       "long_island_iced_tea": {
         "name": "Long Island Iced Tea",
@@ -178,54 +170,46 @@
         "name": "Invisibile",
         "description": "(Wodka, Gin, Rum, Triple Sec, Sweet & Sour)"
       },
-      "hugo": {
-        "name": "Hugo",
-        "description": "(2 cl Limettensaft, 2 cl Holunderblütensirup, 1 dl Prosecco, Sprite nach Belieben, Minze)"
+
+      "caipiroska": { "name": "Caipiroska", "description": "(Wodka, Limette, Rohrzucker)" },
+      "strawberry_caipiroska": { "name": "Strawberry Caipiroska", "description": "(Wodka, Limette, Rohrzucker, Erdbeere)" },
+      "caipirissima": { "name": "Caipirissima", "description": "(Rum, Limette, Rohrzucker)" },
+      "caipiriteqa": { "name": "Caipiriteqa", "description": "(Tequila, Limette, Rohrzucker)" },
+      "mojito": { "name": "Mojito", "description": "(Rum, Limette, Minzblätter, Sodawasser)" },
+      "frozen_slammer": { "name": "Frozen Slammer", "description": "(Southern Comfort, Disaronno, Erdbeere, Sirup und Früchte)" },
+      "frozen_daiquiri": { "name": "Frozen Daiquiri", "description": "(Rum, Erdbeere, Banane, Ananas, usw., Sweet & Sour)" },
+      "frozen_margarita": { "name": "Frozen Margarita", "description": "(Tequila, Erdbeere, Banane, Ananas, usw., Sweet & Sour)" },
+
+      "virgin_colada": {
+        "name": "Virgin Colada",
+        "description": "(Kokosmilch oder Pina-Colada-Mix, Orangensaft)"
       },
-      "moscow_mule": {
-        "name": "Moscow Mule",
-        "description": "(1,5 cl Limettensaft, 4 cl Wodka, Ginger Beer)"
+      "daiquiri_strawberry": {
+        "name": "Strawberry Daiquiri",
+        "description": "(Erdbeersirup, Limetten- oder Zitronensaft)"
       },
-      "london_mule": {
-        "name": "London Mule",
-        "description": "(1,5 cl Limettensaft, 4 cl Gin, Ginger Beer)"
+      "florida": {
+        "name": "Florida",
+        "description": "(Grapuitsaft, Orangensaft, Limetten- oder Zitronensaft, Zuckersirup, Sodawasser)"
       },
-      "long_island": {
-        "name": "Long Island Iced Tea",
-        "description": "(3 cl Limettensaft, 2 cl Rohrzucker, 1,5 cl Triple Sec, 1,5 cl Gin, 1,5 cl Wodka, 1,5 cl Rum, 1,5 cl Tequila, Cola)"
+      "shirley_temple": {
+        "name": "Shirley Temple",
+        "description": "(Ginger Ale, Grenadinesirup)"
       },
-      "japan_iced_tea": {
-        "name": "Japan Iced Tea",
-        "description": "(1,5 cl Wodka, 1,5 cl Rum, 1,5 cl Gin, 1,5 cl Midori, 6 cl Zitronen-Sweet-&-Sour)"
+      "red_peach": {
+        "name": "Red Peach",
+        "description": "(Erdbeersirup, Pfirsichsaft, Ananassaft)"
       },
-      "mojito_scuro": {
-        "name": "Dunkler Mojito",
-        "description": "(Rohrzucker, Limette, Minze, dunkler Rum, Sprudelwasser)"
+      "sweet_strawberry": {
+        "name": "Sweet Strawberry",
+        "description": "(Erdbeersirup, Orangensaft, Auffüllen mit Sprite)"
       },
-      "negroni": {
-        "name": "Negroni",
-        "description": "(3 cl Gin, 3 cl Campari, 3 cl roter Wermut, Orange)"
-      },
-      "negroni_sbagliato": {
-        "name": "Negroni Sbagliato",
-        "description": "(3 cl Prosecco, 3 cl Bitter, 3 cl roter Wermut)"
-      },
-      "sex_on_the_beach": {
-        "name": "Sex on the Beach",
-        "description": "(4 cl Wodka, 2 cl Pfirsichlikör, 4 cl Orangensaft, 4 cl Cranberrysaft)"
-      },
-      "martini_cocktail": {
-        "name": "Martini Cocktail",
-        "description": "(6 cl Gin, 1 cl Martini Dry, Limettenschale, Oliven)"
-      },
-      "espresso_martini": {
-        "name": "Espresso Martini",
-        "description": "(5 cl Wodka, 2 cl Espresso, Kaffeelikör, Zucker)"
-      },
-      "cosmopolitan": {
-        "name": "Cosmopolitan",
-        "description": "(4 cl Wodka, 1,5 cl Triple Sec, 3 cl Cranberrysaft, 1,5 cl Limettensaft, Orangenschale, rote Johannisbeere)"
-      },
+
+      "montenegro": { "name": "Montenegro" },
+      "jagermeister": { "name": "Jagermeister" },
+      "unicum": { "name": "Unicum" },
+      "del_capo": { "name": "Amaro del Capo" },
+
       "tacco_barocco_bianco": {
         "name": "Tacco Barocco - Negroamaro Bianco Primitivo",
         "description": "Noten von weißen Blüten und Zitrusfrüchten, frisch und anhaltend. Cantina Sampietrana. 750 ml"
@@ -254,35 +238,7 @@
         "name": "Prosecco DOC",
         "description": "Feine, anhaltende Perlage, ideal als Aperitif. 750 ml"
       },
-      "ramazzotti": { "name": "Ramazzotti" },
-      "cynar": { "name": "Cynar" },
-      "montenegro": { "name": "Montenegro" },
-      "fernet": { "name": "Fernet Branca Menta" },
-      "averna": { "name": "Averna" },
-      "petrus": { "name": "Petrus" },
-      "jagermeister": { "name": "Jagermeister" },
-      "jefferson": { "name": "Jefferson" },
-      "unicum": { "name": "Unicum" },
-      "lucano": { "name": "Lucano" },
-      "del_capo": { "name": "Amaro del Capo" },
-      "sambuca": { "name": "Sambuca" },
-      "borghetti": { "name": "Caffè Borghetti" },
-      "vena_caffe": { "name": "Vena Caffè" },
-      "vecchia_romagna": { "name": "Vecchia Romagna" },
-      "cointreau": { "name": "Cointreau" },
-      "jack_daniels": { "name": "Jack Daniel's" },
-      "jack_daniels_honey": { "name": "Jack Daniel's Honey" },
-      "cardinal_mendoza": { "name": "Cardinal Mendoza" },
-      "oban": { "name": "Oban" },
-      "laphroaig": { "name": "Laphroaig" },
-      "lagavulin": { "name": "Lagavulin" },
-      "sambuca_superalcolico": { "name": "Sambuca" },
-      "martini": { "name": "Martini Bianco / Rosso / Dry" },
-      "bacardi": { "name": "Bacardi" },
-      "don_papa": { "name": "Don Papa" },
-      "zacapa": { "name": "Zacapa 23 Jahre" },
-      "j_bally": { "name": "J. Bally" },
-      "la_hechicera": { "name": "La Hechicera" },
+
       "vini_labels": {
         "calice_vino": "Glas Wein",
         "calice_prosecco": "Glas Prosecco",
@@ -304,12 +260,49 @@
         "soft_drink": "Softdrinks"
       },
       "superalcolici_labels": {
-        "distillato": "Spirituose",
+        "whisky": "Whisky",
+        "vodka": "Wodka",
         "rum": "Rum",
+        "gin": "Gin",
+        "tequila": "Tequila & Mezcal",
+        "grappe_cognac": "Grappa, Cognac, Brandy & Armagnac",
         "shot": "Shot",
         "shot_2cl": "Shot mit Basis-Spirituosen (2 cl)",
         "shot_4cl": "Shot mit Basis-Spirituosen (4 cl)"
       },
+      "jack_daniels": { "name": "Jack Daniel's", "description": "4cl" },
+      "johnnie_walker": { "name": "Johnnie Walker", "description": "4cl" },
+      "lagavulin": { "name": "Lagavulin", "description": "4cl" },
+      "absolut": { "name": "Absolut" },
+      "moskovskaya": { "name": "Moskovskaya" },
+      "stolichnaya": { "name": "Stolichnaya" },
+      "ciroc": { "name": "Cîroc" },
+      "aniversario": { "name": "Pampero Aniversario" },
+      "havana_3": { "name": "Havana Club 3" },
+      "havana_7": { "name": "Havana Club 7" },
+      "zacapa": { "name": "Zacapa" },
+      "kraken": { "name": "Kraken" },
+      "tanqueray": { "name": "Tanqueray" },
+      "bombay": { "name": "Bombay Sapphire" },
+      "gin_mare": { "name": "Gin Mare" },
+      "hendricks": { "name": "Hendrick's" },
+      "malfy_originale": { "name": "Malfy Originale" },
+      "malfy_pompelmo": { "name": "Malfy Pompelmo" },
+      "malfy_arancia": { "name": "Malfy Arancia" },
+      "cubical": { "name": "Cubical" },
+      "citadelle": { "name": "Gin Citadelle" },
+      "roku": { "name": "Roku" },
+      "nordes": { "name": "Nordés" },
+      "jose_cuervo": { "name": "Jose Cuervo" },
+      "fortaleza": { "name": "Fortaleza" },
+      "grappa_bianca": { "name": "Weißer Grappa" },
+      "grappa_barricata": { "name": "Barricata Grappa Amarone della Valpolicella" },
+      "vecchia_romagna": { "name": "Vecchia Romagna" },
+      "martell": { "name": "Martell" },
+      "armagnac": { "name": "Armagnac", "description": "Demnächst" },
+      "shot_2cl": { "name": "Shot mit Basis-Spirituosen (2 cl)" },
+      "shot_4cl": { "name": "Shot mit Basis-Spirituosen (4 cl)" },
+
       "frullato_tropicale": {
         "name": "Tropischer Smoothie",
         "subtitle": "Mango, Ananas, Kokosnuss",
@@ -348,32 +341,7 @@
       "red_bull": { "name": "Red Bull" },
       "calice_vino": { "name": "Glas Wein" },
       "calice_prosecco": { "name": "Glas Prosecco" },
-      "shot_2cl": { "name": "Shot mit Basis-Spirituosen (2 cl)" },
-      "shot_4cl": { "name": "Shot mit Basis-Spirituosen (4 cl)" },
-      "virgin_colada": {
-        "name": "Virgin Colada",
-        "description": "(Kokosmilch oder Pina-Colada-Mix, Orangensaft)"
-      },
-      "daiquiri_strawberry": {
-        "name": "Strawberry Daiquiri",
-        "description": "(Erdbeersirup, Limetten- oder Zitronensaft)"
-      },
-      "florida": {
-        "name": "Florida",
-        "description": "(Grapuitsaft, Orangensaft, Limetten- oder Zitronensaft, Zuckersirup, Sodawasser)"
-      },
-      "shirley_temple": {
-        "name": "Shirley Temple",
-        "description": "(Ginger Ale, Grenadinesirup)"
-      },
-      "red_peach": {
-        "name": "Red Peach",
-        "description": "(Erdbeersirup, Pfirsichsaft, Ananassaft)"
-      },
-      "sweet_strawberry": {
-        "name": "Sweet Strawberry",
-        "description": "(Erdbeersirup, Orangensaft, Auffüllen mit Sprite)"
-      },
+
       "cocktail_ingredients": {
         "arancia": "Orange",
         "acqua_tonica": "Tonic Water",

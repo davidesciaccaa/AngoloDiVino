@@ -149,20 +149,10 @@ public class MenuService {
                         "Amari",
                         "Selezione di amari e liquori per chiudere in bellezza.",
                         List.of(
-                                new MenuItemResponse("ramazzotti", "Ramazzotti", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("cynar", "Cynar", "", "", List.of(), "4 €"),
                                 new MenuItemResponse("montenegro", "Montenegro", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("fernet", "Fernet Branca Menta", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("averna", "Averna", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("petrus", "Petrus", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("del_capo", "Amaro del Capo", "", "", List.of(), "4 €"),
                                 new MenuItemResponse("jagermeister", "Jagermeister", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("jefferson", "Jefferson", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("unicum", "Unicum", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("lucano", "Lucano", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("del_capo", "Amaro del capo", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("sambuca", "Sambuca", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("borghetti", "Caffè borghetti", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("vena_caffe", "Vena Caffè", "", "", List.of(), "4 €")
+                                new MenuItemResponse("unicum", "Unicum", "", "", List.of(), "4 €")
                         )
                 ),
                 new MenuSectionResponse(
@@ -170,22 +160,43 @@ public class MenuService {
                         "Superalcolici",
                         "Una selezione di pregiati distillati e rum da meditazione.",
                         List.of(
-                                // Distillati
-                                new MenuItemResponse("vecchia_romagna", "Vecchia Romagna", "Distillato", "", List.of(), "5 €"),
-                                new MenuItemResponse("cointreau", "Cointreau", "Distillato", "", List.of(), "5 €"),
-                                new MenuItemResponse("jack_daniels", "Jack Daniel’s", "Distillato", "", List.of(), "6 €"),
-                                new MenuItemResponse("jack_daniels_honey", "Jack Daniel’s Honey", "Distillato", "", List.of(), "6 €"),
-                                new MenuItemResponse("cardinal_mendoza", "Cardinal Mendoza", "Distillato", "", List.of(), "12 €"),
-                                new MenuItemResponse("oban", "Oban", "Distillato", "", List.of(), "12 €"),
-                                new MenuItemResponse("laphroaig", "Laphroaig", "Distillato", "", List.of(), "12 €"),
-                                new MenuItemResponse("lagavulin", "Lagavulin", "Distillato", "", List.of(), "12 €"),
-                                new MenuItemResponse("martini", "Martini Bianco / Rosso / Dry", "Distillato", "", List.of(), "5 €"),
+                                // Whisky
+                                new MenuItemResponse("jack_daniels", "Jack Daniel's", "Whisky", "4cl", List.of(), "6 €"),
+                                new MenuItemResponse("johnnie_walker", "Johnnie Walker", "Whisky", "4cl", List.of(), "6 €"),
+                                new MenuItemResponse("lagavulin", "Lagavulin", "Whisky", "4cl", List.of(), "9 €"),
+                                // Vodka
+                                new MenuItemResponse("absolut", "Absolut", "Vodka", "", List.of(), "6 €"),
+                                new MenuItemResponse("moskovskaya", "Moskovskaya", "Vodka", "", List.of(), "5 €"),
+                                new MenuItemResponse("stolichnaya", "Stolichnaya", "Vodka", "", List.of(), "6 €"),
+                                new MenuItemResponse("ciroc", "Cîroc", "Vodka", "", List.of(), "6 €"),
                                 // Rum
-                                new MenuItemResponse("bacardi", "Bacardi", "Rum", "", List.of(), "5 €"),
-                                new MenuItemResponse("don_papa", "Don Papa", "Rum", "", List.of(), "9 €"),
-                                new MenuItemResponse("zacapa", "Zacapa 23 Anni", "Rum", "", List.of(), "12 €"),
-                                new MenuItemResponse("j_bally", "J. Bally", "Rum", "", List.of(), "10 €"),
-                                new MenuItemResponse("la_hechicera", "La Hechicera", "Rum", "", List.of(), "12 €"),
+                                new MenuItemResponse("aniversario", "Pampero Aniversario", "Rum", "", List.of(), "6 €"),
+                                new MenuItemResponse("havana_3", "Havana Club 3", "Rum", "", List.of(), "6 €"),
+                                new MenuItemResponse("havana_7", "Havana Club 7", "Rum", "", List.of(), "6 €"),
+                                new MenuItemResponse("zacapa", "Zacapa", "Rum", "", List.of(), "6 €"),
+                                new MenuItemResponse("kraken", "Kraken", "Rum", "", List.of(), "6 €"),
+                                // Gin
+                                new MenuItemResponse("tanqueray", "Tanqueray", "Gin", "", List.of(), "6 €"),
+                                new MenuItemResponse("bombay", "Bombay Sapphire", "Gin", "", List.of(), "6 €"),
+                                new MenuItemResponse("gin_mare", "Gin Mare", "Gin", "", List.of(), "9 €"),
+                                new MenuItemResponse("hendricks", "Hendrick's", "Gin", "", List.of(), "9 €"),
+                                new MenuItemResponse("malfy_originale", "Malfy Originale", "Gin", "", List.of(), "7 €"),
+                                new MenuItemResponse("malfy_pompelmo", "Malfy Pompelmo", "Gin", "", List.of(), "7 €"),
+                                new MenuItemResponse("malfy_arancia", "Malfy Arancia", "Gin", "", List.of(), "7 €"),
+                                new MenuItemResponse("cubical", "Cubical", "Gin", "", List.of(), "8 €"),
+                                new MenuItemResponse("citadelle", "Gin Citadelle", "Gin", "", List.of(), "7 €"),
+                                new MenuItemResponse("roku", "Roku", "Gin", "", List.of(), "7 €"),
+                                new MenuItemResponse("nordes", "Nordés", "Gin", "", List.of(), "7 €"),
+                                // Tequila & Mezcal
+                                new MenuItemResponse("jose_cuervo", "Jose Cuervo", "Tequila", "", List.of(), "5 €"),
+                                new MenuItemResponse("fortaleza", "Fortaleza", "Tequila", "", List.of(), "9 €"),
+                                // Grappe & Cognac
+                                new MenuItemResponse("grappa_bianca", "Grappa Bianca", "Grappe & Cognac", "", List.of(), "6 €"),
+                                new MenuItemResponse("grappa_barricata", "Grappa Barricata Amarone della Valpolicella", "Grappe & Cognac", "", List.of(), "9 €"),
+                                new MenuItemResponse("vecchia_romagna", "Vecchia Romagna", "Grappe & Cognac", "", List.of(), "5 €"),
+                                new MenuItemResponse("martell", "Martell", "Grappe & Cognac", "", List.of(), "8 €"),
+                                new MenuItemResponse("armagnac", "Armagnac", "Grappe & Cognac", "In arrivo", List.of(), "-"),
+                                // Shots
                                 new MenuItemResponse("shot_2cl", "Shot con Distillati Base (2 cl)", "Shot", "", List.of(), "3 €"),
                                 new MenuItemResponse("shot_4cl", "Shot con Distillati Base (4 cl)", "Shot", "", List.of(), "5 €")
                         )

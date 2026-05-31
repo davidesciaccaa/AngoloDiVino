@@ -39,7 +39,10 @@ export function MenuItemCard({ item }) {
     const viniTranslated = t(`menu.items.vini_labels.${viniLabelKey}`, { defaultValue: '' });
     if (viniTranslated) return viniTranslated;
 
-    const superLabelKey = subtitle.toLowerCase().replace(/ /g, '_');
+    const superLabelKey = subtitle.toLowerCase()
+      .replace(/ & /g, '_')
+      .replace(/, /g, '_')
+      .replace(/ /g, '_');
     const superTranslated = t(`menu.items.superalcolici_labels.${superLabelKey}`, { defaultValue: '' });
     if (superTranslated) return superTranslated;
 

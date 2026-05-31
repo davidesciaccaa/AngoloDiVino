@@ -152,6 +152,40 @@
       "red_peach": { "name": "Red peach", "description": "(Sciroppo di fragola, Succo di pesca, Succo d'ananas)" },
       "sweet_strawberry": { "name": "Sweet strawberry", "description": "(Sciroppo di fragola, Succo d'arancia, Top of Sprite)" },
 
+      "montenegro": { "name": "Montenegro" },
+      "del_capo": { "name": "Amaro del Capo" },
+      "jagermeister": { "name": "Jagermeister" },
+      "unicum": { "name": "Unicum" },
+
+      "tacco_barocco_bianco": {
+        "name": "Tacco Barocco - Negroamaro Bianco Primitivo",
+        "description": "Note di fiori bianchi e agrumi, fresco e persistente. Cantina Sampietrana. 750ml"
+      },
+      "verdeca_salento": {
+        "name": "Verdeca del Salento",
+        "description": "Vino autoctono dal bouquet delicato e sapore secco. Cantina Verdeca. 750ml"
+      },
+      "verdeca_itria": {
+        "name": "Verdeca Valle d'Itria",
+        "description": "Fresco, fruttato e con una piacevole sapidità. Cantina Verdeca. 750ml"
+      },
+      "tacco_barocco_negroamaro": {
+        "name": "Tacco Barocco - Negroamaro",
+        "description": "Rosso rubino intenso con sentori di piccoli frutti rossi. Cantina Sampietrana. 750ml"
+      },
+      "tacco_barocco_puglia_igp": {
+        "name": "Tacco Barocco - Puglia IGP",
+        "description": "Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml"
+      },
+      "rosato_salento": {
+        "name": "Rosato del Salento",
+        "description": "Fresco, fruttato, con note di ciliegia e lampone. 750ml"
+      },
+      "prosecco_doc": {
+        "name": "Prosecco D.O.C.",
+        "description": "Perlage fine e persistente, ideale come aperitivo. 750ml"
+      },
+
       "vini_labels": {
         "calice_vino": "Calice di Vino",
         "calice_prosecco": "Calice di Prosecco",
@@ -173,11 +207,49 @@
         "soft_drink": "Soft drink"
       },
       "superalcolici_labels": {
-        "distillato": "Distillato",
+        "whisky": "Whisky",
+        "vodka": "Vodka",
         "rum": "Rum",
+        "gin": "Gin",
+        "tequila": "Tequila & Mezcal",
+        "grappe_cognac": "Grappe, Cognac, Brandy & Armagnac",
+        "shot": "Shot",
         "shot_2cl": "Shot con Distillati Base (2 cl)",
         "shot_4cl": "Shot con Distillati Base (4 cl)"
       },
+      "jack_daniels": { "name": "Jack Daniel's", "description": "4cl" },
+      "johnnie_walker": { "name": "Johnnie Walker", "description": "4cl" },
+      "lagavulin": { "name": "Lagavulin", "description": "4cl" },
+      "absolut": { "name": "Absolut" },
+      "moskovskaya": { "name": "Moskovskaya" },
+      "stolichnaya": { "name": "Stolichnaya" },
+      "ciroc": { "name": "Cîroc" },
+      "aniversario": { "name": "Pampero Aniversario" },
+      "havana_3": { "name": "Havana Club 3" },
+      "havana_7": { "name": "Havana Club 7" },
+      "zacapa": { "name": "Zacapa" },
+      "kraken": { "name": "Kraken" },
+      "tanqueray": { "name": "Tanqueray" },
+      "bombay": { "name": "Bombay Sapphire" },
+      "gin_mare": { "name": "Gin Mare" },
+      "hendricks": { "name": "Hendrick's" },
+      "malfy_originale": { "name": "Malfy Originale" },
+      "malfy_pompelmo": { "name": "Malfy Pompelmo" },
+      "malfy_arancia": { "name": "Malfy Arancia" },
+      "cubical": { "name": "Cubical" },
+      "citadelle": { "name": "Gin Citadelle" },
+      "roku": { "name": "Roku" },
+      "nordes": { "name": "Nordés" },
+      "jose_cuervo": { "name": "Jose Cuervo" },
+      "fortaleza": { "name": "Fortaleza" },
+      "grappa_bianca": { "name": "Grappa Bianca" },
+      "grappa_barricata": { "name": "Grappa Barricata Amarone della Valpolicella" },
+      "vecchia_romagna": { "name": "Vecchia Romagna" },
+      "martell": { "name": "Martell" },
+      "armagnac": { "name": "Armagnac", "description": "In arrivo" },
+      "shot_2cl": { "name": "Shot con Distillati Base (2 cl)" },
+      "shot_4cl": { "name": "Shot con Distillati Base (4 cl)" },
+
       "frullato_tropicale": {
         "name": "Frullato Tropicale",
         "subtitle": "Mango, Ananas, Cocco",
@@ -216,8 +288,7 @@
       "red_bull": { "name": "Red Bull" },
       "calice_vino": { "name": "Calice di Vino" },
       "calice_prosecco": { "name": "Calice di Prosecco" },
-      "shot_2cl": { "name": "Shot con Distillati Base (2 cl)" },
-      "shot_4cl": { "name": "Shot con Distillati Base (4 cl)" },
+
       "cocktail_ingredients": {
         "arancia": "arancia",
         "acqua_tonica": "acqua tonica",
