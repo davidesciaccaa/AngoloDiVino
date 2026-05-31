@@ -47,6 +47,10 @@ export function MenuItemCard({ item }) {
     const bevandeTranslated = t(`menu.items.bevande_labels.${bevandeLabelKey}`, { defaultValue: '' });
     if (bevandeTranslated) return bevandeTranslated;
 
+    const cocktailLabelKey = subtitle.toLowerCase().replace(/ \/ /g, '_').replace(/ /g, '_');
+    const cocktailTranslated = t(`menu.items.cocktails_labels.${cocktailLabelKey}`, { defaultValue: '' });
+    if (cocktailTranslated) return cocktailTranslated;
+
     return t(`menu.items.${item.id}.subtitle`, { defaultValue: subtitle });
   };
 
