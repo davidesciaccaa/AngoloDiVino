@@ -62,6 +62,40 @@ html {
   border-bottom: 1px solid rgba(23, 19, 19, 0.05);
   margin-bottom: 40px;
   padding: 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.scroll-hint {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1.3rem;
+  font-family: var(--font-brand);
+  color: var(--wine-premium);
+}
+
+.scroll-hint--left {
+  left: 0;
+  background: linear-gradient(to right, var(--paper) 30%, transparent);
+}
+
+.scroll-hint--right {
+  right: 0;
+  background: linear-gradient(to left, var(--paper) 30%, transparent);
+}
+
+.has-left-scroll .scroll-hint--left,
+.has-right-scroll .scroll-hint--right {
+  opacity: 1;
 }
 
 .category-nav {
@@ -69,8 +103,9 @@ html {
   overflow-x: auto;
   gap: 24px;
   scrollbar-width: none;
-  padding: 0 24px;
+  padding: 0 45px; /* Space for indicators */
   justify-content: center;
+  width: 100%;
 }
 
 @media (max-width: 900px) {
@@ -241,6 +276,67 @@ html {
   flex-direction: column;
   justify-content: space-between;
   padding: 24px;
+  position: relative;
+}
+
+.hero__scroll-down {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+  z-index: 5;
+}
+
+.hero__scroll-down:hover {
+  opacity: 1;
+  bottom: 35px;
+}
+
+.mouse-icon {
+  width: 22px;
+  height: 36px;
+  border: 2px solid var(--white);
+  border-radius: 12px;
+  position: relative;
+}
+
+.mouse-icon .wheel {
+  width: 2px;
+  height: 6px;
+  background: var(--white);
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: scroll-wheel 2s infinite;
+}
+
+.scroll-arrow {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--white);
+  border-bottom: 2px solid var(--white);
+  transform: rotate(45deg);
+  animation: scroll-arrow 2s infinite;
+}
+
+@keyframes scroll-wheel {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+}
+
+@keyframes scroll-arrow {
+  0% { opacity: 0; transform: rotate(45deg) translate(-5px, -5px); }
+  50% { opacity: 1; }
+  100% { opacity: 0; transform: rotate(45deg) translate(5px, 5px); }
 }
 
 .site-header {
@@ -264,11 +360,49 @@ html {
   font-weight: 700;
 }
 
-.site-nav {
+.site-nav-wrapper {
+  position: relative;
   display: flex;
   align-items: center;
-  gap: 18px;
-  font-size: 0.95rem;
+  width: 100%;
+}
+
+.nav-scroll-hint {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1rem;
+  color: var(--white);
+  display: none; /* Only show on mobile when needed */
+}
+
+@media (max-width: 640px) {
+  .nav-scroll-hint {
+    display: flex;
+  }
+
+  .nav-scroll-hint--left {
+    left: 0;
+    background: linear-gradient(to right, rgba(18, 11, 12, 0.9) 10%, transparent);
+  }
+
+  .nav-scroll-hint--right {
+    right: 0;
+    background: linear-gradient(to left, rgba(18, 11, 12, 0.9) 10%, transparent);
+  }
+
+  .has-left-scroll .nav-scroll-hint--left,
+  .has-right-scroll .nav-scroll-hint--right {
+    opacity: 1;
+  }
 }
 
 .site-nav a {
@@ -590,7 +724,7 @@ html {
     font-weight: 700;
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE 10+ */
-    padding: 4px 10px 12px;
+    padding: 4px 35px 12px; /* Aumentato padding laterale */
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   }
 
@@ -622,14 +756,19 @@ html {
     margin: 20px auto 0;
   }
 
-  .hero__actions {
-    justify-content: center;
-    width: 100%;
+  .hero__scroll-down {
+    bottom: 20px;
   }
 
-  .status-badge {
-    margin: 0 auto 20px;
+  .mouse-icon {
+    display: none;
   }
+
+  .scroll-arrow {
+    width: 14px;
+    height: 14px;
+  }
+}
 
   .section {
     width: min(100% - 24px, 1180px);
@@ -678,7 +817,6 @@ html {
   .category-link {
     font-size: 0.65rem;
   }
-}
 
 /* Branding & Typography */
 .brand {

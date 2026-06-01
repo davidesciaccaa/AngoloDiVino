@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { fetchApiStatus, fetchMenuSections } from './api/barApi.js';
 import { Hero } from './components/Hero.jsx';
@@ -37,8 +37,8 @@ const fallbackMenuSections = [
       {
         id: 'ostriche',
         name: 'Ostriche',
-        subtitle: 'Specialità di mare',
-        description: 'Ostriche fresche servite con limone e pepe nero.',
+        subtitle: '',
+        description: 'Ostriche fresche',
         notes: ['Fresco', 'Mare'],
         price: '10 €'
       }
@@ -230,6 +230,37 @@ function App() {
   const [menuSections, setMenuSections] = useState(fallbackMenuSections);
   const [isUsingFallback, setIsUsingFallback] = useState(false);
 
+  // Scroll Indicators Logic
+  const navRef = useRef(null);
+  const [showLeftIndicator, setShowLeftIndicator] = useState(false);
+  const [showRightIndicator, setShowRightIndicator] = useState(false);
+
+  const checkScroll = useCallback(() => {
+    if (navRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = navRef.current;
+      setShowLeftIndicator(scrollLeft > 10);
+      setShowRightIndicator(scrollLeft < scrollWidth - clientWidth - 10);
+    }
+  }, []);
+
+  useEffect(() => {
+    const nav = navRef.current;
+    if (nav) {
+      checkScroll();
+      nav.addEventListener('scroll', checkScroll);
+      window.addEventListener('resize', checkScroll);
+      
+      // Also check when content might have rendered
+      const timeout = setTimeout(checkScroll, 500);
+
+      return () => {
+        nav.removeEventListener('scroll', checkScroll);
+        window.removeEventListener('resize', checkScroll);
+        clearTimeout(timeout);
+      };
+    }
+  }, [checkScroll, menuSections]);
+
   useEffect(() => {
     let isMounted = true;
 
@@ -279,8 +310,11 @@ function App() {
         </div>
 
         {/* Minimal Category Navigation */}
-        <div className="category-nav-wrapper">
-          <nav className="category-nav">
+        <div className={`category-nav-wrapper ${showLeftIndicator ? 'has-left-scroll' : ''} ${showRightIndicator ? 'has-right-scroll' : ''}`}>
+          <div className="scroll-hint scroll-hint--left" aria-hidden="true">
+            <span>‹</span>
+          </div>
+          <nav className="category-nav" ref={navRef}>
             {menuSections.map((section) => (
               <a 
                 key={`nav-${section.id}`} 
@@ -291,6 +325,9 @@ function App() {
               </a>
             ))}
           </nav>
+          <div className="scroll-hint scroll-hint--right" aria-hidden="true">
+            <span>›</span>
+          </div>
         </div>
 
         <div className="menu-section-list">

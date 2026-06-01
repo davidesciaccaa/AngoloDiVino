@@ -46,8 +46,8 @@
     "items": {
       "ostriche": {
         "name": "Ostriche",
-        "subtitle": "Specialità di mare",
-        "description": "Ostriche fresche servite con limone e pepe nero."
+        "subtitle": "",
+        "description": "Ostriche fresche"
       },
       "tagliere": {
         "name": "Tagliere misto",

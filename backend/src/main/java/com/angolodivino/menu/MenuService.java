@@ -40,8 +40,8 @@ public class MenuService {
                                 new MenuItemResponse(
                                         "ostriche",
                                         "Ostriche",
-                                        "Specialità di mare",
-                                        "Ostriche fresche servite con limone e pepe nero.",
+                                        "",
+                                        "Ostriche fresche",
                                         List.of("Fresco", "Mare"),
                                         "10 €"
                                 )
