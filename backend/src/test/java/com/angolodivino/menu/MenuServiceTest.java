@@ -14,7 +14,7 @@ class MenuServiceTest {
         List<MenuSectionResponse> sections = menuService.findMenuSections();
         assertThat(sections)
                 .extracting(MenuSectionResponse::id)
-                .containsExactly("aperitivo", "drink", "vini", "amari", "superalcolici", "frullati", "bevande");
+                .containsExactly("aperitivo", "drink", "vini", "amari", "superalcolici", "bevande");
     }
 
     @Test

@@ -19,23 +19,23 @@ public class MenuService {
                                         "Assaggi locali",
                                         "Una piccola selezione di stuzzichini del giorno.",
                                         List.of(),
-                                        "1 €"
+                                        "3 €"
                                 ),
                                 new MenuItemResponse(
-                                        "tagliere_salandra",
-                                        "Tagliere Salandra",
-                                        "Formaggi, conserve",
-                                        "Selezione di formaggi locali, olive, focaccia calda e confettura della casa.",
-                                        List.of("Vegetariano", "Perfetto per due"),
-                                        "14 €"
+                                        "tagliere misto",
+                                        "Tagliere misto",
+                                        "",
+                                        "",
+                                        List.of(),
+                                        "10 €"
                                 ),
                                 new MenuItemResponse(
-                                        "fritti_di_corte",
-                                        "Fritti di Corte",
-                                        "Croccanti, mediterranei",
-                                        "Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.",
-                                        List.of("Stuzzicheria", "Servito caldo"),
-                                        "11 €"
+                                        "fritto misto",
+                                        "Fritto misto",
+                                        "",
+                                        "",
+                                        List.of(),
+                                        "10 €"
                                 ),
                                 new MenuItemResponse(
                                         "ostriche",
@@ -43,7 +43,7 @@ public class MenuService {
                                         "Specialità di mare",
                                         "Ostriche fresche servite con limone e pepe nero.",
                                         List.of("Fresco", "Mare"),
-                                        "8 €"
+                                        "10 €"
                                 )
                         )
                 ),
@@ -60,20 +60,22 @@ public class MenuService {
                                 new MenuItemResponse("negroni_sbagliato", "Negroni Sbagliato", "Pre-Dinner", "(Vermouth Rosso, Campari, Prosecco)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("martini_cocktail", "Martini Cocktail", "Pre-Dinner", "(Gin, Vermouth Dry)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("mimosa", "Mimosa", "Pre-Dinner", "(Prosecco, Succo d'arancia)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("kir", "Kir", "Pre-Dinner", "(Vino bianco fermo, Crème de Cassis, Fragola)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("kir_royale", "Kir Royale", "Pre-Dinner", "(Champagne/Prosecco, Crème de Cassis, Fragola)", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("kir", "Kir", "Pre-Dinner", "(Vino bianco fermo, Crème de Cassis)", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("kir_royale", "Kir Royale", "Pre-Dinner", "(Champagne/Prosecco, Crème de Cassis)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("rossini", "Rossini", "Pre-Dinner", "(Prosecco, Fragola)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("aperol_spritz", "Aperol Spritz", "Pre-Dinner", "(Prosecco, Aperol, Soda)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("campari_spritz", "Campari Spritz", "Pre-Dinner", "(Prosecco, Campari, Soda)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("manhattan", "Manhattan", "Pre-Dinner", "(Rye whiskey, Vermouth Rosso, Angostura, Ciliegina)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("manhattan_varianti", "Varianti Manhattan", "Pre-Dinner", "(Dry, Perfect, Rob Roy, Presidente)", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("dry_manhattan", "Dry Manhattan", "Pre-Dinner", "", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("perfect_manhattan", "Perfect Manhattan", "Pre-Dinner", "", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("rob_roy", "Rob Roy", "Pre-Dinner", "", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("presidente", "Presidente", "Pre-Dinner", "", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("dry_martini", "Dry Martini", "Pre-Dinner / Martini Cocktails", "", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("vodka_martini", "Vodka Martini", "Pre-Dinner / Martini Cocktails", "", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("sweet_martini", "Sweet Martini", "Pre-Dinner / Martini Cocktails", "", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("perfect_martini", "Perfect Martini", "Pre-Dinner / Martini Cocktails", "", List.of(), "6 € / 7 €"),
 
                                 // After Dinner (6/7 euro)
-                                new MenuItemResponse("alexander", "Alexander", "After Dinner", "(Brandy, Crema di latte, Crema di cacao scuro)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("black_russian", "Black Russian", "After Dinner", "(Vodka, Kahlua)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("white_russian", "White Russian", "After Dinner", "(Vodka, Kahlua, Crema di latte)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("cosmopolitan", "Cosmopolitan", "After Dinner", "(Vodka, Triple Sec, Cranberry, Limone)", List.of(), "6 € / 7 €"),
@@ -95,7 +97,6 @@ public class MenuService {
                                 new MenuItemResponse("stinger", "Stinger", "After Dinner", "(Brandy, Crema di menta bianca)", List.of(), "6 € / 7 €"),
 
                                 // Long Drinks (6 euro)
-                                new MenuItemResponse("alabama_slammer", "Alabama slammer", "Long Drinks", "(Vodka, Southern Comfort, Amaretto, Sloe Gin o Granatina, Succo d'arancia)", List.of(), "6 €"),
                                 new MenuItemResponse("cuba_libre", "Cuba Libre", "Long Drinks", "(Rum, Coca cola, Succo di lime)", List.of(), "6 €"),
                                 new MenuItemResponse("lynchburg_lemonade", "Lynchburg lemonade", "Long Drinks", "(Jack Daniel's, Triple sec, Sciroppo di zucchero, Succo di limone, Sprite)", List.of(), "6 €"),
                                 new MenuItemResponse("pina_colada", "Pina colada", "Long Drinks", "(Rum, Crema di cocco, Ananas)", List.of(), "6 €"),
@@ -103,8 +104,6 @@ public class MenuService {
                                 new MenuItemResponse("screwdriver", "Screwdriver", "Long Drinks", "(Vodka, Succo d'arancia)", List.of(), "6 €"),
                                 new MenuItemResponse("sex_on_the_beach", "Sex on the beach", "Long Drinks", "(Vodka, Liquore di pesca, Succo d'arancia, Succo di cranberry)", List.of(), "6 €"),
                                 new MenuItemResponse("tequila_sunrise", "Tequila sunrise", "Long Drinks", "(Tequila, Succo d'arancia, Granatina)", List.of(), "6 €"),
-                                new MenuItemResponse("singapore_sling", "Singapore sling", "Long Drinks", "(Gin, Cherry brandy, Succo di limone o lime, Soda water)", List.of(), "6 €"),
-                                new MenuItemResponse("sloe_gin", "Sloe gin", "Long Drinks", "(Liquore a base di gin aromatizzato al prugnolo o Granatina)", List.of(), "6 €"),
 
                                 // Iced Tea (6/7 euro)
                                 new MenuItemResponse("long_island_iced_tea", "Long Island Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)", List.of(), "6 € / 7 €"),
@@ -112,7 +111,6 @@ public class MenuService {
                                 new MenuItemResponse("japanese_iced_tea", "Japanese Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("italian_iced_tea", "Italian ice tea", "Iced Tea", "(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)", List.of(), "6 € / 7 €"),
                                 new MenuItemResponse("california_iced_tea", "California ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d'arancia)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("invisibile", "Invisibile", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour)", List.of(), "6 € / 7 €"),
 
                                 // Pestati e Frozen (6/7 euro)
                                 new MenuItemResponse("caipirinha", "Caipirinha", "Pestati e Frozen", "(Cachaca, Lime, Zucchero di canna)", List.of(), "6 € / 7 €"),
@@ -152,7 +150,16 @@ public class MenuService {
                                 new MenuItemResponse("montenegro", "Montenegro", "", "", List.of(), "4 €"),
                                 new MenuItemResponse("del_capo", "Amaro del Capo", "", "", List.of(), "4 €"),
                                 new MenuItemResponse("jagermeister", "Jagermeister", "", "", List.of(), "4 €"),
-                                new MenuItemResponse("unicum", "Unicum", "", "", List.of(), "4 €")
+                                new MenuItemResponse("unicum", "Unicum", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("sambuca", "Sambuca", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("kahlua", "Kahlua", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("limoncello", "Limoncello", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("cointreau", "Cointreau", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("grand_marnier", "Grand Marnier", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("pernod", "Pernod", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("batida_de_coco", "Batida de coco", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("midori", "Midori", "", "", List.of(), "4 €"),
+                                new MenuItemResponse("malibu", "Malibù", "", "", List.of(), "4 €")
                         )
                 ),
                 new MenuSectionResponse(
@@ -202,15 +209,6 @@ public class MenuService {
                         )
                 ),
                 new MenuSectionResponse(
-                        "frullati",
-                        "Frullati e Centrifughe",
-                        "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.",
-                        List.of(
-                                new MenuItemResponse("frullato_tropicale", "Frullato Tropicale", "Mango, Ananas, Cocco", "Un viaggio esotico cremoso e rinfrescante.", List.of("Fresco", "Vitamina C"), "7 €"),
-                                new MenuItemResponse("frutti_di_bosco", "Frutti di Bosco", "Mora, Lampone, Mirtillo", "Il sapore intenso del sottobosco in un mix vellutato.", List.of("Antiossidante"), "7 €")
-                        )
-                ),
-                new MenuSectionResponse(
                         "bevande",
                         "Soft Drinks",
                         "Analcolici, mocktail e alternative leggere.",
@@ -224,6 +222,7 @@ public class MenuService {
                                 new MenuItemResponse("sweet_strawberry", "Sweet strawberry", "Mocktail", "(Sciroppo di fragola, Succo d'arancia, Top of Sprite)", List.of(), "5 €"),
 
                                 // Bevande Classiche
+                                new MenuItemResponse("centrifuga", "Centrifuga", "", "In base alla stagione", List.of(), "5 €"),
                                 new MenuItemResponse("acqua", "Acqua Naturale / Frizzante", "", "", List.of(), "2,50 €"),
                                 new MenuItemResponse("coca_cola", "Coca-Cola / Coca-Cola Zero", "", "", List.of(), "3 €"),
                                 new MenuItemResponse("fanta", "Fanta", "", "", List.of(), "3 €"),

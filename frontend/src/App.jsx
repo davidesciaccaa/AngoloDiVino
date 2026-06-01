@@ -16,23 +16,23 @@ const fallbackMenuSections = [
         subtitle: 'Assaggi locali',
         description: 'Una piccola selezione di stuzzichini del giorno.',
         notes: [],
-        price: '1 €'
+        price: '3 €'
       },
       {
-        id: 'tagliere_salandra',
-        name: 'Tagliere Salandra',
-        subtitle: 'Formaggi, conserve',
-        description: 'Selezione di formaggi locali, olive, focaccia calda e con fettura della casa.',
-        notes: ['Vegetariano', 'Perfetto per due'],
-        price: '14 €'
+        id: 'tagliere',
+        name: 'Tagliere',
+        subtitle: '',
+        description: '',
+        notes: [],
+        price: '10 €'
       },
       {
-        id: 'fritti_di_corte',
-        name: 'Fritti di Corte',
-        subtitle: 'Croccanti, mediterranei',
-        description: 'Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.',
-        notes: ['Stuzzicheria', 'Servito caldo'],
-        price: '11 €'
+        id: 'fritti',
+        name: 'Fritti',
+        subtitle: '',
+        description: '',
+        notes: [],
+        price: '10 €'
       },
       {
         id: 'ostriche',
@@ -40,7 +40,7 @@ const fallbackMenuSections = [
         subtitle: 'Specialità di mare',
         description: 'Ostriche fresche servite con limone e pepe nero.',
         notes: ['Fresco', 'Mare'],
-        price: '8 €'
+        price: '10 €'
       }
     ]
   },
@@ -57,20 +57,22 @@ const fallbackMenuSections = [
       { id: 'negroni_sbagliato', name: 'Negroni Sbagliato', subtitle: 'Pre-Dinner', description: '(Vermouth Rosso, Campari, Prosecco)', notes: [], price: '6 € / 7 €' },
       { id: 'martini_cocktail', name: 'Martini Cocktail', subtitle: 'Pre-Dinner', description: '(Gin, Vermouth Dry)', notes: [], price: '6 € / 7 €' },
       { id: 'mimosa', name: 'Mimosa', subtitle: 'Pre-Dinner', description: '(Prosecco, Succo d\'arancia)', notes: [], price: '6 € / 7 €' },
-      { id: 'kir', name: 'Kir', subtitle: 'Pre-Dinner', description: '(Vino bianco fermo, Crème de Cassis, Fragola)', notes: [], price: '6 € / 7 €' },
-      { id: 'kir_royale', name: 'Kir Royale', subtitle: 'Pre-Dinner', description: '(Champagne/Prosecco, Crème de Cassis, Fragola)', notes: [], price: '6 € / 7 €' },
+      { id: 'kir', name: 'Kir', subtitle: 'Pre-Dinner', description: '(Vino bianco fermo, Crème de Cassis)', notes: [], price: '6 € / 7 €' },
+      { id: 'kir_royale', name: 'Kir Royale', subtitle: 'Pre-Dinner', description: '(Champagne/Prosecco, Crème de Cassis)', notes: [], price: '6 € / 7 €' },
       { id: 'rossini', name: 'Rossini', subtitle: 'Pre-Dinner', description: '(Prosecco, Fragola)', notes: [], price: '6 € / 7 €' },
       { id: 'aperol_spritz', name: 'Aperol Spritz', subtitle: 'Pre-Dinner', description: '(Prosecco, Aperol, Soda)', notes: [], price: '6 € / 7 €' },
       { id: 'campari_spritz', name: 'Campari Spritz', subtitle: 'Pre-Dinner', description: '(Prosecco, Campari, Soda)', notes: [], price: '6 € / 7 €' },
       { id: 'manhattan', name: 'Manhattan', subtitle: 'Pre-Dinner', description: '(Rye whiskey, Vermouth Rosso, Angostura, Ciliegina)', notes: [], price: '6 € / 7 €' },
-      { id: 'manhattan_varianti', name: 'Varianti Manhattan', subtitle: 'Pre-Dinner', description: '(Dry, Perfect, Rob Roy, Presidente)', notes: [], price: '6 € / 7 €' },
+      { id: 'dry_manhattan', name: 'Dry Manhattan', subtitle: 'Pre-Dinner', description: '', notes: [], price: '6 € / 7 €' },
+      { id: 'perfect_manhattan', name: 'Perfect Manhattan', subtitle: 'Pre-Dinner', description: '', notes: [], price: '6 € / 7 €' },
+      { id: 'rob_roy', name: 'Rob Roy', subtitle: 'Pre-Dinner', description: '', notes: [], price: '6 € / 7 €' },
+      { id: 'presidente', name: 'Presidente', subtitle: 'Pre-Dinner', description: '', notes: [], price: '6 € / 7 €' },
       { id: 'dry_martini', name: 'Dry Martini', subtitle: 'Pre-Dinner / Martini Cocktails', description: '', notes: [], price: '6 € / 7 €' },
       { id: 'vodka_martini', name: 'Vodka Martini', subtitle: 'Pre-Dinner / Martini Cocktails', description: '', notes: [], price: '6 € / 7 €' },
       { id: 'sweet_martini', name: 'Sweet Martini', subtitle: 'Pre-Dinner / Martini Cocktails', description: '', notes: [], price: '6 € / 7 €' },
       { id: 'perfect_martini', name: 'Perfect Martini', subtitle: 'Pre-Dinner / Martini Cocktails', description: '', notes: [], price: '6 € / 7 €' },
 
       // After Dinner (6/7 euro)
-      { id: 'alexander', name: 'Alexander', subtitle: 'After Dinner', description: '(Brandy, Crema di latte, Crema di cacao scuro)', notes: [], price: '6 € / 7 €' },
       { id: 'black_russian', name: 'Black Russian', subtitle: 'After Dinner', description: '(Vodka, Kahlua)', notes: [], price: '6 € / 7 €' },
       { id: 'white_russian', name: 'White Russian', subtitle: 'After Dinner', description: '(Vodka, Kahlua, Crema di latte)', notes: [], price: '6 € / 7 €' },
       { id: 'cosmopolitan', name: 'Cosmopolitan', subtitle: 'After Dinner', description: '(Vodka, Triple Sec, Cranberry, Limone)', notes: [], price: '6 € / 7 €' },
@@ -92,7 +94,6 @@ const fallbackMenuSections = [
       { id: 'stinger', name: 'Stinger', subtitle: 'After Dinner', description: '(Brandy, Crema di menta bianca)', notes: [], price: '6 € / 7 €' },
 
       // Long Drinks (6 euro)
-      { id: 'alabama_slammer', name: 'Alabama slammer', subtitle: 'Long Drinks', description: '(Vodka, Southern Comfort, Amaretto, Sloe Gin o Granatina, Succo d\'arancia)', notes: [], price: '6 €' },
       { id: 'cuba_libre', name: 'Cuba Libre', subtitle: 'Long Drinks', description: '(Rum, Coca cola, Succo di lime)', notes: [], price: '6 €' },
       { id: 'lynchburg_lemonade', name: 'Lynchburg lemonade', subtitle: 'Long Drinks', description: '(Jack Daniel\'s, Triple sec, Sciroppo di zucchero, Succo di limone, Sprite)', notes: [], price: '6 €' },
       { id: 'pina_colada', name: 'Pina colada', subtitle: 'Long Drinks', description: '(Rum, Crema di cocco, Ananas)', notes: [], price: '6 €' },
@@ -100,8 +101,6 @@ const fallbackMenuSections = [
       { id: 'screwdriver', name: 'Screwdriver', subtitle: 'Long Drinks', description: '(Vodka, Succo d\'arancia)', notes: [], price: '6 €' },
       { id: 'sex_on_the_beach', name: 'Sex on the beach', subtitle: 'Long Drinks', description: '(Vodka, Liquore di pesca, Succo d\'arancia, Succo di cranberry)', notes: [], price: '6 €' },
       { id: 'tequila_sunrise', name: 'Tequila sunrise', subtitle: 'Long Drinks', description: '(Tequila, Succo d\'arancia, Granatina)', notes: [], price: '6 €' },
-      { id: 'singapore_sling', name: 'Singapore sling', subtitle: 'Long Drinks', description: '(Gin, Cherry brandy, Succo di limone o lime, Soda water)', notes: [], price: '6 €' },
-      { id: 'sloe_gin', name: 'Sloe gin', subtitle: 'Long Drinks', description: '(Liquore a base di gin aromatizzato al prugnolo o Granatina)', notes: [], price: '6 €' },
 
       // Iced Tea (6/7 euro)
       { id: 'long_island_iced_tea', name: 'Long Island Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)', notes: [], price: '6 € / 7 €' },
@@ -109,7 +108,6 @@ const fallbackMenuSections = [
       { id: 'japanese_iced_tea', name: 'Japanese Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)', notes: [], price: '6 € / 7 €' },
       { id: 'italian_iced_tea', name: 'Italian ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)', notes: [], price: '6 € / 7 €' },
       { id: 'california_iced_tea', name: 'California ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d\'arancia)', notes: [], price: '6 € / 7 €' },
-      { id: 'invisibile', name: 'Invisibile', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour)', notes: [], price: '6 € / 7 €' },
 
       // Pestati e Frozen (6/7 euro)
       { id: 'caipirinha', name: 'Caipirinha', subtitle: 'Pestati e Frozen', description: '(Cachaca, Lime, Zucchero di canna)', notes: [], price: '6 € / 7 €' },
@@ -153,7 +151,16 @@ const fallbackMenuSections = [
       { id: 'montenegro', name: 'Montenegro', subtitle: '', description: '', notes: [], price: '4 €' },
       { id: 'del_capo', name: 'Amaro del Capo', subtitle: '', description: '', notes: [], price: '4 €' },
       { id: 'jagermeister', name: 'Jagermeister', subtitle: '', description: '', notes: [], price: '4 €' },
-      { id: 'unicum', name: 'Unicum', subtitle: '', description: '', notes: [], price: '4 €' }
+      { id: 'unicum', name: 'Unicum', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'sambuca', name: 'Sambuca', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'kahlua', name: 'Kahlua', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'limoncello', name: 'Limoncello', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'cointreau', name: 'Cointreau', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'grand_marnier', name: 'Grand Marnier', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'pernod', name: 'Pernod', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'batida_de_coco', name: 'Batida de coco', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'midori', name: 'Midori', subtitle: '', description: '', notes: [], price: '4 €' },
+      { id: 'malibu', name: 'Malibù', subtitle: '', description: '', notes: [], price: '4 €' }
     ]
   },
   {
@@ -196,33 +203,11 @@ const fallbackMenuSections = [
     ]
   },
   {
-    id: 'frullati',
-    title: 'Frullati e Centrifughe',
-    description: 'Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione.',
-    items: [
-      {
-        id: 'frullato_tropicale',
-        name: 'Frullato Tropicale',
-        subtitle: 'Mango, Ananas, Cocco',
-        description: 'Un viaggio esotico cremoso e rinfrescante.',
-        notes: ['Fresco', 'Vitamina C'],
-        price: '7 €'
-      },
-      {
-        id: 'frutti_di_bosco',
-        name: 'Frutti di Bosco',
-        subtitle: 'Mora, Lampone, Mirtillo',
-        description: 'Il sapore intenso del sottobosco in un mix vellutato.',
-        notes: ['Antiossidante'],
-        price: '7 €'
-      }
-    ]
-  },
-  {
     id: 'bevande',
     title: 'Bevande',
     description: 'Analcolici, soft drink e alternative leggere.',
     items: [
+      { id: 'centrifuga', name: 'Centrifuga', subtitle: '', description: 'In base alla stagione', notes: [], price: '5 €' },
       { id: 'acqua', name: 'Acqua Naturale / Frizzante', subtitle: '', description: '', notes: [], price: '2,50 €' },
       { id: 'coca_cola', name: 'Coca-Cola / Coca-Cola Zero', subtitle: '', description: '', notes: [], price: '3 €' },
       { id: 'fanta', name: 'Fanta', subtitle: '', description: '', notes: [], price: '3 €' },
@@ -260,14 +245,7 @@ function App() {
         }
 
         setApiStatus(status);
-        // Integrate locally added categories if not present in API
-        const hasFrullati = sections.some(s => s.id === 'frullati');
-        if (!hasFrullati) {
-           const frullatiSection = fallbackMenuSections.find(s => s.id === 'frullati');
-           setMenuSections([...sections, frullatiSection]);
-        } else {
-           setMenuSections(sections);
-        }
+        setMenuSections(sections);
         setIsUsingFallback(false);
       } catch {
         if (!isMounted) {

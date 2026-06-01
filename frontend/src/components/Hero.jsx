@@ -18,7 +18,6 @@ export function Hero({ status }) {
             <a href="#drink">{t('nav.drink')}</a>
             <a href="#vini">{t('nav.vini')}</a>
             <a href="#superalcolici">{t('nav.superalcolici')}</a>
-            <a href="#frullati">{t('nav.frullati')}</a>
             <a href="#bevande">{t('nav.bevande')}</a>
             <a href="#contatti">{t('nav.contatti')}</a>
           </nav>

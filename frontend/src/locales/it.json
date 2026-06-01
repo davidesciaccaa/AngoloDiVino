@@ -5,7 +5,6 @@
     "drink": "Drink",
     "vini": "Vini",
     "superalcolici": "Superalcolici",
-    "frullati": "Frullati e Centrifughe",
     "bevande": "Bevande",
     "contatti": "Contatti"
   },
@@ -39,38 +38,24 @@
         "title": "Superalcolici",
         "description": "Una selezione di pregiati distillati e rum da meditazione."
       },
-      "frullati": {
-        "title": "Frullati e Centrifughe",
-        "description": "Frullati vitaminici, salutari e preparati con ingredienti freschi di stagione."
-      },
       "bevande": {
         "title": "Soft Drinks",
         "description": "Analcolici, mocktail e alternative leggere."
       }
     },
     "items": {
-      "tagliere_salandra": {
-        "name": "Tagliere Salandra",
-        "subtitle": "Formaggi, conserve",
-        "description": "Selezione di formaggi locali, olive, focaccia calda e confettura della casa.",
-        "notes": {
-          "vegetariano": "Vegetariano",
-          "perfetto_per_due": "Perfetto per due"
-        }
-      },
-      "fritti_di_corte": {
-        "name": "Fritti di Corte",
-        "subtitle": "Croccanti, mediterranei",
-        "description": "Piccoli fritti misti con verdure di stagione, agrumi e maionese alle erbe.",
-        "notes": {
-          "stuzzicheria": "Stuzzicheria",
-          "servito_caldo": "Servito caldo"
-        }
-      },
       "ostriche": {
         "name": "Ostriche",
         "subtitle": "Specialità di mare",
         "description": "Ostriche fresche servite con limone e pepe nero."
+      },
+      "tagliere": {
+        "name": "Tagliere misto",
+        "description": ""
+      },
+      "fritti": {
+        "name": "Fritto misto",
+        "description": ""
       },
       "tris": {
         "name": "Tris",
@@ -84,19 +69,21 @@
       "negroni_sbagliato": { "name": "Negroni Sbagliato", "description": "(Vermouth Rosso, Campari, Prosecco)" },
       "martini_cocktail": { "name": "Martini Cocktail", "description": "(Gin, Vermouth Dry, scorza di lime, olive)" },
       "mimosa": { "name": "Mimosa", "description": "(Prosecco, Succo d'arancia)" },
-      "kir": { "name": "Kir", "description": "(Vino bianco fermo, Crème de Cassis, Fragola)" },
-      "kir_royale": { "name": "Kir Royale", "description": "(Champagne/Prosecco, Crème de Cassis, Fragola)" },
+      "kir": { "name": "Kir", "description": "(Vino bianco fermo, Crème de Cassis)" },
+      "kir_royale": { "name": "Kir Royale", "description": "(Champagne/Prosecco, Crème de Cassis)" },
       "rossini": { "name": "Rossini", "description": "(Prosecco, Fragola)" },
       "aperol_spritz": { "name": "Aperol Spritz", "description": "(Prosecco, Aperol, Soda)" },
       "campari_spritz": { "name": "Campari Spritz", "description": "(Prosecco, Campari, Soda)" },
       "manhattan": { "name": "Manhattan", "description": "(Rye whiskey, Vermouth Rosso, Angostura, Ciliegina)" },
-      "manhattan_varianti": { "name": "Varianti Manhattan", "description": "(Dry, Perfect, Rob Roy, Presidente)" },
+      "dry_manhattan": { "name": "Dry Manhattan", "description": "" },
+      "perfect_manhattan": { "name": "Perfect Manhattan", "description": "" },
+      "rob_roy": { "name": "Rob Roy", "description": "" },
+      "presidente": { "name": "Presidente", "description": "" },
       "dry_martini": { "name": "Dry Martini", "description": "(Gin, Vermouth Dry)" },
       "vodka_martini": { "name": "Vodka Martini", "description": "(Vodka, Vermouth Dry)" },
       "sweet_martini": { "name": "Sweet Martini", "description": "(Gin, Vermouth Rosso)" },
       "perfect_martini": { "name": "Perfect Martini", "description": "(Gin, Vermouth Dry, Vermouth Rosso)" },
 
-      "alexander": { "name": "Alexander", "description": "(Brandy, Crema di latte, Crema di cacao scuro)" },
       "black_russian": { "name": "Black Russian", "description": "(Vodka, Kahlua)" },
       "white_russian": { "name": "White Russian", "description": "(Vodka, Kahlua, Crema di latte)" },
       "cosmopolitan": { "name": "Cosmopolitan", "description": "(Vodka, Triple Sec, Cranberry, Limone)" },
@@ -117,7 +104,6 @@
       "sidecar": { "name": "Sidecar", "description": "(Cognac, Triple sec o Cointreau, Succo di limone)" },
       "stinger": { "name": "Stinger", "description": "(Brandy, Crema di menta bianca)" },
 
-      "alabama_slammer": { "name": "Alabama slammer", "description": "(Vodka, Southern Comfort, Amaretto, Sloe Gin o Granatina, Succo d'arancia)" },
       "cuba_libre": { "name": "Cuba Libre", "description": "(Rum, Coca cola, Succo di lime)" },
       "lynchburg_lemonade": { "name": "Lynchburg lemonade", "description": "(Jack Daniel's, Triple sec, Sciroppo di zucchero, Succo di limone, Sprite)" },
       "pina_colada": { "name": "Pina colada", "description": "(Rum, Crema di cocco, Ananas)" },
@@ -125,15 +111,12 @@
       "screwdriver": { "name": "Screwdriver", "description": "(Vodka, Succo d'arancia)" },
       "sex_on_the_beach": { "name": "Sex on the beach", "description": "(Vodka, Liquore di pesca, Succo d'arancia, Succo di cranberry)" },
       "tequila_sunrise": { "name": "Tequila sunrise", "description": "(Tequila, Succo d'arancia, Granatina)" },
-      "singapore_sling": { "name": "Singapore sling", "description": "(Gin, Cherry brandy, Succo di limone o lime, Soda water)" },
-      "sloe_gin": { "name": "Sloe gin", "description": "(Liquore a base di gin aromatizzato al prugnolo o Granatina)" },
 
       "long_island_iced_tea": { "name": "Long Island Ice tea", "description": "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)" },
       "texas_iced_tea": { "name": "Texas Ice tea", "description": "(Vodka, Gin, Rum, Triple Sec, Tequila, Sweet & Sour, Top of Coke)" },
       "japanese_iced_tea": { "name": "Japanese Ice tea", "description": "(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)" },
       "italian_iced_tea": { "name": "Italian ice tea", "description": "(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)" },
       "california_iced_tea": { "name": "California ice tea", "description": "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d'arancia)" },
-      "invisibile": { "name": "Invisibile", "description": "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour)" },
 
       "caipirinha": { "name": "Caipirinha", "description": "(Cachaca, Lime, Zucchero di canna)" },
       "caipiroska": { "name": "Caipiroska", "description": "(Vodka, Lime, Zucchero di canna)" },
@@ -156,6 +139,15 @@
       "del_capo": { "name": "Amaro del Capo", "description": "4cl" },
       "jagermeister": { "name": "Jagermeister", "description": "4cl" },
       "unicum": { "name": "Unicum", "description": "4cl" },
+      "sambuca": { "name": "Sambuca", "description": "4cl" },
+      "kahlua": { "name": "Kahlua", "description": "4cl" },
+      "limoncello": { "name": "Limoncello", "description": "4cl" },
+      "cointreau": { "name": "Cointreau", "description": "4cl" },
+      "grand_marnier": { "name": "Grand Marnier", "description": "4cl" },
+      "pernod": { "name": "Pernod", "description": "4cl" },
+      "batida_de_coco": { "name": "Batida de coco", "description": "4cl" },
+      "midori": { "name": "Midori", "description": "4cl" },
+      "malibu": { "name": "Malibù", "description": "4cl" },
 
       "tacco_barocco_bianco": {
         "name": "Tacco Barocco - Negroamaro Bianco Primitivo",
@@ -286,6 +278,7 @@
       "crodino": { "name": "Crodino", "description": "10cl" },
       "tonica": { "name": "Acqua Tonica", "description": "33cl" },
       "red_bull": { "name": "Red Bull", "description": "25cl" },
+      "centrifuga": { "name": "Centrifuga", "description": "In base alla stagione" },
       "calice_vino": { "name": "Calice di Vino", "description": "Selezione della casa" },
       "calice_prosecco": { "name": "Calice di Prosecco", "description": "Bollicine selezionate" },
 
