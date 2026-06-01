@@ -548,58 +548,125 @@ html {
 
 @media (max-width: 640px) {
   .hero {
-    min-height: 82vh;
-    padding: 18px;
+    min-height: 85vh;
+    padding: 16px;
+    justify-content: flex-start;
   }
 
   .site-header {
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
+    width: 100%;
   }
 
   .header-actions {
     width: 100%;
+    display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 16px;
+  }
+
+  .brand {
+    font-size: 1.5rem;
   }
 
   .site-nav {
     width: 100%;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    flex-wrap: nowrap;
     justify-content: flex-start;
-    gap: 12px;
-    font-size: 1.05rem;
-    font-weight: 600;
+    gap: 20px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+    padding: 4px 10px 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .site-nav::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
+
+  .site-nav a {
+    white-space: nowrap;
   }
 
   .hero__content {
-    padding: 64px 0 38px;
+    padding: 40px 0 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero h1 {
-    font-size: 3.1rem;
+    font-size: clamp(2.6rem, 12vw, 3.2rem);
+    margin: 0 auto;
   }
 
   .hero__copy {
     font-size: 1.05rem;
+    margin: 20px auto 0;
+  }
+
+  .hero__actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .status-badge {
+    margin: 0 auto 20px;
   }
 
   .section {
-    width: min(100% - 32px, 1180px);
-    padding: 56px 0;
+    width: min(100% - 24px, 1180px);
+    padding: 40px 0;
   }
 
   .section h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .section__heading {
+    margin-bottom: 24px;
+    text-align: center;
   }
 
   .experience-panel,
   .hours-panel,
   .menu-item-card,
   .menu-section__heading {
-    padding: 22px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .experience-panel p:not(.section__eyebrow),
+  .hours-panel p {
+    margin: 12px auto 0;
+  }
+
+  .menu-section {
+    margin-bottom: 48px;
+  }
+
+  .category-nav-wrapper {
+    margin-bottom: 30px;
+    padding: 8px 0;
+    backdrop-filter: blur(10px);
+    background: rgba(251, 248, 242, 0.9);
+  }
+
+  .category-nav {
+    gap: 12px;
+    padding: 0 16px;
+  }
+
+  .category-link {
+    font-size: 0.65rem;
   }
 }
 
@@ -842,17 +909,11 @@ html {
     width: min(1320px, calc(100% - 48px));
   }
 
-  .header-actions {
-    gap: 16px;
-  }
-
   .language-switcher {
-    position: fixed;
-    top: 16px;
-    right: 16px;
-    z-index: 1001;
     margin-left: 0;
-    background: rgba(18, 11, 12, 0.6);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
   }
   
   .lang-label {
@@ -860,6 +921,35 @@ html {
   }
 
   .lang-button {
-    padding: 6px;
+    padding: 8px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    background:
+      linear-gradient(rgba(18, 11, 12, 0.7), rgba(18, 11, 12, 0.5)),
+      var(--hero-image) center / cover no-repeat #120b0c;
+  }
+
+  .language-switcher {
+    position: static;
+    margin-bottom: 8px;
+  }
+
+  .menu-item-editorial__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .menu-item-editorial__price {
+    font-size: 1rem;
+    color: var(--wine-premium);
+  }
+
+  .menu-item-editorial {
+    text-align: left;
+    padding: 16px 0;
   }
 }
