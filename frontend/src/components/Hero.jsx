@@ -68,7 +68,7 @@ export function Hero({ status }) {
       <div className="hero__content" id="top">
         {/* <StatusBadge status={status} /> */}
         <p className="hero__eyebrow">{t('hero.eyebrow')}</p>
-        <h1>L&apos;Angolo di<span className="brand-v">V</span>ino</h1>
+        {/* <h1>L&apos;Angolo di<span className="brand-v">V</span>ino</h1> */}
         <p className="hero__copy">
           {t('hero.copy')}
         </p>
