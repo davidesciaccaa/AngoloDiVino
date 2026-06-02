@@ -4,6 +4,7 @@
     "aperitivo": "Aperitivo",
     "drink": "Cocktails",
     "vini": "Weine",
+    "amari": "Magenbitter & Liköre",
     "superalcolici": "Spirituosen",
     "bevande": "Softdrinks",
     "contatti": "Kontakt"
@@ -31,7 +32,7 @@
         "price_header": "Glas / Flasche"
       },
       "amari": {
-        "title": "Amari",
+        "title": "Magenbitter & Liköre",
         "description": "Auswahl an Bitterlikören für den perfekten Abschluss."
       },
       "superalcolici": {

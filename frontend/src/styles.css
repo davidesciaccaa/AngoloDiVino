@@ -50,7 +50,12 @@ html {
 
 .section--menu {
   padding-top: 30px;
-  max-width: 900px !important; /* Narrower, more focused desktop layout */
+}
+
+@media (min-width: 901px) {
+  .section--menu {
+    max-width: 1320px !important;
+  }
 }
 
 /* Minimal Category Navigation */
@@ -108,6 +113,12 @@ html {
   width: 100%;
 }
 
+@media (min-width: 901px) {
+  .category-nav {
+    gap: 100px;
+  }
+}
+
 @media (max-width: 900px) {
   .category-nav {
     justify-content: flex-start;
@@ -126,6 +137,13 @@ html {
   transition: opacity 0.3s ease, color 0.3s ease;
   padding: 4px 0;
   position: relative;
+}
+
+@media (min-width: 901px) {
+  .category-link {
+    font-size: 1.1rem;
+    letter-spacing: 0.25em;
+  }
 }
 
 .category-link::after {
@@ -428,6 +446,16 @@ html {
   text-transform: uppercase;
 }
 
+.hero__title {
+  display: none;
+}
+
+@media (min-width: 901px) {
+  .hero__title {
+    display: block;
+  }
+}
+
 .hero h1 {
   max-width: 900px;
   margin: 0;
@@ -513,25 +541,38 @@ html {
 }
 
 .section__heading {
-  display: grid;
-  grid-template-columns: minmax(0, 680px) minmax(200px, 1fr);
-  gap: 32px;
-  align-items: end;
-  margin-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 32px;
+}
+
+@media (max-width: 900px) {
+  .section__heading {
+    text-align: center;
+    align-items: center;
+  }
 }
 
 .section h2 {
   margin: 0;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: 2.35rem;
-  line-height: 1.12;
+  font-family: var(--font-serif), Georgia, serif;
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.1;
+  text-align: left;
+}
+
+@media (max-width: 900px) {
+  .section h2 {
+    text-align: center;
+  }
 }
 
 .section__note {
-  margin: 0;
-  justify-self: end;
+  margin: 8px 0 0;
   color: #765b2b;
   font-weight: 700;
+  font-size: 0.9rem;
 }
 
 .menu-section-list {
@@ -673,14 +714,13 @@ html {
     font-size: 4rem;
   }
 
-  .section__heading,
   .section--experience,
   .menu-section {
     grid-template-columns: 1fr;
   }
 
   .section__note {
-    justify-self: start;
+    justify-self: center;
   }
 
   .menu-grid {

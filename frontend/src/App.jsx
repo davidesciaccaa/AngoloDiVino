@@ -145,7 +145,7 @@ const fallbackMenuSections = [
   },
   {
     id: 'amari',
-    title: 'Amari',
+    title: 'Amari e Liquori',
     description: 'Selezione di amari e liquori per chiudere in bellezza.',
     items: [
       { id: 'montenegro', name: 'Montenegro', subtitle: '', description: '', notes: [], price: '4 €' },

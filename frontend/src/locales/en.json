@@ -4,6 +4,7 @@
     "aperitivo": "Aperitivo",
     "drink": "Cocktails",
     "vini": "Wines",
+    "amari": "Bitters & Liqueurs",
     "superalcolici": "Spirits",
     "bevande": "Soft Drinks",
     "contatti": "Contact"
@@ -31,7 +32,7 @@
         "price_header": "By the glass / Bottle"
       },
       "amari": {
-        "title": "Amari",
+        "title": "Bitters & Liqueurs",
         "description": "Selection of bitters and liqueurs for a perfect finish."
       },
       "superalcolici": {

@@ -4,6 +4,7 @@
     "aperitivo": "Aperitivo",
     "drink": "Drink",
     "vini": "Vini",
+    "amari": "Amari e Liquori",
     "superalcolici": "Superalcolici",
     "bevande": "Bevande",
     "contatti": "Contatti"
@@ -31,7 +32,7 @@
         "price_header": "Al calice / Bottiglia"
       },
       "amari": {
-        "title": "Amari",
+        "title": "Amari e Liquori",
         "description": "Selezione di amari e liquori per chiudere in bellezza."
       },
       "superalcolici": {

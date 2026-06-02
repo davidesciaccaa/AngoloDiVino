@@ -52,6 +52,7 @@ export function Hero({ status }) {
               <a href="#aperitivo">{t('nav.aperitivo')}</a>
               <a href="#drink">{t('nav.drink')}</a>
               <a href="#vini">{t('nav.vini')}</a>
+              <a href="#amari">{t('nav.amari')}</a>
               <a href="#superalcolici">{t('nav.superalcolici')}</a>
               <a href="#bevande">{t('nav.bevande')}</a>
               <a href="#contatti">{t('nav.contatti')}</a>
@@ -68,7 +69,7 @@ export function Hero({ status }) {
       <div className="hero__content" id="top">
         {/* <StatusBadge status={status} /> */}
         <p className="hero__eyebrow">{t('hero.eyebrow')}</p>
-        {/* <h1>L&apos;Angolo di<span className="brand-v">V</span>ino</h1> */}
+        <h1 className="hero__title">L&apos;Angolo di<span className="brand-v">V</span>ino</h1>
         <p className="hero__copy">
           {t('hero.copy')}
         </p>

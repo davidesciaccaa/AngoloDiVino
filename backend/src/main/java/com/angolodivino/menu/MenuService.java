@@ -144,7 +144,7 @@ public class MenuService {
                 ),
                 new MenuSectionResponse(
                         "amari",
-                        "Amari",
+                        "Amari e Liquori",
                         "Selezione di amari e liquori per chiudere in bellezza.",
                         List.of(
                                 new MenuItemResponse("montenegro", "Montenegro", "", "", List.of(), "4 €"),
