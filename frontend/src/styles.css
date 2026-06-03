@@ -62,11 +62,11 @@ html {
 .category-nav-wrapper {
   position: sticky;
   top: 0;
-  z-index: 100;
-  background: var(--paper);
-  border-bottom: 1px solid rgba(23, 19, 19, 0.05);
+  z-index: 1000;
+  background: var(--soft);
+  border-bottom: 1px solid rgba(23, 19, 19, 0.1);
   margin-bottom: 40px;
-  padding: 12px 0;
+  padding: 16px 0;
   display: flex;
   align-items: center;
 }
@@ -106,7 +106,7 @@ html {
 .category-nav {
   display: flex;
   overflow-x: auto;
-  gap: 24px;
+  gap: 32px;
   scrollbar-width: none;
   padding: 0 45px; /* Space for indicators */
   justify-content: center;
@@ -115,33 +115,33 @@ html {
 
 @media (min-width: 901px) {
   .category-nav {
-    gap: 100px;
+    gap: 120px;
   }
 }
 
 @media (max-width: 900px) {
   .category-nav {
     justify-content: flex-start;
-    gap: 16px;
+    gap: 24px;
   }
 }
 
 .category-link {
   white-space: nowrap;
-  font-size: 0.7rem;
+  font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.15em;
   color: var(--ink);
   opacity: 0.4;
   transition: opacity 0.3s ease, color 0.3s ease;
-  padding: 4px 0;
+  padding: 8px 0;
   position: relative;
 }
 
 @media (min-width: 901px) {
   .category-link {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     letter-spacing: 0.25em;
   }
 }
@@ -358,12 +358,25 @@ html {
 }
 
 .site-header {
-  width: min(1320px, calc(100% - 48px));
-  margin: 0 auto;
+  top: 0;
+  z-index: 1100;
+  width: 100%;
+  padding: 16px 24px;
+  background: var(--paper);
+  border-bottom: 1px solid rgba(23, 19, 19, 0.05);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 24px;
+  transition: all 0.3s ease;
+}
+
+.hero .site-header {
+  background: transparent;
+  border-bottom: none;
+  width: min(1320px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 24px 0;
 }
 
 .header-actions {
@@ -844,18 +857,19 @@ html {
 
   .category-nav-wrapper {
     margin-bottom: 30px;
-    padding: 8px 0;
-    backdrop-filter: blur(10px);
-    background: rgba(251, 248, 242, 0.9);
+    padding: 12px 0;
+    background: var(--soft);
+    border-bottom: 1px solid rgba(23, 19, 19, 0.1);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
   }
 
   .category-nav {
-    gap: 12px;
+    gap: 24px;
     padding: 0 16px;
   }
 
   .category-link {
-    font-size: 0.65rem;
+    font-size: 0.8rem;
   }
 
 /* Branding & Typography */
