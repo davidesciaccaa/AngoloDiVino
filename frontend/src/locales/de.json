@@ -66,48 +66,32 @@
       "americano": { "name": "Americano", "description": "(roter Wermut, Campari, Soda)" },
       "bellini": { "name": "Bellini", "description": "(Prosecco, Pfirsichsaft)" },
       "garibaldi": { "name": "Garibaldi", "description": "(Campari, Orangensaft)" },
-      "negroni": {
-        "name": "Negroni",
-        "description": "(Gin, roter Wermut, Campari, Orange)"
-      },
-      "negroni_sbagliato": {
-        "name": "Negroni Sbagliato",
-        "description": "(Prosecco, Campari, roter Wermut)"
-      },
-      "martini_cocktail": {
-        "name": "Martini Cocktail",
-        "description": "(Gin, trockener Wermut, Limettenschale, Oliven)"
-      },
+      "negroni": { "name": "Negroni", "description": "(Gin, roter Wermut, Campari, Orangenscheibe)" },
+      "negroni_sbagliato": { "name": "Negroni Sbagliato", "description": "(roter Wermut, Campari, Prosecco, Orangenscheibe)" },
+      "martini_cocktail": { "name": "Martini Cocktail", "description": "(Gin, trockener Wermut, Limettenschale, Oliven)" },
       "mimosa": { "name": "Mimosa", "description": "(Prosecco, Orangensaft)" },
       "kir": { "name": "Kir", "description": "(stiller Weißwein, Crème de Cassis)" },
-      "kir_royale": { "name": "Kir Royale", "description": "(Champagner/Prosecco, Crème de Cassis)" },
+      "kir_royale": { "name": "Kir Royale", "description": "(Prosecco, Crème de Cassis)" },
       "rossini": { "name": "Rossini", "description": "(Prosecco, Erdbeere)" },
-      "aperol_spritz": {
-        "name": "Aperol Spritz",
-        "description": "(Prosecco, Aperol, Soda)"
-      },
-      "campari_spritz": {
-        "name": "Campari Spritz",
-        "description": "(Prosecco, Campari, Soda)"
-      },
+      "aperol_spritz": { "name": "Aperol Spritz", "description": "(Prosecco, Aperol, Soda, Orangenscheibe)" },
+      "campari_spritz": { "name": "Campari Spritz", "description": "(Prosecco, Campari, Soda, Orangenscheibe)" },
       "manhattan": { "name": "Manhattan", "description": "(Rye Whiskey, roter Wermut, Angostura, Kirsche)" },
-      "dry_manhattan": { "name": "Dry Manhattan", "description": "" },
-      "perfect_manhattan": { "name": "Perfect Manhattan", "description": "" },
-      "rob_roy": { "name": "Rob Roy", "description": "" },
-      "presidente": { "name": "Presidente", "description": "" },
-      "dry_martini": { "name": "Dry Martini", "description": "(Gin, trockener Wermut)" },
-      "vodka_martini": { "name": "Vodka Martini", "description": "(Wodka, trockener Wermut)" },
-      "sweet_martini": { "name": "Sweet Martini", "description": "(Gin, roter Wermut)" },
-      "perfect_martini": { "name": "Perfect Martini", "description": "(Gin, trockener & roter Wermut)" },
+      "dry_manhattan": { "name": "Dry Manhattan", "description": "(Rye Whiskey, trockener Wermut, Angostura, Zitronenschale)" },
+      "perfect_manhattan": { "name": "Perfect Manhattan", "description": "(Rye Whiskey, roter Wermut, trockener Wermut, Kirsche)" },
+      "rob_roy": { "name": "Rob Roy", "description": "(Scotch Whisky, roter Wermut, Angostura, Kirsche)" },
+      "dry_martini": { "name": "Dry Martini", "description": "(Gin, trockener Wermut, Zitronenschalenspritzer)" },
+      "vodka_martini": { "name": "Vodka Martini", "description": "(Wodka, trockener Wermut, Zitronenschalenspritzer)" },
+      "sweet_martini": { "name": "Sweet Martini", "description": "(Gin, roter Wermut, Kirsche)" },
+      "perfect_martini": { "name": "Perfect Martini", "description": "(Gin, roter Wermut, trockener Wermut, Kirsche)" },
 
       "black_russian": { "name": "Black Russian", "description": "(Wodka, Kahlua)" },
       "white_russian": { "name": "White Russian", "description": "(Wodka, Kahlua, Sahne)" },
-      "cosmopolitan": {
-        "name": "Cosmopolitan",
-        "description": "(Wodka, Triple Sec, Cranberry, Zitrone)"
-      },
+      "cosmopolitan": { "name": "Cosmopolitan", "description": "(Wodka, Triple Sec, Cranberry, Zitrone)" },
       "daiquiri": { "name": "Daiquiri", "description": "(Rum, Limetten- oder Zitronensaft, Zuckersirup)" },
       "french_connection": { "name": "French Connection", "description": "(Cognac, Disaronno)" },
+      "mexican_passion": { "name": "Mexican Passion", "description": "(Tequila Blanco, Triple Sec, Limettensaft, Passionsfruchtsaft, Zitronenscheibe)" },
+      "lynchburg_lemonade": { "name": "Lynchburg Lemonade", "description": "(Jack Daniel's, Triple Sec, Zitronensaft, Sprite)" },
+      "sex_on_the_beach": { "name": "Sex on the Beach", "description": "(Vodka, Pfirsichlikör, Orangensaft, Cranberrysaft)" },
       "gin_fizz": { "name": "Gin Fizz", "description": "(Gin, Zitronensaft, Zuckersirup, Sodawasser)" },
       "godfather": { "name": "Godfather", "description": "(Whisky, Disaronno)" },
       "godmother": { "name": "Godmother", "description": "(Wodka, Disaronno)" },
@@ -117,18 +101,15 @@
       "margarita": { "name": "Margarita", "description": "(Tequila, Triple Sec, Limetten- oder Zitronensaft)" },
       "orgasm": { "name": "Orgasm", "description": "(Baileys, Amaretto, Kahlua)" },
       "melon_ball": { "name": "Melon Ball", "description": "(Midori, Wodka, Orangensaft)" },
-      "mexican_passion": { "name": "Mexican Passion", "description": "(Tequila Blanco/Passoa, Triple Sec, Limetten- oder Zitronensaft, Passionsfruchtfleisch, Ananas, Limette)" },
       "paradise": { "name": "Paradise", "description": "(Gin, Apricot Brandy, Orangensaft)" },
       "rusty_nail": { "name": "Rusty Nail", "description": "(Scotch Whisky, Drambuie)" },
       "sidecar": { "name": "Sidecar", "description": "(Cognac, Triple Sec oder Cointreau, Zitronensaft)" },
       "stinger": { "name": "Stinger", "description": "(Brandy, weiße Crème de Menthe)" },
 
       "cuba_libre": { "name": "Cuba Libre", "description": "(Rum, Coca-Cola, Limettensaft)" },
-      "lynchburg_lemonade": { "name": "Lynchburg Lemonade", "description": "(Jack Daniel's, Triple Sec, Zuckersirup, Zitronensaft, Sprite)" },
       "pina_colada": { "name": "Pina Colada", "description": "(Rum, Kokoscreme, Ananas)" },
       "pina_colada_varianti": { "name": "Pina-Colada-Varianten", "description": "(Erdbeere, Banane, usw.)" },
       "screwdriver": { "name": "Screwdriver", "description": "(Wodka, Orangensaft)" },
-      "sex_on_the_beach": { "name": "Sex on the Beach", "description": "(Wodka, Pfirsichlikör, Orangensaft, Cranberrysaft)" },
       "tequila_sunrise": { "name": "Tequila Sunrise", "description": "(Tequila, Orangensaft, Grenadine)" },
 
       "long_island_iced_tea": {
