@@ -105,11 +105,11 @@ public class MenuService {
                                 new MenuItemResponse("tequila_sunrise", "Tequila sunrise", "Long Drinks", "(Tequila, Succo d'arancia, Granatina)", List.of(), "8 €"),
 
                                 // Iced Tea (6/7 euro)
-                                new MenuItemResponse("long_island_iced_tea", "Long Island Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("texas_iced_tea", "Texas Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Tequila, Sweet & Sour, Top of Coke)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("japanese_iced_tea", "Japanese Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("italian_iced_tea", "Italian ice tea", "Iced Tea", "(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)", List.of(), "6 € / 7 €"),
-                                new MenuItemResponse("california_iced_tea", "California ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d'arancia)", List.of(), "6 € / 7 €"),
+                                new MenuItemResponse("long_island_iced_tea", "Long Island Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)", List.of(), "8 €"),
+                                new MenuItemResponse("texas_iced_tea", "Texas Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Tequila, Sweet & Sour, Top of Coke)", List.of(), "8 €"),
+                                new MenuItemResponse("japanese_iced_tea", "Japanese Ice tea", "Iced Tea", "(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)", List.of(), "8 €"),
+                                new MenuItemResponse("italian_iced_tea", "Italian ice tea", "Iced Tea", "(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)", List.of(), "8 €"),
+                                new MenuItemResponse("california_iced_tea", "California ice tea", "Iced Tea", "(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d'arancia)", List.of(), "8 €"),
 
                                 // Pestati e Frozen (8 euro)
                                 new MenuItemResponse("caipirinha", "Caipirinha", "Pestati e Frozen", "(Cachaca, Lime, Zucchero di canna)", List.of(), "8 €"),
@@ -134,11 +134,11 @@ public class MenuService {
                                 new MenuItemResponse("verdeca_itria", "Verdeca Valle d'Itria", "", "Fresco, fruttato e con una piacevole sapidità. Cantina Verdeca. 750ml", List.of(), "5 € / 18 €"),
                                 // Rossi
                                 new MenuItemResponse("tacco_barocco_negroamaro", "Tacco Barocco - Negroamaro", "Rossi", "Rosso rubino intenso con sentori di piccoli frutti rossi. Cantina Sampietrana. 750ml", List.of(), "5 € / 22 €"),
-                                new MenuItemResponse("tacco_barocco_puglia_igp", "Tacco Barocco - Puglia IGP", "", "Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml", List.of(), "6 € - 20 €"),
+                                new MenuItemResponse("tacco_barocco_puglia_igp", "Tacco Barocco - Puglia IGP", "", "Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml", List.of(), "6 € - 24 €"),
                                 // Rosati
                                 new MenuItemResponse("rosato_salento", "Rosato del Salento", "Rosati", "Fresco, fruttato, con note di ciliegia e lampone. 750ml", List.of(), "5 € / 18 €"),
                                 // Bollicine
-                                new MenuItemResponse("prosecco_doc", "Prosecco D.O.C.", "Bollicine", "Perlage fine e persistente, ideale come aperitivo. 750ml", List.of(), "4 € / 16 €")
+                                new MenuItemResponse("prosecco_doc", "Prosecco D.O.C.", "Bollicine", "Perlage fine e persistente, ideale come aperitivo. 750ml", List.of(), "4 € / 18 €")
                         )
                 ),
                 new MenuSectionResponse(

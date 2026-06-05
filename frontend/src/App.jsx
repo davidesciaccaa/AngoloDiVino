@@ -102,11 +102,11 @@ const fallbackMenuSections = [
       { id: 'tequila_sunrise', name: 'Tequila sunrise', subtitle: 'Long Drinks', description: '(Tequila, Succo d\'arancia, Granatina)', notes: [], price: '8 €' },
 
       // Iced Tea (6/7 euro)
-      { id: 'long_island_iced_tea', name: 'Long Island Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)', notes: [], price: '6 € / 7 €' },
-      { id: 'texas_iced_tea', name: 'Texas Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Tequila, Sweet & Sour, Top of Coke)', notes: [], price: '6 € / 7 €' },
-      { id: 'japanese_iced_tea', name: 'Japanese Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)', notes: [], price: '6 € / 7 €' },
-      { id: 'italian_iced_tea', name: 'Italian ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)', notes: [], price: '6 € / 7 €' },
-      { id: 'california_iced_tea', name: 'California ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d\'arancia)', notes: [], price: '6 € / 7 €' },
+      { id: 'long_island_iced_tea', name: 'Long Island Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Top of Coke)', notes: [], price: '8 €' },
+      { id: 'texas_iced_tea', name: 'Texas Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Tequila, Sweet & Sour, Top of Coke)', notes: [], price: '8 €' },
+      { id: 'japanese_iced_tea', name: 'Japanese Ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Midori, Sweet & Sour, Lemonsoda)', notes: [], price: '8 €' },
+      { id: 'italian_iced_tea', name: 'Italian ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Amaretto, Sweet & Sour, Lemonsoda)', notes: [], price: '8 €' },
+      { id: 'california_iced_tea', name: 'California ice tea', subtitle: 'Iced Tea', description: '(Vodka, Gin, Rum, Triple Sec, Sweet & Sour, Succo d\'arancia)', notes: [], price: '8 €' },
 
       // Pestati e Frozen (8 euro)
       { id: 'caipirinha', name: 'Caipirinha', subtitle: 'Pestati e Frozen', description: '(Cachaca, Lime, Zucchero di canna)', notes: [], price: '8 €' },
@@ -137,9 +137,9 @@ const fallbackMenuSections = [
       { id: 'verdeca_salento', name: 'Verdeca del Salento', subtitle: '', description: 'Vino autoctono dal bouquet delicato e sapore secco. Cantina Verdeca. 750ml', notes: [], price: '5 € / 18 €' },
       { id: 'verdeca_itria', name: 'Verdeca Valle d\'Itria', subtitle: '', description: 'Fresco, fruttato e con una piacevole sapidità. Cantina Verdeca. 750ml', notes: [], price: '5 € / 18 €' },
       { id: 'tacco_barocco_negroamaro', name: 'Tacco Barocco - Negroamaro', subtitle: 'Rossi', description: 'Rosso rubino intenso con sentori di piccoli frutti rossi. Cantina Sampietrana. 750ml', notes: [], price: '5 € / 22 €' },
-      { id: 'tacco_barocco_puglia_igp', name: 'Tacco Barocco - Puglia IGP', subtitle: '', description: 'Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml', notes: [], price: '6 € - 20 €' },
+      { id: 'tacco_barocco_puglia_igp', name: 'Tacco Barocco - Puglia IGP', subtitle: '', description: 'Corposo ed equilibrato, perfetto per accompagnare taglieri. Cantina Sampietrana. 750ml', notes: [], price: '6 € - 24 €' },
       { id: 'rosato_salento', name: 'Rosato del Salento', subtitle: 'Rosati', description: 'Fresco, fruttato, con note di ciliegia e lampone. 750ml', notes: [], price: '5 € / 18 €' },
-      { id: 'prosecco_doc', name: 'Prosecco D.O.C.', subtitle: 'Bollicine', description: 'Perlage fine e persistente, ideale come aperitivo. 750ml', notes: [], price: '4 € / 16 €' }
+      { id: 'prosecco_doc', name: 'Prosecco D.O.C.', subtitle: 'Bollicine', description: 'Perlage fine e persistente, ideale come aperitivo. 750ml', notes: [], price: '4 € / 18 €' }
     ]
   },
   {
