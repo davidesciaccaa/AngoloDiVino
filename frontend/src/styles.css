@@ -722,6 +722,16 @@ html {
   overflow-wrap: anywhere;
 }
 
+.hours-panel__links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hours-panel__links a + a {
+  margin-top: 12px;
+}
+
 @media (max-width: 900px) {
   .hero h1 {
     font-size: 4rem;

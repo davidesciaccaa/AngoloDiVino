@@ -373,7 +373,10 @@ function App() {
             <p className="section__eyebrow">{t('contacts.eyebrow')}</p>
             <h1>{t('contacts.title')}</h1>
             <p>{t('contacts.hours')}</p>
-            <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
+            <div className="hours-panel__links">
+              <a href={`tel:${t('contacts.phone')}`}>{t('contacts.phone')}</a>
+              <a href="mailto:ilbistrodeidotti19@gmail.com">ilbistrodeidotti19@gmail.com</a>
+            </div>
           </div>
         </section>
       </div>
