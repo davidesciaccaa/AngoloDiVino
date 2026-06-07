@@ -115,7 +115,7 @@ html {
 
 @media (min-width: 901px) {
   .category-nav {
-    gap: 120px;
+    gap: clamp(32px, 5vw, 64px);
   }
 }
 
@@ -141,8 +141,8 @@ html {
 
 @media (min-width: 901px) {
   .category-link {
-    font-size: 1.2rem;
-    letter-spacing: 0.25em;
+    font-size: 1.05rem;
+    letter-spacing: 0.15em;
   }
 }
 
@@ -367,7 +367,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  flex-wrap: wrap;
+  gap: 16px;
   transition: all 0.3s ease;
 }
 
@@ -895,9 +896,9 @@ html {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 22px;
+  gap: clamp(12px, 2vw, 24px);
   font-family: var(--font-brand), Georgia, serif;
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 700;
 }
 
@@ -1095,10 +1096,9 @@ html {
 .lang-flag {
   font-size: 0.9rem;
 }
-
 @media (max-width: 1320px) and (min-width: 901px) {
   .brand {
-    font-size: 1.45rem;
+    font-size: 1.35rem;
   }
 
   .site-nav {
