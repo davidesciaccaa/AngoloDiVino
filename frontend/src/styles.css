@@ -474,7 +474,7 @@ html {
   max-width: 900px;
   margin: 0;
   font-family: 'Playfair Display', serif;
-  font-size: clamp(3rem, 8vw, 6.2rem);
+  font-size: clamp(2.4rem, 4.5vw, 4.8rem);
   line-height: 0.9;
   font-weight: 800;
   font-style: normal;
@@ -886,7 +886,7 @@ html {
 /* Branding & Typography */
 .brand {
   font-family: var(--font-brand), Georgia, serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   letter-spacing: 0.05em;
   font-weight: 700;
   flex-shrink: 0;
@@ -896,9 +896,9 @@ html {
 .site-nav {
   display: flex;
   align-items: center;
-  gap: clamp(12px, 2vw, 24px);
+  gap: clamp(10px, 1.5vw, 20px);
   font-family: var(--font-brand), Georgia, serif;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
 }
 
@@ -1042,7 +1042,7 @@ html {
 }
 
 .hero h1 {
-  font-size: clamp(2.8rem, 5.5vw, 6rem);
+  font-size: clamp(2.4rem, 4.5vw, 4.8rem);
 }
 
 .hero__copy {
@@ -1098,12 +1098,12 @@ html {
 }
 @media (max-width: 1320px) and (min-width: 901px) {
   .brand {
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
 
   .site-nav {
-    gap: 14px;
-    font-size: 0.88rem;
+    gap: 12px;
+    font-size: 0.75rem;
   }
 
   .language-switcher {

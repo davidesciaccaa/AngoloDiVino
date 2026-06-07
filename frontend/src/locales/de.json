@@ -1,25 +1,25 @@
 {
   "nav": {
     "menu": "Menü",
-    "aperitivo": "Aperitivo",
+    "aperitivo": "Aperitif",
     "drink": "Cocktails",
     "vini": "Weine",
     "amari": "Magenbitter & Liköre",
     "superalcolici": "Spirituosen",
     "bevande": "Softdrinks",
     "contatti": "Kontakt"
-  },
-  "hero": {
+    },
+    "hero": {
     "eyebrow": "Cocktailbar & ausgewählte Weine",
     "copy": "Einladende Drinks, edle Weine und kleine Häppchen für Abende, die ohne Eile beginnen.",
     "button": "Menü entdecken"
-  },
-  "menu": {
-    "title": "Eine exzellente Auswahl.",
-    "fallback_note": "Backend nicht erreichbar: Sie sehen das lokale Menü.",
+    },
+    "menu": {
+    "title": "Eine exklusive Auswahl.",
+    "fallback_note": "Backend nicht erreichbar: Lokales Menü wird angezeigt.",
     "sections": {
       "aperitivo": {
-        "title": "Aperitivo",
+        "title": "Aperitif",
         "description": "Kleine Häppchen, um den Abend entspannt zu beginnen."
       },
       "drink": {

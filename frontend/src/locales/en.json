@@ -1,7 +1,7 @@
 {
   "nav": {
     "menu": "Menu",
-    "aperitivo": "Aperitivo",
+    "aperitivo": "Aperitif",
     "drink": "Cocktails",
     "vini": "Wines",
     "amari": "Bitters & Liqueurs",
@@ -19,7 +19,7 @@
     "fallback_note": "Backend unreachable: showing local menu.",
     "sections": {
       "aperitivo": {
-        "title": "Aperitivo",
+        "title": "Aperitif",
         "description": "Small bites designed to open the evening with ease."
       },
       "drink": {
