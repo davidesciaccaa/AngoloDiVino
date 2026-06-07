@@ -22,7 +22,7 @@ public class MenuService {
                                         "3 €"
                                 ),
                                 new MenuItemResponse(
-                                        "tagliere misto",
+                                        "tagliere",
                                         "Tagliere misto",
                                         "",
                                         "",
@@ -30,7 +30,7 @@ public class MenuService {
                                         "10 €"
                                 ),
                                 new MenuItemResponse(
-                                        "fritto misto",
+                                        "fritti",
                                         "Fritto misto",
                                         "",
                                         "",
