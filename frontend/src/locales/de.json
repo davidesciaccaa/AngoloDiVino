@@ -52,11 +52,11 @@
       },
       "tagliere": {
         "name": "Platte",
-        "description": ""
+        "description": "Auswahl an lokalem Aufschnitt und Käse."
       },
       "fritti": {
         "name": "Frittierter Mix",
-        "description": ""
+        "description": "Auswahl an handwerklich hergestellten frittierten Häppchen."
       },
       "tris": {
         "name": "Trio",
@@ -153,7 +153,7 @@
       },
       "florida": {
         "name": "Florida",
-        "description": "(Grapuitsaft, Orangensaft, Limetten- oder Zitronensaft, Zuckersirup, Sodawasser)"
+        "description": "(Grapefruitsaft, Orangensaft, Limetten- oder Zitronensaft, Zuckersirup, Sodawasser)"
       },
       "shirley_temple": {
         "name": "Shirley Temple",
@@ -344,7 +344,7 @@
         "pina_colada_mix": "Pina-Colada-Mix",
         "sciroppo_di_fragola": "Erdbeersirup",
         "succo_di_lime_o_limone": "Limetten- oder Zitronensaft",
-        "succo_di_pompelmo": "Grapuitsaft",
+        "succo_di_pompelmo": "Grapefruitsaft",
         "sciroppo_di_zucchero": "Zuckersirup",
         "soda_water": "Sodawasser",
         "ginger_ale": "Ginger Ale",
