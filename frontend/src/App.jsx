@@ -379,6 +379,17 @@ function App() {
             </div>
           </div>
         </section>
+
+        <footer className="site-footer">
+          <a 
+            href="https://www.linkedin.com/in/davide-sciacca-a6627728a/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="footer-credit"
+          >
+            Crafted by Davide Sciacca
+          </a>
+        </footer>
       </div>
     </main>
   );
