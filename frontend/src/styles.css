@@ -445,10 +445,15 @@ html {
   opacity: 1;
 }
 
+.hero .brand,
+.hero .site-nav a {
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.3);
+}
+
 .hero__content {
   width: min(1180px, 100%);
   margin: 0 auto;
-  padding: 96px 0 58px;
+  padding: 120px 0 60px; /* Increased top padding for better breathing room */
 }
 
 .hero__eyebrow,
@@ -475,17 +480,17 @@ html {
   margin: 0;
   font-family: 'Playfair Display', serif;
   font-size: clamp(2.4rem, 4.5vw, 4.8rem);
-  line-height: 0.9;
+  line-height: 1.1; /* Improved from 0.9 for better legibility */
   font-weight: 800;
   font-style: normal;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em; /* Slightly more relaxed */
   text-transform: none;
 }
 
 .hero__copy {
   max-width: 620px;
   margin: 22px 0 0;
-  color: rgba(255, 255, 255, 0.86);
+  color: var(--white); /* Max contrast */
   font-size: 1.2rem;
   line-height: 1.6;
 }
@@ -801,7 +806,7 @@ html {
   }
 
   .hero__content {
-    padding: 40px 0 30px;
+    padding: 60px 0 40px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -919,6 +924,12 @@ html {
   line-height: 0.8;
   vertical-align: middle;
   font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.hero .brand-v {
+  color: #c02d53; /* More vibrant red for the hero section */
+  text-shadow: 0 0 15px rgba(192, 45, 83, 0.4); /* Subtle red glow */
 }
 
 .hero h1 {
@@ -1140,8 +1151,8 @@ html {
 @media (max-width: 640px) {
   .hero {
     background:
-      linear-gradient(to bottom, rgba(18, 11, 12, 0.8) 0%, rgba(18, 11, 12, 0.4) 50%, rgba(18, 11, 12, 0) 100%),
-      var(--hero-image) center bottom / 100% auto no-repeat #120b0c;
+      linear-gradient(rgba(18, 11, 12, 0.6), rgba(18, 11, 12, 0.6)),
+      var(--hero-image) center / cover no-repeat #120b0c;
   }
 
   .language-switcher {
