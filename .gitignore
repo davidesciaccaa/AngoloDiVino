@@ -25,6 +25,7 @@ frontend/.env.*
 !frontend/.env.example
 
 # Backend
+backend/data/
 backend/target/
 backend/.mvn/wrapper/maven-wrapper.jar
 backend/.settings/

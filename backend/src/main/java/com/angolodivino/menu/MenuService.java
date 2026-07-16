@@ -1,12 +1,35 @@
 package com.angolodivino.menu;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
 public class MenuService {
 
+    /** Prices are free text ("5 € / 22 €", "2,50 €", "-"), but never markup. */
+    private static final Pattern PRICE_PATTERN = Pattern.compile("^[0-9 ,./€-]{1,32}$");
+
+    private final MenuOverridesStore overridesStore;
+
+    public MenuService(MenuOverridesStore overridesStore) {
+        this.overridesStore = overridesStore;
+    }
+
+    /**
+     * The public menu: hardcoded content with the prices from the overrides file applied on top.
+     * The file is re-read here so price edits take effect without a restart.
+     */
     public List<MenuSectionResponse> findMenuSections() {
+        return applyPriceOverrides(defaultMenuSections(), overridesStore.readPrices());
+    }
+
+    public List<MenuSectionResponse> defaultMenuSections() {
         return List.of(
                 new MenuSectionResponse(
                         "aperitivo",
@@ -245,5 +268,76 @@ public class MenuService {
                 .findFirst()
                 .map(MenuSectionResponse::items)
                 .orElseGet(List::of);
+    }
+
+    /**
+     * Merges the requested prices into the overrides file and returns the resulting menu.
+     * Prices equal to the hardcoded one are dropped, so the file only ever holds real changes
+     * and an item reverts to its default simply by being set back to it.
+     *
+     * @throws IllegalArgumentException if an item id is unknown or a price is malformed
+     */
+    public List<MenuSectionResponse> updatePrices(Map<String, String> requestedPrices) {
+        Map<String, String> defaults = defaultPrices();
+        Set<String> unknownIds = new TreeSet<>();
+        Set<String> invalidPrices = new TreeSet<>();
+
+        Map<String, String> sanitized = new LinkedHashMap<>();
+        requestedPrices.forEach((id, price) -> {
+            if (id == null || !defaults.containsKey(id)) {
+                unknownIds.add(String.valueOf(id));
+                return;
+            }
+            String trimmed = price == null ? "" : price.trim();
+            if (!PRICE_PATTERN.matcher(trimmed).matches()) {
+                invalidPrices.add(id);
+                return;
+            }
+            sanitized.put(id, trimmed);
+        });
+
+        if (!unknownIds.isEmpty()) {
+            throw new IllegalArgumentException("Voci di menù sconosciute: " + String.join(", ", unknownIds));
+        }
+        if (!invalidPrices.isEmpty()) {
+            throw new IllegalArgumentException("Prezzi non validi per: " + String.join(", ", invalidPrices));
+        }
+
+        Map<String, String> overrides = new LinkedHashMap<>(overridesStore.readPrices());
+        overrides.putAll(sanitized);
+        overrides.entrySet().removeIf(entry -> !defaults.containsKey(entry.getKey())
+                || entry.getValue().equals(defaults.get(entry.getKey())));
+
+        overridesStore.writePrices(overrides);
+        return applyPriceOverrides(defaultMenuSections(), overrides);
+    }
+
+    /** Hardcoded prices keyed by item id; item ids are unique across sections. */
+    public Map<String, String> defaultPrices() {
+        return defaultMenuSections().stream()
+                .flatMap(section -> section.items().stream())
+                .collect(Collectors.toMap(MenuItemResponse::id, MenuItemResponse::price, (first, second) -> first,
+                        LinkedHashMap::new));
+    }
+
+    private static List<MenuSectionResponse> applyPriceOverrides(List<MenuSectionResponse> sections,
+            Map<String, String> prices) {
+        if (prices.isEmpty()) {
+            return sections;
+        }
+
+        return sections.stream()
+                .map(section -> new MenuSectionResponse(
+                        section.id(),
+                        section.title(),
+                        section.description(),
+                        section.items().stream().map(item -> {
+                            String price = prices.get(item.id());
+                            return price == null || price.equals(item.price())
+                                    ? item
+                                    : new MenuItemResponse(item.id(), item.name(), item.subtitle(),
+                                            item.description(), item.notes(), price);
+                        }).toList()))
+                .toList();
     }
 }

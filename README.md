@@ -38,6 +38,7 @@ URL principali:
 - Health check: `http://localhost:8080/actuator/health`
 - API stato: `http://localhost:8080/api/status`
 - API menu: `http://localhost:8080/api/menu/sections`
+- Pannello admin: `http://localhost:5173/admin` (vedi [Pannello admin](#pannello-admin-gestione-prezzi))
 
 ## Configurazione CORS
 
@@ -59,6 +60,40 @@ VITE_API_BASE_URL=http://localhost:8080/api
 ```
 
 Senza `.env`, il frontend usa `/api`; in sviluppo Vite fa proxy verso `http://localhost:8080`.
+
+## Pannello admin (gestione prezzi)
+
+Il proprietario modifica i prezzi del menù da `http://localhost:5173/admin`. È una pagina separata, non raggiungibile dai link pubblici del sito.
+
+Il pannello è **disabilitato finché non imposti `ADMIN_PASSWORD`**: senza quella variabile ogni endpoint `/api/admin/**` risponde `503`.
+
+```bash
+cd backend
+ADMIN_PASSWORD='una-password-lunga' mvn spring-boot:run
+```
+
+Variabili disponibili:
+
+| Variabile | Default | Significato |
+| --- | --- | --- |
+| `ADMIN_PASSWORD` | *(vuota)* | Password del pannello. Vuota = admin disattivato. |
+| `ADMIN_SESSION_TTL` | `8h` | Durata del token di sessione. |
+| `MENU_OVERRIDES_FILE` | `data/menu-overrides.json` | File JSON con i prezzi modificati. |
+
+Come funziona:
+
+- I prezzi modificati finiscono in `menu-overrides.json`, letto a ogni richiesta del menù: niente database e nessun riavvio dopo un salvataggio.
+- Se il file non esiste (o è illeggibile) valgono i prezzi hardcodati in `MenuService.java`. Rimettere un prezzo al valore originale ne rimuove la voce dal file.
+- Il login (`POST /api/admin/login`) restituisce un token opaco tenuto **solo in memoria**: si perde a ogni riavvio del backend. Il browser lo tiene in `sessionStorage`, quindi la sessione muore chiudendo il browser.
+- Il fallback `fallbackMenuSections` in `App.jsx` resta invariato e serve solo se il backend è irraggiungibile.
+
+Con Docker, passa la password al compose (per esempio con un file `.env` accanto a `compose.yaml`):
+
+```bash
+ADMIN_PASSWORD='una-password-lunga' docker compose up --build
+```
+
+Il volume `menu-data` conserva `menu-overrides.json` tra un riavvio e l'altro dei container.
 
 ## Avvio con Docker
 
@@ -96,11 +131,13 @@ mvn package
 .
 ├── backend
 │   ├── src/main/java/com/angolodivino
+│   │   ├── admin
 │   │   ├── config
 │   │   ├── menu
 │   │   └── status
 │   └── src/main/resources
 ├── frontend
+│   ├── src/admin
 │   ├── src/api
 │   ├── src/assets
 │   └── src/components

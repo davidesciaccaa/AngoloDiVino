@@ -1,0 +1,511 @@
+/* Admin panel: same quiet-luxury palette and type as the public site (see styles.css :root). */
+
+.admin-shell {
+  min-height: 100dvh;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 0 24px 96px;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.admin-shell--centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 24px;
+}
+
+.admin-eyebrow {
+  margin: 0 0 6px;
+  color: var(--gold);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+/* --- Login --- */
+
+.admin-login {
+  width: 100%;
+  max-width: 380px;
+  background: var(--white);
+  border: 1px solid rgba(23, 19, 19, 0.08);
+  border-radius: 10px;
+  padding: 32px;
+  box-shadow: 0 24px 70px rgba(23, 19, 19, 0.08);
+}
+
+.admin-login__title {
+  margin: 0 0 6px;
+  font-family: var(--font-serif), serif;
+  font-size: 1.6rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.admin-login__hint {
+  margin: 0 0 24px;
+  font-size: 0.85rem;
+  color: rgba(23, 13, 13, 0.6);
+}
+
+.admin-field {
+  display: block;
+  margin-bottom: 20px;
+}
+
+.admin-field__label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(23, 13, 13, 0.55);
+}
+
+.admin-field__input {
+  width: 100%;
+  min-height: 46px;
+  padding: 10px 14px;
+  border: 1px solid rgba(23, 19, 19, 0.18);
+  border-radius: 6px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.admin-field__input:focus-visible,
+.admin-price-editor__input:focus-visible {
+  outline: 2px solid var(--wine-premium);
+  outline-offset: 1px;
+}
+
+/* --- Top bar --- */
+
+.admin-topbar-wrapper {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  margin-bottom: 28px;
+  background: var(--paper);
+  border-bottom: 1px solid rgba(23, 19, 19, 0.1);
+}
+
+.admin-topbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 0;
+}
+
+.admin-topbar-wrapper .admin-feedback {
+  margin: 0 0 14px;
+}
+
+.admin-topbar__title {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.admin-topbar__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.admin-pending {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(23, 13, 13, 0.45);
+}
+
+.admin-pending--active {
+  color: var(--wine-premium);
+}
+
+/* --- Buttons --- */
+
+.admin-button {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: none;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.admin-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.admin-button--primary {
+  background: var(--wine-premium);
+  border-color: var(--wine-premium);
+  color: var(--white);
+  width: 100%;
+}
+
+.admin-topbar .admin-button--primary {
+  width: auto;
+}
+
+.admin-button--primary:hover:not(:disabled) {
+  background: var(--wine);
+}
+
+.admin-button--ghost {
+  border-color: rgba(23, 19, 19, 0.2);
+}
+
+.admin-button--ghost:hover:not(:disabled) {
+  border-color: var(--wine-premium);
+  color: var(--wine-premium);
+}
+
+.admin-button--quiet {
+  color: rgba(23, 13, 13, 0.55);
+}
+
+.admin-button--quiet:hover:not(:disabled) {
+  color: var(--wine-premium);
+}
+
+/* --- Feedback --- */
+
+.admin-feedback {
+  margin: 0 0 20px;
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-left: 3px solid;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.admin-feedback--success {
+  border-color: var(--green);
+  background: rgba(36, 84, 70, 0.08);
+  color: var(--green);
+}
+
+.admin-feedback--error {
+  border-color: var(--coral);
+  background: rgba(217, 95, 73, 0.08);
+  color: #a3341f;
+}
+
+.admin-boot {
+  padding: 40px 0;
+  color: rgba(23, 13, 13, 0.55);
+  font-size: 0.9rem;
+}
+
+.admin-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 24px 0;
+}
+
+/* --- Menu, mirroring the public layout --- */
+
+.admin-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+}
+
+.admin-section__header {
+  margin-bottom: 24px;
+}
+
+.admin-section__title {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.admin-section__description {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(23, 13, 13, 0.6);
+}
+
+.admin-item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.admin-item {
+  padding: 10px 12px;
+  border-bottom: 1px solid rgba(23, 19, 19, 0.06);
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.admin-item:hover {
+  background: var(--soft);
+}
+
+.admin-item--dirty {
+  background: rgba(185, 137, 45, 0.08);
+  box-shadow: inset 3px 0 0 var(--gold);
+}
+
+.admin-item__subtitle {
+  margin: 0 0 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.admin-item__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.admin-item__name {
+  margin: 0;
+  font-family: var(--font-serif), serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.admin-item__description {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: rgba(23, 13, 13, 0.6);
+}
+
+.admin-item__notes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 6px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(23, 13, 13, 0.45);
+}
+
+.admin-item__dirty-note {
+  margin: 6px 0 0;
+  font-size: 0.75rem;
+  color: #8a6520;
+}
+
+.admin-item__dirty-note strong {
+  font-family: var(--font-brand), serif;
+}
+
+/* --- Inline price editing --- */
+
+.admin-price {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-shrink: 0;
+  padding: 4px 8px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background: none;
+  color: var(--ink);
+  font-family: var(--font-brand), serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.admin-price__value {
+  border-bottom: 1px dashed rgba(23, 19, 19, 0.3);
+}
+
+.admin-price:hover {
+  border-color: rgba(123, 30, 58, 0.3);
+  background: var(--white);
+}
+
+.admin-price:hover .admin-price__value {
+  border-bottom-color: var(--wine-premium);
+}
+
+.admin-price__pencil {
+  width: 11px;
+  height: 11px;
+  flex-shrink: 0;
+  color: rgba(23, 13, 13, 0.3);
+  transition: color 0.2s ease;
+}
+
+.admin-price:hover .admin-price__pencil {
+  color: var(--wine-premium);
+}
+
+.admin-price--dirty {
+  color: var(--wine-premium);
+}
+
+.admin-price:focus-visible {
+  outline: 2px solid var(--wine-premium);
+  outline-offset: 1px;
+}
+
+/* Kept compact so opening the editor barely changes the row height. */
+.admin-price-editor {
+  position: relative;
+  flex-shrink: 0;
+  width: 230px;
+}
+
+/* Floats above the input: names the item being edited without pushing the layout around. */
+.admin-price-editor__context {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  right: 0;
+  z-index: 5;
+  margin: 0;
+  padding: 6px 10px;
+  border-radius: 4px;
+  background: var(--ink);
+  color: var(--paper);
+  white-space: nowrap;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  box-shadow: 0 10px 30px rgba(23, 19, 19, 0.18);
+}
+
+.admin-price-editor__context-path {
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.admin-price-editor__row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.admin-price-editor__input {
+  width: 100%;
+  min-height: 38px;
+  padding: 6px 10px;
+  border: 1px solid rgba(23, 19, 19, 0.18);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-brand), serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.admin-price-editor__input--invalid {
+  border-color: var(--coral);
+}
+
+.admin-icon-button {
+  min-width: 34px;
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(23, 19, 19, 0.18);
+  border-radius: 4px;
+  background: var(--white);
+  color: rgba(23, 13, 13, 0.6);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.admin-icon-button:hover {
+  border-color: var(--wine-premium);
+  color: var(--wine-premium);
+}
+
+.admin-icon-button--confirm {
+  background: var(--wine-premium);
+  border-color: var(--wine-premium);
+  color: var(--white);
+}
+
+.admin-icon-button--confirm:hover {
+  background: var(--wine);
+  border-color: var(--wine);
+  color: var(--white);
+}
+
+.admin-price-editor__error {
+  margin: 6px 0 0;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #a3341f;
+  text-align: right;
+}
+
+@media (max-width: 720px) {
+  .admin-shell {
+    padding: 0 16px 80px;
+  }
+
+  .admin-topbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-topbar__actions {
+    width: 100%;
+  }
+
+  .admin-item__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .admin-price-editor {
+    width: 100%;
+  }
+
+  .admin-price-editor__context {
+    right: auto;
+    left: 0;
+    white-space: normal;
+  }
+}
