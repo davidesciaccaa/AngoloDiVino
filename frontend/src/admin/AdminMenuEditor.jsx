@@ -1,230 +1,41 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
-import { adminLogout, fetchAdminMenuSections, saveAdminPrices } from '../api/adminApi.js';
-import { PriceField } from './PriceField.jsx';
+import { useCallback, useEffect, useState } from 'react';
+import { adminLogout, createAdminMenuItem, deleteAdminMenuItem, fetchAdminMenuSections, updateAdminMenuItem } from '../api/adminApi.js';
 
-/**
- * The public menu leaves the subtitle blank on items that continue the previous subcategory
- * (e.g. the wines after "Bianchi"). Carry it forward so every row can name its own group.
- */
-function withEffectiveSubcategories(items) {
-  let current = '';
-  return items.map((item) => {
-    if (item.subtitle) {
-      current = item.subtitle;
-    }
-    return { ...item, effectiveSubtitle: current };
-  });
+const empty = (sectionId = '') => ({ sectionId, name: '', subtitle: '', description: '', notes: '', price: '' });
+const numericValue = (value) => String(value).match(/\d+(?:[.,]\d+)?/)?.[0]?.replace(',', '.') ?? '';
+const price = (value) => `${Number(numericValue(value)).toLocaleString('it-IT', { minimumFractionDigits: Number(numericValue(value)) % 1 ? 2 : 0, maximumFractionDigits: 2 })} €`;
+
+function ItemForm({ sections, initial, onSave, onCancel, saving }) {
+  const [form, setForm] = useState(initial);
+  const [error, setError] = useState('');
+  const set = (key) => (event) => setForm((old) => ({ ...old, [key]: event.target.value }));
+  function submit(event) {
+    event.preventDefault();
+    const value = form.price.replace(',', '.');
+    if (!/^\d+(?:\.\d{1,2})?$/.test(value) || Number(value) <= 0) { setError('Inserisci un prezzo numerico valido.'); return; }
+    onSave({ ...form, price: Number(value), notes: form.notes.split('\n').map((note) => note.trim()).filter(Boolean) });
+  }
+  return <form className="admin-item-form" onSubmit={submit}>
+    <label className="admin-field"><span className="admin-field__label">Sezione</span><select className="admin-field__input" value={form.sectionId} onChange={set('sectionId')}>{sections.map((section) => <option key={section.id} value={section.id}>{section.title}</option>)}</select></label>
+    <label className="admin-field"><span className="admin-field__label">Nome</span><input required maxLength="120" className="admin-field__input" value={form.name} onChange={set('name')} /></label>
+    <label className="admin-field"><span className="admin-field__label">Categoria / sottocategoria</span><input maxLength="80" className="admin-field__input" value={form.subtitle} onChange={set('subtitle')} /></label>
+    <label className="admin-field"><span className="admin-field__label">Descrizione</span><textarea maxLength="1000" className="admin-field__input" value={form.description} onChange={set('description')} /></label>
+    <label className="admin-field"><span className="admin-field__label">Note (una per riga)</span><textarea className="admin-field__input" value={form.notes} onChange={set('notes')} /></label>
+    <label className="admin-field"><span className="admin-field__label">Prezzo</span><span className="admin-price-input"><input required inputMode="decimal" pattern="[0-9]+([.,][0-9]{1,2})?" className="admin-field__input" value={form.price} onChange={set('price')} aria-describedby="price-help" /><span aria-hidden="true">€</span></span><small id="price-help">Inserisci solo cifre e decimali: il simbolo è fisso.</small></label>
+    {error && <p className="admin-feedback admin-feedback--error" role="alert">{error}</p>}
+    <div className="admin-form-actions"><button className="admin-button admin-button--primary" disabled={saving}>{saving ? 'Salvataggio…' : 'Salva piatto'}</button><button type="button" className="admin-button admin-button--ghost" onClick={onCancel}>Annulla</button></div>
+  </form>;
 }
 
 export function AdminMenuEditor({ onSignedOut }) {
-  const [sections, setSections] = useState([]);
-  const [loadState, setLoadState] = useState('loading');
-  const [loadError, setLoadError] = useState(null);
-  const [drafts, setDrafts] = useState({});
-  const [isSaving, setIsSaving] = useState(false);
-  const [feedback, setFeedback] = useState(null);
-
-  const savedPrices = useMemo(() => {
-    const prices = {};
-    sections.forEach((section) => section.items.forEach((item) => {
-      prices[item.id] = item.price;
-    }));
-    return prices;
-  }, [sections]);
-
-  const pendingCount = Object.keys(drafts).length;
-
-  const loadMenu = useCallback(async () => {
-    setLoadState('loading');
-    setLoadError(null);
-
-    try {
-      const loaded = await fetchAdminMenuSections();
-      setSections(loaded);
-      setLoadState('ready');
-    } catch (error) {
-      if (error.status === 401) {
-        onSignedOut();
-        return;
-      }
-      setLoadError(error.message);
-      setLoadState('error');
-    }
-  }, [onSignedOut]);
-
-  useEffect(() => {
-    loadMenu();
-  }, [loadMenu]);
-
-  useEffect(() => {
-    if (pendingCount === 0) {
-      return undefined;
-    }
-
-    const warn = (event) => {
-      event.preventDefault();
-      event.returnValue = '';
-    };
-    window.addEventListener('beforeunload', warn);
-    return () => window.removeEventListener('beforeunload', warn);
-  }, [pendingCount]);
-
-  const changePrice = useCallback((itemId, price) => {
-    setFeedback(null);
-    setDrafts((previous) => {
-      const next = { ...previous };
-      if (price === savedPrices[itemId]) {
-        delete next[itemId];
-      } else {
-        next[itemId] = price;
-      }
-      return next;
-    });
-  }, [savedPrices]);
-
-  async function handleSaveAll() {
-    if (pendingCount === 0 || isSaving) {
-      return;
-    }
-
-    setIsSaving(true);
-    setFeedback(null);
-
-    try {
-      const updated = await saveAdminPrices(drafts);
-      setSections(updated);
-      setDrafts({});
-      setFeedback({
-        type: 'success',
-        message: `${pendingCount === 1 ? 'Prezzo salvato' : `${pendingCount} prezzi salvati`}. Il menù pubblico è aggiornato.`
-      });
-    } catch (error) {
-      if (error.status === 401) {
-        onSignedOut();
-        return;
-      }
-      setFeedback({ type: 'error', message: `Salvataggio non riuscito: ${error.message}` });
-    } finally {
-      setIsSaving(false);
-    }
-  }
-
-  async function handleLogout() {
-    if (pendingCount > 0 && !window.confirm('Ci sono modifiche non salvate. Uscire comunque?')) {
-      return;
-    }
-    await adminLogout();
-    onSignedOut();
-  }
-
-  return (
-    <main className="admin-shell">
-      {/* Sticky together, so the save confirmation is visible wherever the page is scrolled. */}
-      <div className="admin-topbar-wrapper">
-        <header className="admin-topbar">
-          <div className="admin-topbar__identity">
-            <p className="admin-eyebrow">L&apos;Angolo diVino</p>
-            <h1 className="admin-topbar__title">Gestione prezzi</h1>
-          </div>
-
-          <div className="admin-topbar__actions">
-            <span className={`admin-pending ${pendingCount > 0 ? 'admin-pending--active' : ''}`}>
-              {pendingCount === 0
-                ? 'Nessuna modifica'
-                : `${pendingCount} ${pendingCount === 1 ? 'modifica' : 'modifiche'} da salvare`}
-            </span>
-            <button
-              type="button"
-              className="admin-button admin-button--ghost"
-              onClick={() => setDrafts({})}
-              disabled={pendingCount === 0 || isSaving}
-            >
-              Annulla modifiche
-            </button>
-            <button
-              type="button"
-              className="admin-button admin-button--primary"
-              onClick={handleSaveAll}
-              disabled={pendingCount === 0 || isSaving}
-            >
-              {isSaving ? 'Salvataggio…' : 'Salva tutto'}
-            </button>
-            <button type="button" className="admin-button admin-button--quiet" onClick={handleLogout}>
-              Esci
-            </button>
-          </div>
-        </header>
-
-        {feedback && (
-          <p className={`admin-feedback admin-feedback--${feedback.type}`} role="status">
-            {feedback.message}
-          </p>
-        )}
-      </div>
-
-      {loadState === 'loading' && <p className="admin-boot">Caricamento del menù…</p>}
-
-      {loadState === 'error' && (
-        <div className="admin-empty">
-          <p className="admin-feedback admin-feedback--error" role="alert">{loadError}</p>
-          <button type="button" className="admin-button admin-button--ghost" onClick={loadMenu}>
-            Riprova
-          </button>
-        </div>
-      )}
-
-      {loadState === 'ready' && (
-        <div className="admin-sections">
-          {sections.map((section) => (
-            <section className="admin-section" key={section.id}>
-              <div className="admin-section__header">
-                <p className="admin-eyebrow">{section.title}</p>
-                <h2 className="admin-section__title">{section.title}</h2>
-                {section.description && <p className="admin-section__description">{section.description}</p>}
-              </div>
-
-              <div className="admin-item-list">
-                {withEffectiveSubcategories(section.items).map((item) => {
-                  const isDirty = Object.prototype.hasOwnProperty.call(drafts, item.id);
-                  const value = isDirty ? drafts[item.id] : item.price;
-
-                  return (
-                    <article className={`admin-item ${isDirty ? 'admin-item--dirty' : ''}`} key={item.id}>
-                      {item.subtitle && <p className="admin-item__subtitle">{item.subtitle}</p>}
-
-                      <div className="admin-item__header">
-                        <h3 className="admin-item__name">{item.name}</h3>
-                        <PriceField
-                          value={value}
-                          isDirty={isDirty}
-                          itemName={item.name}
-                          subcategory={item.effectiveSubtitle}
-                          sectionTitle={section.title}
-                          onChange={(price) => changePrice(item.id, price)}
-                        />
-                      </div>
-
-                      {item.description && <p className="admin-item__description">{item.description}</p>}
-
-                      {item.notes?.length > 0 && (
-                        <ul className="admin-item__notes">
-                          {item.notes.map((note) => <li key={note}>{note}</li>)}
-                        </ul>
-                      )}
-
-                      {isDirty && (
-                        <p className="admin-item__dirty-note">
-                          Da <strong>{item.price}</strong> a <strong>{value}</strong> · in attesa di salvataggio
-                        </p>
-                      )}
-                    </article>
-                  );
-                })}
-              </div>
-            </section>
-          ))}
-        </div>
-      )}
-    </main>
-  );
+  const [sections, setSections] = useState([]); const [state, setState] = useState('loading'); const [editing, setEditing] = useState(null); const [saving, setSaving] = useState(false); const [feedback, setFeedback] = useState(null);
+  const load = useCallback(async () => { try { setState('loading'); setSections(await fetchAdminMenuSections()); setState('ready'); } catch (error) { if (error.status === 401) onSignedOut(); else { setFeedback({ type: 'error', message: error.message }); setState('error'); } } }, [onSignedOut]);
+  useEffect(() => { load(); }, [load]);
+  async function save(data) { setSaving(true); setFeedback(null); try { const updated = editing?.id ? await updateAdminMenuItem(editing.id, data) : await createAdminMenuItem(data); setSections(updated); setEditing(null); setFeedback({ type: 'success', message: 'Menù aggiornato. Il sito pubblico mostra subito le modifiche.' }); } catch (error) { setFeedback({ type: 'error', message: error.message }); } finally { setSaving(false); } }
+  async function remove(item) { if (!window.confirm(`Eliminare “${item.name}”?`)) return; try { setSections(await deleteAdminMenuItem(item.id)); setFeedback({ type: 'success', message: 'Piatto eliminato.' }); } catch (error) { setFeedback({ type: 'error', message: error.message }); } }
+  return <main className="admin-shell"><div className="admin-topbar-wrapper"><header className="admin-topbar"><div><p className="admin-eyebrow">L&apos;Angolo diVino</p><h1 className="admin-topbar__title">Gestione menù</h1></div><div className="admin-topbar__actions"><button className="admin-button admin-button--primary" onClick={() => setEditing(empty(sections[0]?.id))}>Aggiungi piatto</button><button className="admin-button admin-button--quiet" onClick={async () => { await adminLogout(); onSignedOut(); }}>Esci</button></div></header>{feedback && <p className={`admin-feedback admin-feedback--${feedback.type}`} role="status">{feedback.message}</p>}</div>
+    {editing && <ItemForm sections={sections} initial={editing} onSave={save} onCancel={() => setEditing(null)} saving={saving} />}
+    {state === 'loading' && <p className="admin-boot">Caricamento del menù…</p>}{state === 'error' && <button className="admin-button admin-button--ghost" onClick={load}>Riprova</button>}
+    {state === 'ready' && <div className="admin-sections">{sections.map((section) => <section className="admin-section" key={section.id}><div className="admin-section__header"><p className="admin-eyebrow">{section.title}</p><h2 className="admin-section__title">{section.title}</h2>{section.description && <p className="admin-section__description">{section.description}</p>}</div><div className="admin-item-list">{section.items.map((item) => <article className="admin-item" key={item.id}>{item.subtitle && <p className="admin-item__subtitle">{item.subtitle}</p>}<div className="admin-item__header"><h3 className="admin-item__name">{item.name}</h3><strong>{price(item.price)}</strong></div>{item.description && <p className="admin-item__description">{item.description}</p>}<div className="admin-item-actions"><button className="admin-button admin-button--ghost" onClick={() => setEditing({ ...item, price: numericValue(item.price), sectionId: section.id, notes: item.notes.join('\n') })}>Modifica</button><button className="admin-button admin-button--danger" onClick={() => remove(item)}>Elimina</button></div></article>)}</div></section>)}</div>}
+  </main>;
 }

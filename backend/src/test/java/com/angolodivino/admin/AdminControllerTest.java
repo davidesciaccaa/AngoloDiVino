@@ -4,6 +4,8 @@ import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -111,6 +113,26 @@ class AdminControllerTest {
                         .content("{\"prices\":{\"voce_inesistente\":\"11 €\"}}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error", is("invalid_request")));
+    }
+
+    @Test
+    void createsUpdatesAndDeletesAnItemWithANumericPrice() throws Exception {
+        String token = login();
+        String item = "{\"sectionId\":\"aperitivo\",\"name\":\"Piatto prova\",\"subtitle\":\"Specialità\",\"description\":\"Descrizione\",\"notes\":[\"Nota\"],\"price\":12.5}";
+
+        mockMvc.perform(post("/api/admin/menu/items").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON).content(item))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].items[?(@.name == 'Piatto prova')].price", is(List.of("12.5"))));
+
+        mockMvc.perform(put("/api/admin/menu/items/piatto_prova").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON).content(item.replace("12.5", "13")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].items[?(@.id == 'piatto_prova')].price", is(List.of("13"))));
+
+        mockMvc.perform(delete("/api/admin/menu/items/piatto_prova").header(HttpHeaders.AUTHORIZATION, "Bearer " + token))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].items[?(@.id == 'piatto_prova')]").isEmpty());
     }
 
     @Test

@@ -13,107 +13,71 @@ import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.time.Instant;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.TreeMap;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-/**
- * Reads and writes the price overrides JSON file. The file is the only persistence layer:
- * it is read on every menu request so edits are visible without a restart, and a missing or
- * unreadable file simply means "no overrides", i.e. the hardcoded prices win.
- */
+/** JSON persistence for the editable menu, written atomically. */
 @Component
 public class MenuOverridesStore {
-
     private static final Logger log = LoggerFactory.getLogger(MenuOverridesStore.class);
-
-    /** Owned by the store: the on-disk format must not shift with the app's web serialization settings. */
-    private final ObjectMapper objectMapper = JsonMapper.builder()
-            .addModule(new JavaTimeModule())
-            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
-            .build();
-
+    private final ObjectMapper objectMapper = JsonMapper.builder().addModule(new JavaTimeModule())
+            .disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS).build();
     private final Path file;
 
     public MenuOverridesStore(MenuProperties properties) {
-        this.file = Path.of(properties.getOverridesFile()).toAbsolutePath().normalize();
+        file = Path.of(properties.getOverridesFile()).toAbsolutePath().normalize();
     }
+    @PostConstruct void logStartupState() { log.info("Menu storage: {}", file); }
+    public Path file() { return file; }
 
-    @PostConstruct
-    void logStartupState() {
-        Map<String, String> prices = readPrices();
-        if (Files.isRegularFile(file)) {
-            log.info("Menu price overrides loaded from {} ({} entries)", file, prices.size());
-        } else {
-            log.info("No menu price overrides file at {}, using hardcoded prices", file);
-        }
-    }
-
-    public Path file() {
-        return file;
-    }
-
-    /**
-     * @return the overridden prices keyed by item id, or an empty map when the file is absent or invalid.
-     */
-    public Map<String, String> readPrices() {
-        if (!Files.isRegularFile(file)) {
-            return Map.of();
-        }
-
+    public synchronized List<MenuSectionResponse> readMenu(List<MenuSectionResponse> defaults) {
+        if (!Files.isRegularFile(file)) return defaults;
         try {
             MenuOverridesDocument document = objectMapper.readValue(file.toFile(), MenuOverridesDocument.class);
-            if (document == null || document.prices() == null) {
-                return Map.of();
-            }
-
-            Map<String, String> prices = new LinkedHashMap<>();
-            document.prices().forEach((id, price) -> {
-                if (id != null && !id.isBlank() && price != null && !price.isBlank()) {
-                    prices.put(id, price);
-                }
-            });
-            return prices;
-        } catch (IOException e) {
-            log.warn("Could not read menu price overrides from {}, falling back to hardcoded prices", file, e);
-            return Map.of();
-        }
+            if (document != null && document.sections() != null) return document.sections();
+            if (document != null && document.prices() != null) return migrateLegacyPrices(defaults, document.prices());
+        } catch (IOException e) { log.warn("Could not read menu storage {}, using defaults", file, e); }
+        return defaults;
     }
 
-    /**
-     * Replaces the overrides file with the given prices, writing atomically so a crash mid-write
-     * cannot leave a truncated file behind.
-     */
+    /** Compatibility accessors used by the original price-only service. */
+    public Map<String, String> readPrices() {
+        if (!Files.isRegularFile(file)) return Map.of();
+        try {
+            MenuOverridesDocument document = objectMapper.readValue(file.toFile(), MenuOverridesDocument.class);
+            return document == null || document.prices() == null ? Map.of() : new LinkedHashMap<>(document.prices());
+        } catch (IOException e) { return Map.of(); }
+    }
+
     public synchronized void writePrices(Map<String, String> prices) {
-        MenuOverridesDocument document = new MenuOverridesDocument(Instant.now(), new TreeMap<>(prices));
-
-        try {
-            Path parent = file.getParent();
-            if (parent != null) {
-                Files.createDirectories(parent);
-            }
-
-            Path temp = Files.createTempFile(parent, "menu-overrides", ".json.tmp");
-            try {
-                objectMapper.writerWithDefaultPrettyPrinter().writeValue(temp.toFile(), document);
-                move(temp, file);
-            } finally {
-                Files.deleteIfExists(temp);
-            }
-
-            log.info("Menu price overrides saved to {} ({} entries)", file, prices.size());
-        } catch (IOException e) {
-            throw new UncheckedIOException("Could not write menu price overrides to " + file, e);
-        }
+        writeDocument(new MenuOverridesDocument(Instant.now(), null, prices));
     }
 
-    private static void move(Path from, Path to) throws IOException {
+    /** Reads old {prices:{id:"9 €"}} files and returns numeric values without rewriting until an edit. */
+    private static List<MenuSectionResponse> migrateLegacyPrices(List<MenuSectionResponse> defaults, Map<String, String> prices) {
+        return defaults.stream().map(section -> new MenuSectionResponse(section.id(), section.title(), section.description(),
+                section.items().stream().map(item -> {
+                    String value = prices.get(item.id());
+                    if (value == null) return item;
+                    return new MenuItemResponse(item.id(), item.name(), item.subtitle(), item.description(), item.notes(), value);
+                }).toList())).toList();
+    }
+    public synchronized void writeMenu(List<MenuSectionResponse> sections) {
+        writeDocument(new MenuOverridesDocument(Instant.now(), sections, null));
+    }
+    private void writeDocument(MenuOverridesDocument document) {
         try {
-            Files.move(from, to, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE);
-        } catch (AtomicMoveNotSupportedException e) {
-            Files.move(from, to, StandardCopyOption.REPLACE_EXISTING);
-        }
+            Path parent = file.getParent(); if (parent != null) Files.createDirectories(parent);
+            Path temp = Files.createTempFile(parent, "menu-overrides", ".json.tmp");
+            try { objectMapper.writerWithDefaultPrettyPrinter().writeValue(temp.toFile(), document); move(temp, file); }
+            finally { Files.deleteIfExists(temp); }
+        } catch (IOException e) { throw new UncheckedIOException("Could not write menu to " + file, e); }
+    }
+    private static void move(Path from, Path to) throws IOException {
+        try { Files.move(from, to, StandardCopyOption.REPLACE_EXISTING, StandardCopyOption.ATOMIC_MOVE); }
+        catch (AtomicMoveNotSupportedException e) { Files.move(from, to, StandardCopyOption.REPLACE_EXISTING); }
     }
 }

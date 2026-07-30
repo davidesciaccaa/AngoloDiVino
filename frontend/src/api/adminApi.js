@@ -89,3 +89,15 @@ export function fetchAdminMenuSections() {
 export function saveAdminPrices(prices) {
   return adminRequest('/admin/menu/prices', { method: 'PATCH', body: { prices } });
 }
+
+export function createAdminMenuItem(item) {
+  return adminRequest('/admin/menu/items', { method: 'POST', body: item });
+}
+
+export function updateAdminMenuItem(id, item) {
+  return adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'PUT', body: item });
+}
+
+export function deleteAdminMenuItem(id) {
+  return adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'DELETE' });
+}
