@@ -28,4 +28,10 @@ app:
     password: ${ADMIN_PASSWORD:}
     session-ttl: ${ADMIN_SESSION_TTL:8h}
   menu:
-    overrides-file: ${MENU_OVERRIDES_FILE:data/menu-overrides.json}
+    data-directory: ${MENU_DATA_DIRECTORY:data}
+    default-resource: classpath:menu.default.json
+    # Used only for automatic migration from the previous price-only file.
+    legacy-overrides-file: ${MENU_OVERRIDES_FILE:}
+    daily-backup-retention: 30
+    monthly-backup-retention: 12
+    backup-cron: ${MENU_BACKUP_CRON:0 15 2 * * *}

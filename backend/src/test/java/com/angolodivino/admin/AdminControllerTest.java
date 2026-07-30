@@ -33,17 +33,17 @@ class AdminControllerTest {
     private static final String PASSWORD = "test-secret";
 
     /** Resolved eagerly: @DynamicPropertySource runs before JUnit would inject a @TempDir. */
-    private static final Path OVERRIDES_FILE = createTempOverridesFile();
+    private static final Path DATA_DIRECTORY = createTempDataDirectory();
 
     @DynamicPropertySource
     static void adminProperties(DynamicPropertyRegistry registry) {
         registry.add("app.admin.password", () -> PASSWORD);
-        registry.add("app.menu.overrides-file", OVERRIDES_FILE::toString);
+        registry.add("app.menu.data-directory", DATA_DIRECTORY::toString);
     }
 
-    private static Path createTempOverridesFile() {
+    private static Path createTempDataDirectory() {
         try {
-            return Files.createTempDirectory("admin-controller-test").resolve("menu-overrides.json");
+            return Files.createTempDirectory("admin-controller-test");
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

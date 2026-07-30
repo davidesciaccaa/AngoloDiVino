@@ -78,12 +78,17 @@ Variabili disponibili:
 | --- | --- | --- |
 | `ADMIN_PASSWORD` | *(vuota)* | Password del pannello. Vuota = admin disattivato. |
 | `ADMIN_SESSION_TTL` | `8h` | Durata del token di sessione. |
-| `MENU_OVERRIDES_FILE` | `data/menu-overrides.json` | File JSON con i prezzi modificati. |
+| `MENU_DATA_DIRECTORY` | `data` | Directory runtime del menù e dei backup. |
+| `MENU_OVERRIDES_FILE` | vuoto | Vecchio file di override, migrato automaticamente al primo avvio. |
+| `MENU_BACKUP_CRON` | `0 15 2 * * *` | Pianificazione Spring dei backup nel fuso `Europe/Rome`. |
 
 Come funziona:
 
-- I prezzi modificati finiscono in `menu-overrides.json`, letto a ogni richiesta del menù: niente database e nessun riavvio dopo un salvataggio.
-- Se il file non esiste (o è illeggibile) valgono i prezzi hardcodati in `MenuService.java`. Rimettere un prezzo al valore originale ne rimuove la voce dal file.
+- `src/main/resources/menu.default.json` è il catalogo iniziale versionato e non viene mai modificato a runtime.
+- Al primo avvio il backend crea `data/menu.json` e le directory `data/backups/daily` e `data/backups/monthly`. Se trova il precedente `data/menu-overrides.json`, ne migra automaticamente i prezzi nel nuovo menù completo.
+- Se `data/menu.json` esiste già viene validato e mantenuto senza copiarvi sopra il default. Tutte le operazioni `/admin` aggiornano questo file con una scrittura temporanea e una sostituzione atomica quando supportata dal filesystem.
+- All'avvio e ogni giorno alle 02:15 (`Europe/Rome`) Spring crea il backup giornaliero e mensile eventualmente mancanti. Vengono conservati 30 giorni e 12 mesi.
+- `data/menu.json`, il vecchio override e l'intera directory dei backup sono esclusi da Git; `mvn clean` elimina solo `target` e non li coinvolge.
 - Il login (`POST /api/admin/login`) restituisce un token opaco tenuto **solo in memoria**: si perde a ogni riavvio del backend. Il browser lo tiene in `sessionStorage`, quindi la sessione muore chiudendo il browser.
 - Il fallback `fallbackMenuSections` in `App.jsx` resta invariato e serve solo se il backend è irraggiungibile.
 
@@ -93,7 +98,7 @@ Con Docker, passa la password al compose (per esempio con un file `.env` accanto
 ADMIN_PASSWORD='una-password-lunga' docker compose up --build
 ```
 
-Il volume `menu-data` conserva `menu-overrides.json` tra un riavvio e l'altro dei container.
+Il volume `menu-data` conserva `menu.json` e tutti i backup tra un riavvio e l'altro dei container.
 
 ## Avvio con Docker
 

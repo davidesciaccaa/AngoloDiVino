@@ -1,5 +1,6 @@
 package com.angolodivino.menu;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
@@ -8,18 +9,59 @@ import org.springframework.validation.annotation.Validated;
 @ConfigurationProperties(prefix = "app.menu")
 public class MenuProperties {
 
-    /**
-     * JSON file holding the price overrides applied on top of the hardcoded menu.
-     * When the file is missing, the hardcoded prices in {@link MenuService} are used.
-     */
+    /** Relative paths are resolved from the backend process working directory. */
     @NotBlank
-    private String overridesFile = "data/menu-overrides.json";
+    private String dataDirectory = "data";
 
-    public String getOverridesFile() {
-        return overridesFile;
+    @NotBlank
+    private String defaultResource = "classpath:menu.default.json";
+
+    /** Optional location of the previous price-only file, used once during migration. */
+    private String legacyOverridesFile = "";
+
+    @Min(1)
+    private int dailyBackupRetention = 30;
+
+    @Min(12)
+    private int monthlyBackupRetention = 12;
+
+    public String getDataDirectory() {
+        return dataDirectory;
     }
 
-    public void setOverridesFile(String overridesFile) {
-        this.overridesFile = overridesFile;
+    public void setDataDirectory(String dataDirectory) {
+        this.dataDirectory = dataDirectory;
+    }
+
+    public String getDefaultResource() {
+        return defaultResource;
+    }
+
+    public void setDefaultResource(String defaultResource) {
+        this.defaultResource = defaultResource;
+    }
+
+    public String getLegacyOverridesFile() {
+        return legacyOverridesFile;
+    }
+
+    public void setLegacyOverridesFile(String legacyOverridesFile) {
+        this.legacyOverridesFile = legacyOverridesFile;
+    }
+
+    public int getDailyBackupRetention() {
+        return dailyBackupRetention;
+    }
+
+    public void setDailyBackupRetention(int dailyBackupRetention) {
+        this.dailyBackupRetention = dailyBackupRetention;
+    }
+
+    public int getMonthlyBackupRetention() {
+        return monthlyBackupRetention;
+    }
+
+    public void setMonthlyBackupRetention(int monthlyBackupRetention) {
+        this.monthlyBackupRetention = monthlyBackupRetention;
     }
 }
