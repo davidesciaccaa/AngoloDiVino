@@ -1,3 +1,6 @@
+import { normalizeMenuSections } from '../utils/menu.js';
+import { toPricePayload } from '../utils/price.js';
+
 const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/+$/, '');
 
 // sessionStorage, not localStorage: the admin session dies with the browser session.
@@ -82,22 +85,28 @@ export function fetchAdminSession() {
   return adminRequest('/admin/session');
 }
 
-export function fetchAdminMenuSections() {
-  return adminRequest('/admin/menu/sections');
+export async function fetchAdminMenuSections() {
+  return normalizeMenuSections(await adminRequest('/admin/menu/sections'));
 }
 
-export function saveAdminPrices(prices) {
-  return adminRequest('/admin/menu/prices', { method: 'PATCH', body: { prices } });
+export async function saveAdminPrices(prices) {
+  const numericPrices = Object.fromEntries(
+    Object.entries(prices).map(([id, price]) => [id, toPricePayload(price)])
+  );
+  return normalizeMenuSections(await adminRequest('/admin/menu/prices', {
+    method: 'PATCH',
+    body: { prices: numericPrices }
+  }));
 }
 
-export function createAdminMenuItem(item) {
-  return adminRequest('/admin/menu/items', { method: 'POST', body: item });
+export async function createAdminMenuItem(item) {
+  return normalizeMenuSections(await adminRequest('/admin/menu/items', { method: 'POST', body: item }));
 }
 
-export function updateAdminMenuItem(id, item) {
-  return adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'PUT', body: item });
+export async function updateAdminMenuItem(id, item) {
+  return normalizeMenuSections(await adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'PUT', body: item }));
 }
 
-export function deleteAdminMenuItem(id) {
-  return adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'DELETE' });
+export async function deleteAdminMenuItem(id) {
+  return normalizeMenuSections(await adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'DELETE' }));
 }

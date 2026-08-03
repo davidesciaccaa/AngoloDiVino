@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
+import { formatPrice } from '../utils/price.js';
 
-export function MenuItemCard({ item }) {
+export function MenuItemCard({ item, sectionId }) {
   const { t, i18n } = useTranslation();
 
   // Helper to translate known terms in descriptions (especially for cocktails)
@@ -60,13 +61,13 @@ export function MenuItemCard({ item }) {
   const name = t(`menu.items.${item.id}.name`, { defaultValue: item.name });
   const subtitle = translateSubtitle(item.subtitle);
   const description = translateDescription(item.description, item.id);
-  const notes = item.notes.map(note => {
+  const notes = (Array.isArray(item.notes) ? item.notes : []).map(note => {
     const noteKey = note.toLowerCase().replace(/ /g, '_');
     return t(`menu.items.${item.id}.notes.${noteKey}`, { 
       defaultValue: t(`menu.items.common_notes.${noteKey}`, { defaultValue: note }) 
     });
   });
-  const displayedPrice = /€/.test(String(item.price)) ? item.price : `${Number(item.price).toLocaleString('it-IT', { maximumFractionDigits: 2 })} €`;
+  const displayedPrice = formatPrice(item.price, { sectionId });
 
   return (
     <article className="menu-item-editorial">

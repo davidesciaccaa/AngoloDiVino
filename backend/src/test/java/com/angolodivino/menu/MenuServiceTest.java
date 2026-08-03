@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Map;
@@ -43,21 +44,26 @@ class MenuServiceTest {
 
     @Test
     void priceOnlyUpdatesArePersistedInTheCompleteMenu() {
-        service.updatePrices(Map.of("negroni", "9 €"));
-        assertThat(priceOf(service.findMenuSections(), "negroni")).isEqualTo("9 €");
+        MenuPrice originalWinePrice = priceOf(service.findMenuSections(), "tacco_barocco_bianco");
+        service.updatePrices(Map.of("negroni", MenuPrice.single(new BigDecimal("9"))));
+        assertThat(amountsOf(service.findMenuSections(), "negroni")).containsExactly(new BigDecimal("9"));
+        assertThat(priceOf(service.findMenuSections(), "tacco_barocco_bianco"))
+                .isEqualTo(originalWinePrice);
 
         MenuService restarted = new MenuService(store(tempDir));
-        assertThat(priceOf(restarted.findMenuSections(), "negroni")).isEqualTo("9 €");
+        assertThat(amountsOf(restarted.findMenuSections(), "negroni")).containsExactly(new BigDecimal("9"));
+        assertThat(priceOf(restarted.findMenuSections(), "tacco_barocco_bianco"))
+                .isEqualTo(originalWinePrice);
     }
 
     @Test
-    void rejectsUnknownItemsAndMalformedPrices() {
-        assertThatThrownBy(() -> service.updatePrices(Map.of("missing", "9 €")))
+    void rejectsUnknownItemsAndEmptyUpdates() {
+        assertThatThrownBy(() -> service.updatePrices(Map.of("missing", MenuPrice.single(BigDecimal.ONE))))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("missing");
-        assertThatThrownBy(() -> service.updatePrices(Map.of("negroni", "<script>")))
+        assertThatThrownBy(() -> service.updatePrices(Map.of()))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("negroni");
+                .hasMessageContaining("almeno un prezzo");
     }
 
     static MenuOverridesStore store(Path dataDirectory) {
@@ -77,12 +83,17 @@ class MenuServiceTest {
         return store;
     }
 
-    static String priceOf(List<MenuSectionResponse> sections, String itemId) {
+    static MenuPrice priceOf(List<MenuSectionResponse> sections, String itemId) {
         return sections.stream()
                 .flatMap(section -> section.items().stream())
                 .filter(item -> item.id().equals(itemId))
                 .findFirst()
-                .map(MenuItemResponse::price)
-                .orElseThrow();
+                .orElseThrow()
+                .price();
+    }
+
+    static List<BigDecimal> amountsOf(List<MenuSectionResponse> sections, String itemId) {
+        MenuPrice price = priceOf(sections, itemId);
+        return price == null ? List.of() : price.options().stream().map(PriceOption::amount).toList();
     }
 }

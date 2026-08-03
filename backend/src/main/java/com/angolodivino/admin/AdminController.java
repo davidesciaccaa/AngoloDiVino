@@ -1,6 +1,7 @@
 package com.angolodivino.admin;
 
 import com.angolodivino.menu.MenuSectionResponse;
+import com.angolodivino.menu.MenuPrice;
 import com.angolodivino.menu.MenuService;
 import com.angolodivino.menu.MenuManagementService;
 import com.angolodivino.menu.MenuItemCommand;
@@ -99,7 +100,7 @@ public class AdminController {
 
     @PatchMapping("/menu/prices")
     public List<MenuSectionResponse> updatePrices(@Valid @RequestBody UpdatePricesRequest request) {
-        Map<String, String> prices = request.prices();
+        Map<String, MenuPrice> prices = request.prices();
         log.info("Admin updating {} menu price(s)", prices.size());
         return menuService.updatePrices(prices);
     }

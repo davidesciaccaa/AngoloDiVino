@@ -100,7 +100,7 @@ class AdminControllerTest {
 
         mockMvc.perform(get("/api/menu/sections"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[1].items[?(@.id == 'negroni')].price", is(List.of("11 €"))));
+                .andExpect(jsonPath("$[1].items[?(@.id == 'negroni')].price.options[0].amount", is(List.of(11))));
     }
 
     @Test
@@ -118,21 +118,67 @@ class AdminControllerTest {
     @Test
     void createsUpdatesAndDeletesAnItemWithANumericPrice() throws Exception {
         String token = login();
-        String item = "{\"sectionId\":\"aperitivo\",\"name\":\"Piatto prova\",\"subtitle\":\"Specialità\",\"description\":\"Descrizione\",\"notes\":[\"Nota\"],\"price\":12.5}";
+        String item = "{\"sectionId\":\"aperitivo\",\"name\":\"Piatto prova\",\"subtitle\":\"Specialità\",\"description\":\"Descrizione\",\"notes\":[\"Nota\"],\"price\":{\"options\":[{\"amount\":12.5}]}}";
 
         mockMvc.perform(post("/api/admin/menu/items").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
-                        .contentType(MediaType.APPLICATION_JSON).content(item))
+                .contentType(MediaType.APPLICATION_JSON).content(item))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].items[?(@.name == 'Piatto prova')].price", is(List.of("12.5"))));
+                .andExpect(jsonPath("$[0].items[?(@.name == 'Piatto prova')].price.options[0].amount", is(List.of(12.5))));
 
         mockMvc.perform(put("/api/admin/menu/items/piatto_prova").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON).content(item.replace("12.5", "13")))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].items[?(@.id == 'piatto_prova')].price", is(List.of("13"))));
+                .andExpect(jsonPath("$[0].items[?(@.id == 'piatto_prova')].price.options[0].amount", is(List.of(13))));
 
         mockMvc.perform(delete("/api/admin/menu/items/piatto_prova").header(HttpHeaders.AUTHORIZATION, "Bearer " + token))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].items[?(@.id == 'piatto_prova')]").isEmpty());
+    }
+
+    @Test
+    void putOneWinePreservesBothPricesAndDoesNotRewriteAnotherItem() throws Exception {
+        String token = login();
+        String item = "{\"sectionId\":\"vini\",\"name\":\"Tacco Barocco - Negroamaro Bianco Primitivo\","
+                + "\"subtitle\":\"Bianchi\",\"description\":\"Aggiornato\",\"notes\":[],"
+                + "\"price\":{\"options\":[{\"label\":\"glass\",\"amount\":5.5},"
+                + "{\"label\":\"bottle\",\"amount\":23}]}}";
+
+        mockMvc.perform(put("/api/admin/menu/items/tacco_barocco_bianco")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(item))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[2].items[?(@.id == 'tacco_barocco_bianco')].price.options[*].amount",
+                        is(List.of(5.5, 23))))
+                .andExpect(jsonPath("$[2].items[?(@.id == 'verdeca_salento')].price.options[*].amount",
+                        is(List.of(5, 18))));
+    }
+
+    @Test
+    void publicApiSerializesAbsentAndMultiplePricesWithoutCurrencyStrings() throws Exception {
+        mockMvc.perform(get("/api/menu/sections"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[2].items[?(@.id == 'verdeca_salento')].price.options[*].amount",
+                        is(List.of(5, 18))))
+                .andExpect(jsonPath("$[4].items[?(@.id == 'armagnac')].price",
+                        org.hamcrest.Matchers.contains(org.hamcrest.Matchers.nullValue())));
+    }
+
+    @Test
+    void rejectsNegativeAndAmbiguousPrices() throws Exception {
+        String token = login();
+        String prefix = "{\"sectionId\":\"aperitivo\",\"name\":\"Non valido\",\"subtitle\":\"\","
+                + "\"description\":\"\",\"notes\":[],\"price\":";
+
+        mockMvc.perform(post("/api/admin/menu/items").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(prefix + "{\"options\":[{\"amount\":-1}]}}"))
+                .andExpect(status().isBadRequest());
+
+        mockMvc.perform(post("/api/admin/menu/items").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(prefix + "\"5 circa\"}"))
+                .andExpect(status().isBadRequest());
     }
 
     @Test

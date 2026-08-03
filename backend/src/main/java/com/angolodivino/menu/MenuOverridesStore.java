@@ -324,10 +324,15 @@ public class MenuOverridesStore {
                                                 item.subtitle(),
                                                 item.description(),
                                                 item.notes(),
-                                                prices.get(item.id()))
+                                                legacyPrice(prices.get(item.id()), section.id()))
                                         : item)
                                 .toList()))
                 .toList();
+    }
+
+    private static MenuPrice legacyPrice(String price, String sectionId) {
+        MenuPrice parsed = MenuPriceDeserializer.parseLegacy(price);
+        return parsed == null ? null : parsed.withLabelsForSection(sectionId);
     }
 
     static void validateDocument(MenuOverridesDocument document) throws IOException {
@@ -360,8 +365,7 @@ public class MenuOverridesStore {
                         || isBlank(item.name())
                         || item.subtitle() == null
                         || item.description() == null
-                        || item.notes() == null
-                        || isBlank(item.price())) {
+                        || item.notes() == null) {
                     throw new IOException("Invalid menu item in section " + section.id());
                 }
                 if (!itemIds.add(item.id())) {

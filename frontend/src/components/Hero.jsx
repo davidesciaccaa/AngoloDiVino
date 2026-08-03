@@ -1,10 +1,9 @@
 import { useTranslation } from 'react-i18next';
 import { useRef, useState, useEffect, useCallback } from 'react';
 import heroImage from '../assets/lounge-still-life.jpeg';
-import { StatusBadge } from './StatusBadge.jsx';
 import { LanguageSwitcher } from './LanguageSwitcher.jsx';
 
-export function Hero({ status }) {
+export function Hero() {
   const { t } = useTranslation();
 
   // Scroll Indicators Logic for Hero Nav

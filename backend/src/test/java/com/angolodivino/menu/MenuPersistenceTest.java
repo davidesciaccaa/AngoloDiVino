@@ -36,13 +36,14 @@ class MenuPersistenceTest {
     @Test
     void neverOverwritesAnExistingRuntimeMenuDuringRestart() {
         MenuOverridesStore first = MenuServiceTest.store(tempDir);
-        new MenuService(first).updatePrices(java.util.Map.of("negroni", "99 €"));
+        new MenuService(first).updatePrices(java.util.Map.of("negroni", price("99")));
         byte[] persisted = read(first.file());
 
         MenuOverridesStore restarted = MenuServiceTest.store(tempDir);
 
         assertThat(read(restarted.file())).isEqualTo(persisted);
-        assertThat(MenuServiceTest.priceOf(restarted.readMenu(), "negroni")).isEqualTo("99 €");
+        assertThat(MenuServiceTest.amountsOf(restarted.readMenu(), "negroni"))
+                .containsExactly(new BigDecimal("99"));
     }
 
     @Test
@@ -53,7 +54,8 @@ class MenuPersistenceTest {
 
         MenuOverridesStore store = MenuServiceTest.store(tempDir);
 
-        assertThat(MenuServiceTest.priceOf(store.readMenu(), "negroni")).isEqualTo("42 €");
+        assertThat(MenuServiceTest.amountsOf(store.readMenu(), "negroni"))
+                .containsExactly(new BigDecimal("42"));
         assertThat(store.file()).isRegularFile();
         assertThat(tempDir.resolve("menu-overrides.json")).isRegularFile();
     }
@@ -80,7 +82,8 @@ class MenuPersistenceTest {
         management.update("nuovo_piatto", command("Piatto modificato", "14"));
         MenuOverridesStore restarted = MenuServiceTest.store(tempDir);
         assertThat(item(restarted.readMenu(), "nuovo_piatto").name()).isEqualTo("Piatto modificato");
-        assertThat(item(restarted.readMenu(), "nuovo_piatto").price()).isEqualTo("14");
+        assertThat(MenuServiceTest.amountsOf(restarted.readMenu(), "nuovo_piatto"))
+                .containsExactly(new BigDecimal("14"));
 
         new MenuManagementService(restarted).delete("nuovo_piatto");
         assertThat(find(MenuServiceTest.store(tempDir).readMenu(), "nuovo_piatto")).isNull();
@@ -91,7 +94,7 @@ class MenuPersistenceTest {
         RecordingWriter writer = new RecordingWriter();
         MenuOverridesStore store = MenuServiceTest.store(tempDir, writer);
 
-        new MenuService(store).updatePrices(java.util.Map.of("negroni", "10 €"));
+        new MenuService(store).updatePrices(java.util.Map.of("negroni", price("10")));
 
         assertThat(writer.observedTemporary).isNotNull();
         assertThat(writer.observedTemporary.getParent()).isEqualTo(store.file().getParent());
@@ -106,7 +109,7 @@ class MenuPersistenceTest {
         byte[] original = read(store.file());
         writer.fail = true;
 
-        assertThatThrownBy(() -> new MenuService(store).updatePrices(java.util.Map.of("negroni", "10 €")))
+        assertThatThrownBy(() -> new MenuService(store).updatePrices(java.util.Map.of("negroni", price("10"))))
                 .isInstanceOf(UncheckedIOException.class);
         assertThat(read(store.file())).isEqualTo(original);
         assertThat(tempFiles(tempDir)).isEmpty();
@@ -120,7 +123,7 @@ class MenuPersistenceTest {
         Path backup = store.dailyBackupDirectory().resolve("menu-2026-07-30.json");
         byte[] firstState = read(backup);
 
-        new MenuService(store).updatePrices(java.util.Map.of("negroni", "12 €"));
+        new MenuService(store).updatePrices(java.util.Map.of("negroni", price("12")));
         store.maintainBackups(date);
 
         assertThat(Files.list(store.dailyBackupDirectory()).toList()).hasSize(1);
@@ -134,7 +137,7 @@ class MenuPersistenceTest {
         Path backup = store.monthlyBackupDirectory().resolve("menu-2026-07.json");
         byte[] firstState = read(backup);
 
-        new MenuService(store).updatePrices(java.util.Map.of("negroni", "12 €"));
+        new MenuService(store).updatePrices(java.util.Map.of("negroni", price("12")));
         store.maintainBackups(LocalDate.of(2026, 7, 31));
 
         assertThat(Files.list(store.monthlyBackupDirectory()).toList()).hasSize(1);
@@ -207,9 +210,84 @@ class MenuPersistenceTest {
         assertThat(store.dailyBackupDirectory().resolve("menu-2026-07-30.json")).isRegularFile();
     }
 
+    @Test
+    void updatingOneItemPreservesEveryOtherStructuredAndAbsentPrice() {
+        MenuOverridesStore store = MenuServiceTest.store(tempDir);
+        MenuManagementService management = new MenuManagementService(store);
+        MenuPrice wineBefore = MenuServiceTest.priceOf(store.readMenu(), "tacco_barocco_bianco");
+        assertThat(wineBefore.options()).extracting(PriceOption::amount)
+                .containsExactly(new BigDecimal("5"), new BigDecimal("22"));
+        assertThat(MenuServiceTest.priceOf(store.readMenu(), "armagnac")).isNull();
+
+        MenuItemCommand updated = new MenuItemCommand(
+                "aperitivo", "Tris aggiornato", "Assaggi", "Nuova descrizione", List.of(), price("4.50"));
+        management.update("tris", updated);
+
+        assertThat(MenuServiceTest.priceOf(store.readMenu(), "tacco_barocco_bianco"))
+                .isEqualTo(wineBefore);
+        assertThat(MenuServiceTest.priceOf(store.readMenu(), "armagnac")).isNull();
+        assertThat(MenuServiceTest.amountsOf(store.readMenu(), "tris"))
+                .containsExactly(new BigDecimal("4.5"));
+    }
+
+    @Test
+    void persistedNewModelContainsNumbersAndNoCurrencySymbols() throws Exception {
+        MenuOverridesStore store = MenuServiceTest.store(tempDir);
+        new MenuService(store).updatePrices(java.util.Map.of("negroni", price("10.50")));
+
+        String json = Files.readString(store.file());
+        assertThat(json).doesNotContain("€", "\u00e2\u201a\u00ac");
+        com.fasterxml.jackson.databind.JsonNode document = new com.fasterxml.jackson.databind.ObjectMapper()
+                .readTree(json);
+        com.fasterxml.jackson.databind.JsonNode negroni = document.get("sections").get(1).get("items")
+                .findParents("id").stream()
+                .filter(node -> "negroni".equals(node.get("id").asText()))
+                .findFirst()
+                .orElseThrow();
+        assertThat(negroni.get("price").get("options").get(0).get("amount").decimalValue())
+                .isEqualByComparingTo("10.5");
+    }
+
+    @Test
+    void readsAnExistingLegacyMenuWithoutRewritingItAndMigratesOnFirstValidWrite() throws Exception {
+        Path menuFile = tempDir.resolve("menu.json");
+        String legacy = "{\"updatedAt\":\"2026-08-01T10:00:00Z\",\"sections\":[{"
+                + "\"id\":\"vini\",\"title\":\"Vini\",\"description\":\"\",\"items\":["
+                + "{\"id\":\"single\",\"name\":\"Singolo\",\"subtitle\":\"\",\"description\":\"\","
+                + "\"notes\":[],\"price\":\"2,50 €\"},"
+                + "{\"id\":\"multiple\",\"name\":\"Multiplo\",\"subtitle\":\"\",\"description\":\"\","
+                + "\"notes\":[],\"price\":\"5 \u00e2\u201a\u00ac / 22 \u00e2\u201a\u00ac\"},"
+                + "{\"id\":\"absent\",\"name\":\"Assente\",\"subtitle\":\"\",\"description\":\"\","
+                + "\"notes\":[],\"price\":\"-\"}]}]}";
+        Files.writeString(menuFile, legacy);
+        byte[] original = read(menuFile);
+
+        MenuOverridesStore store = MenuServiceTest.store(tempDir);
+        assertThat(read(menuFile)).isEqualTo(original);
+        assertThat(MenuServiceTest.amountsOf(store.readMenu(), "single"))
+                .containsExactly(new BigDecimal("2.5"));
+        assertThat(MenuServiceTest.amountsOf(store.readMenu(), "multiple"))
+                .containsExactly(new BigDecimal("5"), new BigDecimal("22"));
+        assertThat(MenuServiceTest.priceOf(store.readMenu(), "absent")).isNull();
+
+        new MenuManagementService(store).update("single", new MenuItemCommand(
+                "vini", "Singolo", "", "", List.of(), price("3")));
+
+        assertThat(MenuServiceTest.amountsOf(store.readMenu(), "multiple"))
+                .containsExactly(new BigDecimal("5"), new BigDecimal("22"));
+        assertThat(MenuServiceTest.priceOf(store.readMenu(), "absent")).isNull();
+        String migrated = Files.readString(menuFile);
+        assertThat(migrated).doesNotContain("€", "\u00e2\u201a\u00ac");
+        assertThat(migrated).contains("\"label\" : \"glass\"", "\"label\" : \"bottle\"");
+    }
+
     private static MenuItemCommand command(String name, String price) {
         return new MenuItemCommand(
-                "aperitivo", name, "Test", "Descrizione", List.of("Nota"), new BigDecimal(price));
+                "aperitivo", name, "Test", "Descrizione", List.of("Nota"), price(price));
+    }
+
+    private static MenuPrice price(String amount) {
+        return MenuPrice.single(new BigDecimal(amount));
     }
 
     private static MenuItemResponse item(List<MenuSectionResponse> menu, String id) {

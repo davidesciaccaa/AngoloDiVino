@@ -85,12 +85,17 @@ Variabili disponibili:
 Come funziona:
 
 - `src/main/resources/menu.default.json` è il catalogo iniziale versionato e non viene mai modificato a runtime.
+- Il prezzo esposto dalle API è `null` quando assente, oppure un oggetto `price` con un array numerico `options`. I vini con due importi usano nell'ordine le etichette `glass` e `bottle`, coerenti con l'intestazione “Al calice / Bottiglia”; il frontend mantiene la resa `5 € / 22 €`.
+- Il backend legge anche i dati legacy come `"2,50 €"`, `"25 €"`, il vecchio mojibake `"25 â‚¬"`, `"5 € / 22 €"`, `"6 € - 24 €"` e `"-"`. I valori ambigui vengono rifiutati. Le risposte e le nuove scritture contengono soltanto importi numerici, senza simboli di valuta.
 - Al primo avvio il backend crea `data/menu.json` e le directory `data/backups/daily` e `data/backups/monthly`. Se trova il precedente `data/menu-overrides.json`, ne migra automaticamente i prezzi nel nuovo menù completo.
 - Se `data/menu.json` esiste già viene validato e mantenuto senza copiarvi sopra il default. Tutte le operazioni `/admin` aggiornano questo file con una scrittura temporanea e una sostituzione atomica quando supportata dal filesystem.
+- Un `menu.json` legacy esistente viene letto senza riscrittura all'avvio. La prima modifica autenticata lo serializza nel modello numerico solo dopo avere validato tutti gli importi; prezzi multipli e prezzi assenti vengono preservati e il backup pianificato continua a proteggere lo snapshot precedente.
 - All'avvio e ogni giorno alle 02:15 (`Europe/Rome`) Spring crea il backup giornaliero e mensile eventualmente mancanti. Vengono conservati 30 giorni e 12 mesi.
 - `data/menu.json`, il vecchio override e l'intera directory dei backup sono esclusi da Git; `mvn clean` elimina solo `target` e non li coinvolge.
 - Il login (`POST /api/admin/login`) restituisce un token opaco tenuto **solo in memoria**: si perde a ogni riavvio del backend. Il browser lo tiene in `sessionStorage`, quindi la sessione muore chiudendo il browser.
 - Il fallback `fallbackMenuSections` in `App.jsx` resta invariato e serve solo se il backend è irraggiungibile.
+
+Poiché la forma JSON del prezzo è cambiata, frontend e backend di questa versione devono essere distribuiti insieme. Prima del deploy è consigliata una copia del volume `menu-data`; non è richiesto alcuno script manuale di migrazione.
 
 Con Docker, passa la password al compose (per esempio con un file `.env` accanto a `compose.yaml`):
 

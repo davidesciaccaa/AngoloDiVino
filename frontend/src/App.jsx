@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { fetchApiStatus, fetchMenuSections } from './api/barApi.js';
 import { Hero } from './components/Hero.jsx';
 import { MenuItemCard } from './components/MenuItemCard.jsx';
+import { normalizeMenuSections } from './utils/menu.js';
 
 const fallbackMenuSections = [
   {
@@ -226,7 +227,7 @@ const fallbackMenuSections = [
 function App() {
   const { t } = useTranslation();
   const [apiStatus, setApiStatus] = useState({ status: 'LOADING' });
-  const [menuSections, setMenuSections] = useState(fallbackMenuSections);
+  const [menuSections, setMenuSections] = useState(() => normalizeMenuSections(fallbackMenuSections));
   const [isUsingFallback, setIsUsingFallback] = useState(false);
 
   // Scroll Indicators Logic
@@ -283,7 +284,7 @@ function App() {
         }
 
         setApiStatus({ status: 'DOWN' });
-        setMenuSections(fallbackMenuSections);
+        setMenuSections(normalizeMenuSections(fallbackMenuSections));
         setIsUsingFallback(true);
       }
     }
@@ -351,7 +352,7 @@ function App() {
                   </div>
                 )}
                 {section.items.map((item) => (
-                  <MenuItemCard key={`${section.id}-${item.name}`} item={item} />
+                  <MenuItemCard key={`${section.id}-${item.name}`} item={item} sectionId={section.id} />
                 ))}
               </div>
             </section>
