@@ -4,18 +4,33 @@ import heroImage from '../assets/lounge-still-life.jpeg';
 import { LanguageSwitcher } from './LanguageSwitcher.jsx';
 
 export function Hero() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // Scroll Indicators Logic for Hero Nav
   const navRef = useRef(null);
   const [showLeftIndicator, setShowLeftIndicator] = useState(false);
   const [showRightIndicator, setShowRightIndicator] = useState(false);
 
+  const scrollNav = (direction) => {
+    const nav = navRef.current;
+
+    if (nav) {
+      const scrollAmount = Math.max(120, nav.clientWidth * 0.75);
+
+      nav.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
+
   const checkScroll = useCallback(() => {
     if (navRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = navRef.current;
-      setShowLeftIndicator(scrollLeft > 10);
-      setShowRightIndicator(scrollLeft < scrollWidth - clientWidth - 10);
+      const maxScrollLeft = scrollWidth - clientWidth;
+
+      setShowLeftIndicator(scrollLeft > 1);
+      setShowRightIndicator(maxScrollLeft > 1 && scrollLeft < maxScrollLeft - 1);
     }
   }, []);
 
@@ -23,18 +38,25 @@ export function Hero() {
     const nav = navRef.current;
     if (nav) {
       checkScroll();
-      nav.addEventListener('scroll', checkScroll);
+      nav.addEventListener('scroll', checkScroll, { passive: true });
       window.addEventListener('resize', checkScroll);
 
+      const frame = window.requestAnimationFrame(checkScroll);
       const timeout = setTimeout(checkScroll, 500);
+      const resizeObserver = typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(checkScroll);
+      resizeObserver?.observe(nav);
 
       return () => {
         nav.removeEventListener('scroll', checkScroll);
         window.removeEventListener('resize', checkScroll);
+        window.cancelAnimationFrame(frame);
         clearTimeout(timeout);
+        resizeObserver?.disconnect();
       };
     }
-  }, [checkScroll]);
+  }, [checkScroll, i18n.resolvedLanguage]);
 
   return (
     <section className="hero" style={{ '--hero-image': `url(${heroImage})` }}>
@@ -44,9 +66,16 @@ export function Hero() {
         </a>
         <div className="header-actions">
           <div className={`site-nav-wrapper ${showLeftIndicator ? 'has-left-scroll' : ''} ${showRightIndicator ? 'has-right-scroll' : ''}`}>
-            <div className="nav-scroll-hint nav-scroll-hint--left" aria-hidden="true">
-              <span>‹</span>
-            </div>
+            {showLeftIndicator && (
+              <button
+                type="button"
+                className="nav-scroll-hint nav-scroll-hint--left"
+                onClick={() => scrollNav('left')}
+                aria-label="Scorri la navigazione verso sinistra"
+              >
+                <span className="nav-arrow" aria-hidden="true">‹</span>
+              </button>
+            )}
             <nav className="site-nav" aria-label="Navigazione principale" ref={navRef}>
               <a href="#aperitivo">{t('nav.aperitivo')}</a>
               <a href="#drink">{t('nav.drink')}</a>
@@ -56,9 +85,16 @@ export function Hero() {
               <a href="#bevande">{t('nav.bevande')}</a>
               <a href="#contatti">{t('nav.contatti')}</a>
             </nav>
-            <div className="nav-scroll-hint nav-scroll-hint--right" aria-hidden="true">
-              <span>›</span>
-            </div>
+            {showRightIndicator && (
+              <button
+                type="button"
+                className="nav-scroll-hint nav-scroll-hint--right"
+                onClick={() => scrollNav('right')}
+                aria-label="Scorri la navigazione verso destra"
+              >
+                <span className="nav-arrow" aria-hidden="true">›</span>
+              </button>
+            )}
           </div>
           <LanguageSwitcher />
         </div>

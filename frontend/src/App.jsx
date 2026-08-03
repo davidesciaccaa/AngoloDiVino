@@ -225,7 +225,7 @@ const fallbackMenuSections = [
 ];
 
 function App() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [apiStatus, setApiStatus] = useState({ status: 'LOADING' });
   const [menuSections, setMenuSections] = useState(() => normalizeMenuSections(fallbackMenuSections));
   const [isUsingFallback, setIsUsingFallback] = useState(false);
@@ -238,28 +238,50 @@ function App() {
   const checkScroll = useCallback(() => {
     if (navRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } = navRef.current;
-      setShowLeftIndicator(scrollLeft > 10);
-      setShowRightIndicator(scrollLeft < scrollWidth - clientWidth - 10);
+      const maxScrollLeft = scrollWidth - clientWidth;
+
+      setShowLeftIndicator(scrollLeft > 1);
+      setShowRightIndicator(maxScrollLeft > 1 && scrollLeft < maxScrollLeft - 1);
     }
   }, []);
+
+  const scrollCategoryNav = (direction) => {
+    const nav = navRef.current;
+
+    if (nav) {
+      const scrollAmount = Math.max(120, nav.clientWidth * 0.75);
+
+      nav.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth',
+      });
+    }
+  };
 
   useEffect(() => {
     const nav = navRef.current;
     if (nav) {
       checkScroll();
-      nav.addEventListener('scroll', checkScroll);
+      nav.addEventListener('scroll', checkScroll, { passive: true });
       window.addEventListener('resize', checkScroll);
       
       // Also check when content might have rendered
+      const frame = window.requestAnimationFrame(checkScroll);
       const timeout = setTimeout(checkScroll, 500);
+      const resizeObserver = typeof ResizeObserver === 'undefined'
+        ? null
+        : new ResizeObserver(checkScroll);
+      resizeObserver?.observe(nav);
 
       return () => {
         nav.removeEventListener('scroll', checkScroll);
         window.removeEventListener('resize', checkScroll);
+        window.cancelAnimationFrame(frame);
         clearTimeout(timeout);
+        resizeObserver?.disconnect();
       };
     }
-  }, [checkScroll, menuSections]);
+  }, [checkScroll, menuSections, i18n.resolvedLanguage]);
 
   useEffect(() => {
     let isMounted = true;
@@ -311,9 +333,16 @@ function App() {
 
         {/* Minimal Category Navigation */}
         <div className={`category-nav-wrapper ${showLeftIndicator ? 'has-left-scroll' : ''} ${showRightIndicator ? 'has-right-scroll' : ''}`}>
-          <div className="scroll-hint scroll-hint--left" aria-hidden="true">
-            <span>‹</span>
-          </div>
+          {showLeftIndicator && (
+            <button
+              type="button"
+              className="scroll-hint scroll-hint--left"
+              onClick={() => scrollCategoryNav('left')}
+              aria-label={t('menu.aria.scroll_left', { defaultValue: 'Scorri le categorie verso sinistra' })}
+            >
+              <span aria-hidden="true">‹</span>
+            </button>
+          )}
           <nav className="category-nav" ref={navRef}>
             {menuSections.map((section) => (
               <a 
@@ -325,9 +354,16 @@ function App() {
               </a>
             ))}
           </nav>
-          <div className="scroll-hint scroll-hint--right" aria-hidden="true">
-            <span>›</span>
-          </div>
+          {showRightIndicator && (
+            <button
+              type="button"
+              className="scroll-hint scroll-hint--right"
+              onClick={() => scrollCategoryNav('right')}
+              aria-label={t('menu.aria.scroll_right', { defaultValue: 'Scorri le categorie verso destra' })}
+            >
+              <span aria-hidden="true">›</span>
+            </button>
+          )}
         </div>
 
         <div className="menu-section-list">
