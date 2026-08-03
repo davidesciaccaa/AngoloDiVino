@@ -6,12 +6,40 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import java.math.BigDecimal;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class MenuPriceTest {
-    private final ObjectMapper mapper = new ObjectMapper();
+    private final ObjectMapper mapper = new ObjectMapper().registerModule(
+            new SimpleModule().addDeserializer(MenuPrice.class, new MenuPriceDeserializer()));
+
+    @Test
+    void readsLegacyJsonNumberZeroAsAbsent() throws Exception {
+        assertThat(read("0")).isNull();
+    }
+
+    @Test
+    void readsLegacyStringZeroAsAbsent() throws Exception {
+        assertThat(read("\"0\"")).isNull();
+    }
+
+    @Test
+    void readsLegacyEuroStringZeroAsAbsent() throws Exception {
+        assertThat(read("\"0 €\"")).isNull();
+    }
+
+    @Test
+    void readsLegacyMojibakeEuroStringZeroAsAbsent() throws Exception {
+        assertThat(read("\"0 \\u00e2\\u201a\\u00ac\"")).isNull();
+    }
+
+    @Test
+    void legacyDeserializerIsNotAttachedToTheDomainType() {
+        assertThatThrownBy(() -> new ObjectMapper().readValue("\"0\"", MenuPrice.class))
+                .isInstanceOf(JsonMappingException.class);
+    }
 
     @Test
     void readsEverySupportedLegacySinglePrice() throws Exception {
@@ -25,6 +53,7 @@ class MenuPriceTest {
     @Test
     void readsAbsentAndMultipleLegacyPricesWithoutTruncation() throws Exception {
         assertThat(read("\"-\"")).isNull();
+        assertThat(read("null")).isNull();
         assertAmounts(read("\"5 € / 22 €\""), "5", "22");
         assertAmounts(read("\"6 € - 24 €\""), "6", "24");
         assertAmounts(read("[5,22]"), "5", "22");
@@ -43,7 +72,7 @@ class MenuPriceTest {
 
     @Test
     void rejectsNegativeNonFiniteAmbiguousAndMalformedValues() {
-        for (String json : List.of("-1", "\"-1\"", "\"5 circa\"", "\"5 / x\"", "[]",
+        for (String json : List.of("-1", "\"-1\"", "\"5 circa\"", "\"5 / x\"", "[]", "[0,5]",
                 "{\"options\":[{\"amount\":\"5\"}]}",
                 "{\"options\":[{\"label\":\"glass\",\"amount\":5},{\"label\":\"glass\",\"amount\":22}]}")) {
             assertThatThrownBy(() -> read(json))

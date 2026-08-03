@@ -41,7 +41,7 @@ describe('price normalization', () => {
     expect(formatPrice('not a price')).not.toContain('NaN');
   });
 
-  it.each([-1, Number.NaN, Number.POSITIVE_INFINITY, '5 circa', '5 / x', [], [5, -2], ['5'],
+  it.each([0, -1, Number.NaN, Number.POSITIVE_INFINITY, '5 circa', '5 / x', [], [5, -2], ['5'],
     [{ amount: '5' }]])(
     'rejects invalid or ambiguous value %j',
     (input) => expect(() => normalizePrice(input)).toThrow()
@@ -58,6 +58,14 @@ describe('price normalization', () => {
       ]
     });
     expect(parsePriceDraft('', { sectionId: 'vini', originalPrice: original })).toBeNull();
+    expect(() => parsePriceDraft('0', { sectionId: 'vini', originalPrice: original })).toThrow();
     expect(() => parsePriceDraft('5 € / 22 €', { sectionId: 'vini', originalPrice: original })).toThrow();
+  });
+
+  it('never converts legacy representations into an admin payload', () => {
+    for (const value of [0, '0', '0 €', '5 €', [5, 22]]) {
+      expect(() => toPricePayload(value)).toThrow();
+    }
+    expect(toPricePayload(null)).toBeNull();
   });
 });

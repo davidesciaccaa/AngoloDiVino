@@ -13,7 +13,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
-/** Reads the structured price model and every supported legacy representation. */
+/**
+ * Reads persisted menu prices, including representations written by older releases.
+ * This deserializer is registered only on the private persistence mapper in
+ * {@link MenuOverridesStore}; API request DTOs use {@link AdminMenuPriceDeserializer}.
+ */
 public final class MenuPriceDeserializer extends JsonDeserializer<MenuPrice> {
 
     private static final String MOJIBAKE_EURO = "\u00e2\u201a\u00ac";
@@ -31,7 +35,8 @@ public final class MenuPriceDeserializer extends JsonDeserializer<MenuPrice> {
                 return parseLegacy(parser.getValueAsString());
             }
             if (token != null && token.isNumeric()) {
-                return MenuPrice.single(parser.getDecimalValue());
+                BigDecimal amount = parser.getDecimalValue();
+                return amount.signum() == 0 ? null : MenuPrice.single(amount);
             }
 
             JsonNode node = parser.getCodec().readTree(parser);
@@ -49,7 +54,7 @@ public final class MenuPriceDeserializer extends JsonDeserializer<MenuPrice> {
 
     public static MenuPrice parseLegacy(String raw) {
         if (raw == null) {
-            throw new IllegalArgumentException("Prezzo legacy nullo");
+            return null;
         }
         String value = raw.strip().replace(MOJIBAKE_EURO, "€");
         if ("-".equals(value)) {
@@ -72,7 +77,11 @@ public final class MenuPriceDeserializer extends JsonDeserializer<MenuPrice> {
                 throw new IllegalArgumentException("Prezzo legacy ambiguo o malformato: " + raw);
             }
             String numeric = amount.replace("€", "").strip().replace(',', '.');
-            options.add(new PriceOption(null, new BigDecimal(numeric)));
+            BigDecimal parsed = new BigDecimal(numeric);
+            if (parts.length == 1 && parsed.signum() == 0) {
+                return null;
+            }
+            options.add(new PriceOption(null, parsed));
         }
         return new MenuPrice(options);
     }
@@ -88,7 +97,7 @@ public final class MenuPriceDeserializer extends JsonDeserializer<MenuPrice> {
         return new MenuPrice(options);
     }
 
-    private static MenuPrice fromStructuredObject(JsonNode node) {
+    static MenuPrice fromStructuredObject(JsonNode node) {
         for (Map.Entry<String, JsonNode> field : node.properties()) {
             String name = field.getKey();
             if (!"options".equals(name)) {

@@ -1,6 +1,7 @@
 package com.angolodivino.menu;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import jakarta.annotation.PostConstruct;
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,7 +61,9 @@ public class MenuOverridesStore {
             AtomicJsonFileWriter fileWriter) {
         this.properties = properties;
         this.defaultMenuResource = defaultMenuResource;
-        this.objectMapper = objectMapper.copy();
+        SimpleModule legacyPrices = new SimpleModule("legacy-persisted-menu-prices");
+        legacyPrices.addDeserializer(MenuPrice.class, new MenuPriceDeserializer());
+        this.objectMapper = objectMapper.copy().registerModule(legacyPrices);
         this.fileWriter = fileWriter;
         this.dataDirectory = Path.of(properties.getDataDirectory()).toAbsolutePath().normalize();
         this.menuFile = dataDirectory.resolve(MENU_FILE_NAME);

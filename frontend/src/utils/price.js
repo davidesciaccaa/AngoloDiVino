@@ -151,7 +151,11 @@ export function parsePriceDraft(input, { sectionId, originalPrice } = {}) {
 }
 
 export function toPricePayload(value, { sectionId } = {}) {
-  const normalized = normalizePrice(value, { sectionId });
+  if (value === null || value === undefined) return null;
+  if (typeof value !== 'object' || Array.isArray(value) || !Array.isArray(value.options)) {
+    throw new TypeError('Il payload admin richiede un prezzo strutturato.');
+  }
+  const normalized = priceFromOptions(value.options, sectionId);
   return normalized
     ? { options: normalized.options.map((option) => ({ ...option })) }
     : null;

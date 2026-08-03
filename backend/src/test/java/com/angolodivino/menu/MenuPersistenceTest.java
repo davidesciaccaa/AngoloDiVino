@@ -47,6 +47,41 @@ class MenuPersistenceTest {
     }
 
     @Test
+    void startsWithTheProductionArmagnacLegacyZeroWithoutRewritingTheFile() throws Exception {
+        Path menuFile = tempDir.resolve("menu.json");
+        Files.writeString(menuFile, armagnacLegacyDocument());
+        byte[] original = read(menuFile);
+
+        MenuOverridesStore store = MenuServiceTest.store(tempDir);
+
+        assertThat(store.readMenu()).hasSize(1);
+        assertThat(item(store.readMenu(), "armagnac")).isEqualTo(new MenuItemResponse(
+                "armagnac", "Armagnac", "Grappe & Cognac", "In arrivo", List.of(), null));
+        assertThat(read(menuFile)).isEqualTo(original);
+    }
+
+    @Test
+    void migratesLegacyZeroToNullOnTheFirstValidWrite() throws Exception {
+        Path menuFile = tempDir.resolve("menu.json");
+        Files.writeString(menuFile, armagnacLegacyDocument());
+        MenuOverridesStore store = MenuServiceTest.store(tempDir);
+
+        new MenuManagementService(store).create(new MenuItemCommand(
+                "superalcolici", "Nuovo distillato", "", "", List.of(), price("8")));
+
+        com.fasterxml.jackson.databind.JsonNode persisted = new com.fasterxml.jackson.databind.ObjectMapper()
+                .readTree(menuFile.toFile());
+        com.fasterxml.jackson.databind.JsonNode armagnac = persisted.findParents("id").stream()
+                .filter(node -> "armagnac".equals(node.get("id").asText()))
+                .findFirst()
+                .orElseThrow();
+        assertThat(armagnac.get("price").isNull()).isTrue();
+        assertThat(persisted.toString()).doesNotContain("\"price\":\"0\"");
+        assertThat(MenuServiceTest.amountsOf(store.readMenu(), "nuovo_distillato"))
+                .containsExactly(new BigDecimal("8"));
+    }
+
+    @Test
     void migratesThePreviousPriceOverrideFileAutomatically() throws Exception {
         Files.writeString(
                 tempDir.resolve("menu-overrides.json"),
@@ -284,6 +319,17 @@ class MenuPersistenceTest {
     private static MenuItemCommand command(String name, String price) {
         return new MenuItemCommand(
                 "aperitivo", name, "Test", "Descrizione", List.of("Nota"), price(price));
+    }
+
+    private static String armagnacLegacyDocument() {
+        return "{\"updatedAt\":\"2026-08-01T10:00:00Z\",\"sections\":[{"
+                + "\"id\":\"superalcolici\",\"title\":\"Superalcolici\",\"description\":\"\",\"items\":[{"
+                + "\"id\":\"armagnac\","
+                + "\"name\":\"Armagnac\","
+                + "\"subtitle\":\"Grappe & Cognac\","
+                + "\"description\":\"In arrivo\","
+                + "\"notes\":[],"
+                + "\"price\":\"0\"}]}]}";
     }
 
     private static MenuPrice price(String amount) {

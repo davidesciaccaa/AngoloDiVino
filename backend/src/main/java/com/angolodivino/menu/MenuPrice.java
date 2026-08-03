@@ -1,12 +1,10 @@
 package com.angolodivino.menu;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-@JsonDeserialize(using = MenuPriceDeserializer.class)
 public record MenuPrice(List<PriceOption> options) {
 
     private static final int MAX_OPTIONS = 8;

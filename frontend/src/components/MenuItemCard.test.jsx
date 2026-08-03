@@ -24,7 +24,7 @@ describe('MenuItemCard price rendering', () => {
   });
 
   it('renders absent and invalid prices without NaN', () => {
-    const { rerender } = render(<MenuItemCard item={{ ...baseItem, price: '-' }} />);
+    const { rerender } = render(<MenuItemCard item={{ ...baseItem, price: null }} />);
     expect(screen.getByText('-')).toBeInTheDocument();
     rerender(<MenuItemCard item={{ ...baseItem, price: 'ambiguous' }} />);
     expect(screen.getByText('Prezzo non valido')).toBeInTheDocument();

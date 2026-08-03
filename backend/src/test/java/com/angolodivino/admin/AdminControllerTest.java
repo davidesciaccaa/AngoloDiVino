@@ -11,6 +11,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
@@ -95,7 +96,7 @@ class AdminControllerTest {
         mockMvc.perform(patch("/api/admin/menu/prices")
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"prices\":{\"negroni\":\"11 €\"}}"))
+                        .content("{\"prices\":{\"negroni\":{\"options\":[{\"amount\":11}]}}}"))
                 .andExpect(status().isOk());
 
         mockMvc.perform(get("/api/menu/sections"))
@@ -110,7 +111,7 @@ class AdminControllerTest {
         mockMvc.perform(patch("/api/admin/menu/prices")
                         .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content("{\"prices\":{\"voce_inesistente\":\"11 €\"}}"))
+                        .content("{\"prices\":{\"voce_inesistente\":{\"options\":[{\"amount\":11}]}}}"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("$.error", is("invalid_request")));
     }
@@ -179,6 +180,122 @@ class AdminControllerTest {
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(prefix + "\"5 circa\"}"))
                 .andExpect(status().isBadRequest());
+
+        mockMvc.perform(post("/api/admin/menu/items").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(prefix + "\"5 €\"}"))
+                .andExpect(status().isBadRequest());
+
+        mockMvc.perform(post("/api/admin/menu/items").header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(prefix + "{\"options\":[{\"amount\":\"NaN\"}]}}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void rejectsScalarZeroWhenCreatingAnAdminItem() throws Exception {
+        String token = login();
+        byte[] before = Files.readAllBytes(DATA_DIRECTORY.resolve("menu.json"));
+
+        mockMvc.perform(post("/api/admin/menu/items")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(itemPayload("Zero creazione", "0")))
+                .andExpect(status().isBadRequest());
+
+        assertThatMenuFileIsUnchanged(before);
+    }
+
+    @Test
+    void rejectsScalarZeroWhenUpdatingAnAdminItem() throws Exception {
+        String token = login();
+        byte[] before = Files.readAllBytes(DATA_DIRECTORY.resolve("menu.json"));
+
+        mockMvc.perform(put("/api/admin/menu/items/negroni")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(itemPayload("Negroni", "0")))
+                .andExpect(status().isBadRequest());
+
+        assertThatMenuFileIsUnchanged(before);
+    }
+
+    @Test
+    void rejectsStructuredPriceOptionWithZeroAmount() throws Exception {
+        String token = login();
+        byte[] before = Files.readAllBytes(DATA_DIRECTORY.resolve("menu.json"));
+
+        mockMvc.perform(post("/api/admin/menu/items")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(itemPayload("Zero strutturato", "{\"options\":[{\"amount\":0}]}")))
+                .andExpect(status().isBadRequest());
+
+        assertThatMenuFileIsUnchanged(before);
+    }
+
+    @Test
+    void acceptsBlankAndNullAdminPricesAsAbsent() throws Exception {
+        String token = login();
+
+        mockMvc.perform(post("/api/admin/menu/items")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(itemPayload("Prezzo vuoto", "\"   \"")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].items[?(@.id == 'prezzo_vuoto')].price",
+                        org.hamcrest.Matchers.contains(org.hamcrest.Matchers.nullValue())));
+
+        mockMvc.perform(put("/api/admin/menu/items/prezzo_vuoto")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(itemPayload("Prezzo vuoto", "null")))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].items[?(@.id == 'prezzo_vuoto')].price",
+                        org.hamcrest.Matchers.contains(org.hamcrest.Matchers.nullValue())));
+
+        mockMvc.perform(delete("/api/admin/menu/items/prezzo_vuoto")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void firstAuthenticatedWriteMigratesLegacyZeroWithoutChangingMultiplePrices() throws Exception {
+        String token = login();
+        Path menuFile = DATA_DIRECTORY.resolve("menu.json");
+        JsonNode legacyDocument = objectMapper.readTree(menuFile.toFile());
+        JsonNode winePriceBefore = findItem(legacyDocument, "tacco_barocco_bianco").get("price").deepCopy();
+        ((ObjectNode) findItem(legacyDocument, "armagnac")).put("price", "0");
+        objectMapper.writerWithDefaultPrettyPrinter().writeValue(menuFile.toFile(), legacyDocument);
+
+        mockMvc.perform(post("/api/admin/menu/items")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(itemPayload("Migrazione autenticata", "{\"options\":[{\"amount\":7}]}")))
+                .andExpect(status().isOk());
+
+        JsonNode migrated = objectMapper.readTree(menuFile.toFile());
+        org.assertj.core.api.Assertions.assertThat(findItem(migrated, "armagnac").get("price").isNull())
+                .isTrue();
+        org.assertj.core.api.Assertions.assertThat(findItem(migrated, "tacco_barocco_bianco").get("price"))
+                .isEqualTo(winePriceBefore);
+
+        mockMvc.perform(delete("/api/admin/menu/items/migrazione_autenticata")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + token))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void rejectsLegacyZeroStringsInPricePatchRequests() throws Exception {
+        String token = login();
+
+        for (String value : List.of("\"0\"", "\"0 €\"", "\"0 \\u00e2\\u201a\\u00ac\"")) {
+            mockMvc.perform(patch("/api/admin/menu/prices")
+                            .header(HttpHeaders.AUTHORIZATION, "Bearer " + token)
+                            .contentType(MediaType.APPLICATION_JSON)
+                            .content("{\"prices\":{\"negroni\":" + value + "}}"))
+                    .andExpect(status().isBadRequest());
+        }
     }
 
     @Test
@@ -206,4 +323,22 @@ class AdminControllerTest {
         JsonNode json = objectMapper.readTree(body);
         return json.get("token").asText();
     }
+
+    private static String itemPayload(String name, String price) {
+        return "{\"sectionId\":\"aperitivo\",\"name\":\"" + name + "\",\"subtitle\":\"\","
+                + "\"description\":\"\",\"notes\":[],\"price\":" + price + "}";
+    }
+
+    private static void assertThatMenuFileIsUnchanged(byte[] expected) throws IOException {
+        org.assertj.core.api.Assertions.assertThat(Files.readAllBytes(DATA_DIRECTORY.resolve("menu.json")))
+                .isEqualTo(expected);
+    }
+
+    private static JsonNode findItem(JsonNode document, String id) {
+        return document.findParents("id").stream()
+                .filter(node -> id.equals(node.get("id").asText()))
+                .findFirst()
+                .orElseThrow();
+    }
+
 }
