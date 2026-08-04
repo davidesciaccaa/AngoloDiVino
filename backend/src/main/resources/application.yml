@@ -35,3 +35,11 @@ app:
     daily-backup-retention: 30
     monthly-backup-retention: 12
     backup-cron: ${MENU_BACKUP_CRON:0 15 2 * * *}
+  translation:
+    enabled: ${MENU_TRANSLATION_ENABLED:false}
+    auth-key: ${DEEPL_AUTH_KEY:}
+    source-language: IT
+    target-languages:
+      - EN
+      - DE
+    timeout: 10s

@@ -81,6 +81,8 @@ Variabili disponibili:
 | `MENU_DATA_DIRECTORY` | `data` | Directory runtime del menù e dei backup. |
 | `MENU_OVERRIDES_FILE` | vuoto | Vecchio file di override, migrato automaticamente al primo avvio. |
 | `MENU_BACKUP_CRON` | `0 15 2 * * *` | Pianificazione Spring dei backup nel fuso `Europe/Rome`. |
+| `MENU_TRANSLATION_ENABLED` | `false` | Abilita la traduzione automatica del menù tramite DeepL. |
+| `DEEPL_AUTH_KEY` | *(vuota)* | Chiave API DeepL, letta esclusivamente dal backend. |
 
 Come funziona:
 
@@ -104,6 +106,16 @@ ADMIN_PASSWORD='una-password-lunga' docker compose up --build
 ```
 
 Il volume `menu-data` conserva `menu.json` e tutti i backup tra un riavvio e l'altro dei container.
+
+## Traduzioni dinamiche del menù
+
+Italiano, inglese e tedesco di ogni voce sono salvati nello stesso `data/menu.json`; i vecchi documenti senza `translations` restano leggibili. Il sito pubblico non contatta mai DeepL.
+
+- `POST /api/admin/menu/items` e `PUT /api/admin/menu/items/{id}` accettano `autoTranslate`. Con `true` il backend traduce in batch verso EN e DE prima dell'unica scrittura atomica; con `false` accetta `translations.en` e `translations.de` manuali e conserva le lingue non inviate.
+- `POST /api/admin/menu/translations/backfill` genera soltanto campi mancanti, senza sovrascrivere traduzioni esistenti, e pubblica il risultato con una sola scrittura finale.
+- Se la traduzione è richiesta ma disabilitata, senza chiave o temporaneamente indisponibile, l'API risponde `503` e il file del menù non viene modificato.
+
+Per abilitarla, copia `.env.example` in `.env`, imposta `MENU_TRANSLATION_ENABLED=true` e inserisci una chiave valida in `DEEPL_AUTH_KEY`. Con il valore predefinito `false`, il backend parte e le modifiche manuali funzionano senza chiave.
 
 ## Avvio con Docker
 

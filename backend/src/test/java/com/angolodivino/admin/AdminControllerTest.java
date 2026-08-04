@@ -64,6 +64,19 @@ class AdminControllerTest {
     }
 
     @Test
+    void automaticTranslationReturns503WhenServiceIsDisabled() throws Exception {
+        mockMvc.perform(post("/api/admin/menu/items")
+                        .header(HttpHeaders.AUTHORIZATION, "Bearer " + login())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content("""
+                                {"sectionId":"vini","name":"Da tradurre","subtitle":"","description":"",
+                                 "notes":[],"price":null,"autoTranslate":true}
+                                """))
+                .andExpect(status().isServiceUnavailable())
+                .andExpect(jsonPath("$.error", is("translation_disabled")));
+    }
+
+    @Test
     void rejectsMenuAccessWithBogusToken() throws Exception {
         mockMvc.perform(get("/api/admin/menu/sections")
                         .header(HttpHeaders.AUTHORIZATION, "Bearer not-a-real-token"))

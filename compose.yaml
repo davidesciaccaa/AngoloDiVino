@@ -8,6 +8,8 @@ services:
       # Set ADMIN_PASSWORD (e.g. in a .env file next to this compose file) to enable /admin.
       ADMIN_PASSWORD: ${ADMIN_PASSWORD:-}
       MENU_DATA_DIRECTORY: /app/data
+      MENU_TRANSLATION_ENABLED: ${MENU_TRANSLATION_ENABLED:-false}
+      DEEPL_AUTH_KEY: ${DEEPL_AUTH_KEY:-}
     volumes:
       - menu-data:/app/data
     ports:

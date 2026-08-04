@@ -327,7 +327,8 @@ public class MenuOverridesStore {
                                                 item.subtitle(),
                                                 item.description(),
                                                 item.notes(),
-                                                legacyPrice(prices.get(item.id()), section.id()))
+                                                legacyPrice(prices.get(item.id()), section.id()),
+                                                item.translations())
                                         : item)
                                 .toList()))
                 .toList();
@@ -377,6 +378,19 @@ public class MenuOverridesStore {
                 if (item.notes().stream().anyMatch(note -> note == null || note.isBlank())) {
                     throw new IOException("Invalid note in menu item " + item.id());
                 }
+                validateTranslations(item);
+            }
+        }
+    }
+
+    private static void validateTranslations(MenuItemResponse item) throws IOException {
+        for (Map.Entry<String, LocalizedMenuItemText> entry : item.translations().entrySet()) {
+            if (!Set.of("en", "de").contains(entry.getKey()) || entry.getValue() == null) {
+                throw new IOException("Invalid translation language in menu item " + item.id());
+            }
+            LocalizedMenuItemText translated = entry.getValue();
+            if (translated.notes() != null && translated.notes().stream().anyMatch(note -> note == null)) {
+                throw new IOException("Invalid translated note in menu item " + item.id());
             }
         }
     }

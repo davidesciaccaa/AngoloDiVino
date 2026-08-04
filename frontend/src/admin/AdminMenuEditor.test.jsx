@@ -5,6 +5,7 @@ import { AdminMenuEditor } from './AdminMenuEditor.jsx';
 
 vi.mock('../api/adminApi.js', () => ({
   adminLogout: vi.fn(),
+  backfillAdminMenuTranslations: vi.fn(),
   createAdminMenuItem: vi.fn(),
   deleteAdminMenuItem: vi.fn(),
   fetchAdminMenuSections: vi.fn(),
@@ -12,6 +13,7 @@ vi.mock('../api/adminApi.js', () => ({
 }));
 
 import {
+  backfillAdminMenuTranslations,
   createAdminMenuItem,
   deleteAdminMenuItem,
   fetchAdminMenuSections,
@@ -48,6 +50,52 @@ beforeEach(() => {
   updateAdminMenuItem.mockResolvedValue(structuredClone(originalSections));
   createAdminMenuItem.mockResolvedValue(structuredClone(originalSections));
   deleteAdminMenuItem.mockResolvedValue(structuredClone(originalSections));
+  backfillAdminMenuTranslations.mockResolvedValue({
+    updatedItems: 1,
+    completeItems: 0,
+    sections: structuredClone(originalSections)
+  });
+});
+
+describe('AdminMenuEditor translations', () => {
+  it('defaults new items to automatic translation', async () => {
+    const user = userEvent.setup();
+    render(<AdminMenuEditor onSignedOut={vi.fn()} />);
+    await user.click(await screen.findByRole('button', { name: 'Aggiungi piatto' }));
+    expect(screen.getByRole('checkbox', { name: /Traduci automaticamente/ })).toBeChecked();
+    await user.type(screen.getAllByRole('textbox', { name: 'Nome' })[0], 'Nuovo vino');
+    await user.click(screen.getByRole('button', { name: 'Salva piatto' }));
+    await waitFor(() => expect(createAdminMenuItem).toHaveBeenCalledOnce());
+    expect(createAdminMenuItem.mock.calls[0][0]).toEqual(expect.objectContaining({ autoTranslate: true }));
+  });
+
+  it('keeps existing translations editable and saves them manually', async () => {
+    const user = userEvent.setup();
+    const translated = structuredClone(originalSections);
+    translated[0].items[0].translations = {
+      en: { name: 'Test wine', subtitle: 'White', description: 'Description', notes: ['Original note'] },
+      de: { name: 'Testwein', subtitle: 'Weiß', description: 'Beschreibung', notes: ['Originalnotiz'] }
+    };
+    fetchAdminMenuSections.mockResolvedValueOnce(translated);
+    render(<AdminMenuEditor onSignedOut={vi.fn()} />);
+    await user.click(await screen.findByRole('button', { name: 'Modifica' }));
+    expect(screen.getByRole('checkbox', { name: /Traduci automaticamente/ })).not.toBeChecked();
+    await user.click(screen.getByRole('button', { name: 'Salva piatto' }));
+    await waitFor(() => expect(updateAdminMenuItem).toHaveBeenCalledOnce());
+    expect(updateAdminMenuItem.mock.calls[0][1]).toEqual(expect.objectContaining({
+      autoTranslate: false,
+      translations: expect.objectContaining({ en: expect.objectContaining({ name: 'Test wine' }) })
+    }));
+  });
+
+  it('confirms backfill and shows the summary', async () => {
+    const user = userEvent.setup();
+    vi.spyOn(window, 'confirm').mockReturnValue(true);
+    render(<AdminMenuEditor onSignedOut={vi.fn()} />);
+    await user.click(await screen.findByRole('button', { name: 'Genera traduzioni mancanti' }));
+    expect(await screen.findByText(/1 voci; 0 erano già complete/)).toBeInTheDocument();
+    expect(backfillAdminMenuTranslations).toHaveBeenCalledOnce();
+  });
 });
 
 describe('AdminMenuEditor cancellation', () => {

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import {
   adminLogout,
+  backfillAdminMenuTranslations,
   createAdminMenuItem,
   deleteAdminMenuItem,
   fetchAdminMenuSections,
@@ -14,12 +15,47 @@ import {
   menuItemCommandFromDraft
 } from './menuItemDraft.js';
 
+function LocalizedFields({ language, title, value, disabled, onChange }) {
+  const change = (field) => (event) => onChange(language, field, event.target.value);
+  return (
+    <fieldset className="admin-language-fields" disabled={disabled}>
+      <legend>{title}</legend>
+      <label className="admin-field">
+        <span className="admin-field__label">Nome</span>
+        <input maxLength="120" className="admin-field__input" value={value.name} onChange={change('name')} />
+      </label>
+      <label className="admin-field">
+        <span className="admin-field__label">Sottotitolo</span>
+        <input maxLength="80" className="admin-field__input" value={value.subtitle} onChange={change('subtitle')} />
+      </label>
+      <label className="admin-field">
+        <span className="admin-field__label">Descrizione</span>
+        <textarea maxLength="1000" className="admin-field__input" value={value.description} onChange={change('description')} />
+      </label>
+      <label className="admin-field">
+        <span className="admin-field__label">Note (una per ogni nota italiana)</span>
+        <textarea className="admin-field__input" value={value.notesInput} onChange={change('notesInput')} />
+      </label>
+    </fieldset>
+  );
+}
+
 function ItemForm({ sections, initial, onSave, onCancel, saving }) {
   const [form, setForm] = useState(() => cloneMenuItemDraft(initial));
   const [error, setError] = useState('');
   const set = (key) => (event) => {
     setError('');
     setForm((old) => ({ ...old, [key]: event.target.value }));
+  };
+  const setTranslation = (language, field, value) => {
+    setError('');
+    setForm((old) => ({
+      ...old,
+      translations: {
+        ...old.translations,
+        [language]: { ...old.translations[language], [field]: value }
+      }
+    }));
   };
 
   useEffect(() => {
@@ -50,6 +86,8 @@ function ItemForm({ sections, initial, onSave, onCancel, saving }) {
           {sections.map((section) => <option key={section.id} value={section.id}>{section.title}</option>)}
         </select>
       </label>
+      <fieldset className="admin-language-fields">
+        <legend>Italiano</legend>
       <label className="admin-field">
         <span className="admin-field__label">Nome</span>
         <input required maxLength="120" className="admin-field__input" value={form.name} onChange={set('name')} />
@@ -66,6 +104,18 @@ function ItemForm({ sections, initial, onSave, onCancel, saving }) {
         <span className="admin-field__label">Note (una per riga)</span>
         <textarea className="admin-field__input" value={form.notesInput} onChange={set('notesInput')} />
       </label>
+      </fieldset>
+      <label className="admin-translation-toggle">
+        <input
+          type="checkbox"
+          checked={form.autoTranslate}
+          onChange={(event) => setForm((old) => ({ ...old, autoTranslate: event.target.checked }))}
+        />
+        <span>Traduci automaticamente dall&apos;italiano</span>
+      </label>
+      {form.autoTranslate && <small>English e Deutsch saranno generati al salvataggio.</small>}
+      <LocalizedFields language="en" title="English" value={form.translations.en} disabled={form.autoTranslate} onChange={setTranslation} />
+      <LocalizedFields language="de" title="Deutsch" value={form.translations.de} disabled={form.autoTranslate} onChange={setTranslation} />
       <label className="admin-field">
         <span className="admin-field__label">Prezzo</span>
         <span className="admin-price-input">
@@ -85,7 +135,7 @@ function ItemForm({ sections, initial, onSave, onCancel, saving }) {
       {error && <p className="admin-feedback admin-feedback--error" role="alert">{error}</p>}
       <div className="admin-form-actions">
         <button className="admin-button admin-button--primary" disabled={saving}>
-          {saving ? 'Salvataggio…' : 'Salva piatto'}
+          {saving ? (form.autoTranslate ? 'Traduzione in corso…' : 'Salvataggio…') : 'Salva piatto'}
         </button>
         <button type="button" className="admin-button admin-button--ghost" onClick={onCancel} disabled={saving}>
           Annulla
@@ -100,6 +150,7 @@ export function AdminMenuEditor({ onSignedOut }) {
   const [state, setState] = useState('loading');
   const [editing, setEditing] = useState(null);
   const [saving, setSaving] = useState(false);
+  const [backfilling, setBackfilling] = useState(false);
   const [feedback, setFeedback] = useState(null);
 
   const load = useCallback(async () => {
@@ -130,7 +181,12 @@ export function AdminMenuEditor({ onSignedOut }) {
         : await createAdminMenuItem(data);
       setSections(updated);
       setEditing(null);
-      setFeedback({ type: 'success', message: 'Menù aggiornato. Il sito pubblico mostra subito le modifiche.' });
+      setFeedback({
+        type: 'success',
+        message: data.autoTranslate
+          ? 'Traduzione completata. Il sito pubblico mostra subito le modifiche.'
+          : 'Traduzione manuale salvata. Il sito pubblico mostra subito le modifiche.'
+      });
     } catch (error) {
       setFeedback({ type: 'error', message: error.message });
     } finally {
@@ -148,6 +204,24 @@ export function AdminMenuEditor({ onSignedOut }) {
     }
   }
 
+  async function backfill() {
+    if (backfilling || !window.confirm('Generare soltanto le traduzioni mancanti senza sovrascrivere quelle esistenti?')) return;
+    setBackfilling(true);
+    setFeedback(null);
+    try {
+      const result = await backfillAdminMenuTranslations();
+      setSections(result.sections);
+      setFeedback({
+        type: 'success',
+        message: `Traduzioni generate per ${result.updatedItems} voci; ${result.completeItems} erano già complete.`
+      });
+    } catch (error) {
+      setFeedback({ type: 'error', message: error.message });
+    } finally {
+      setBackfilling(false);
+    }
+  }
+
   const cancelEditing = useCallback(() => setEditing(null), []);
 
   return (
@@ -159,6 +233,13 @@ export function AdminMenuEditor({ onSignedOut }) {
             <h1 className="admin-topbar__title">Gestione menù</h1>
           </div>
           <div className="admin-topbar__actions">
+            <button
+              className="admin-button admin-button--ghost"
+              onClick={backfill}
+              disabled={backfilling || saving}
+            >
+              {backfilling ? 'Generazione in corso…' : 'Genera traduzioni mancanti'}
+            </button>
             <button
               className="admin-button admin-button--primary"
               onClick={() => setEditing(createEmptyMenuItemDraft(sections[0]?.id))}

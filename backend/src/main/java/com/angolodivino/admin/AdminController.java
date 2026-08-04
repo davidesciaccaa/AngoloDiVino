@@ -5,6 +5,8 @@ import com.angolodivino.menu.MenuPrice;
 import com.angolodivino.menu.MenuService;
 import com.angolodivino.menu.MenuManagementService;
 import com.angolodivino.menu.MenuItemCommand;
+import com.angolodivino.menu.BackfillTranslationsResponse;
+import com.angolodivino.menu.MenuTranslationException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import java.nio.charset.StandardCharsets;
@@ -118,6 +120,17 @@ public class AdminController {
     @DeleteMapping("/menu/items/{id}")
     public List<MenuSectionResponse> deleteItem(@PathVariable String id) {
         return menuManagementService.delete(id);
+    }
+
+    @PostMapping("/menu/translations/backfill")
+    public BackfillTranslationsResponse backfillTranslations() {
+        return menuManagementService.backfillMissingTranslations();
+    }
+
+    @ExceptionHandler(MenuTranslationException.class)
+    public ResponseEntity<AdminApiError> handleTranslationError(MenuTranslationException e) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
+                .body(new AdminApiError(e.code(), e.getMessage()));
     }
 
     @ExceptionHandler(IllegalArgumentException.class)

@@ -71,7 +71,8 @@ public class MenuService {
                             item.subtitle(),
                             item.description(),
                             item.notes(),
-                            priceForSection(requestedPrices.get(item.id()), section.id())));
+                            priceForSection(requestedPrices.get(item.id()), section.id()),
+                            item.translations()));
                 }
                 if (updatedItems != null) {
                     menu.set(sectionIndex, new MenuSectionResponse(

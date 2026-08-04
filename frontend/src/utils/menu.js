@@ -7,6 +7,25 @@ function requiredString(value, field) {
   return value;
 }
 
+function normalizeTranslations(value) {
+  if (value == null) return {};
+  if (typeof value !== 'object' || Array.isArray(value)) {
+    throw new TypeError('Traduzioni menu non valide.');
+  }
+  return Object.fromEntries(['en', 'de'].filter((language) => value[language] != null).map((language) => {
+    const translated = value[language];
+    if (typeof translated !== 'object' || !Array.isArray(translated.notes ?? [])) {
+      throw new TypeError(`Traduzione ${language} non valida.`);
+    }
+    return [language, {
+      name: requiredString(translated.name ?? '', `translations.${language}.name`),
+      subtitle: requiredString(translated.subtitle ?? '', `translations.${language}.subtitle`),
+      description: requiredString(translated.description ?? '', `translations.${language}.description`),
+      notes: (translated.notes ?? []).map((note) => requiredString(note, `translations.${language}.notes`))
+    }];
+  }));
+}
+
 export function normalizeMenuSections(payload) {
   if (!Array.isArray(payload)) {
     throw new TypeError('La risposta del menu deve essere un array.');
@@ -30,7 +49,8 @@ export function normalizeMenuSections(payload) {
           subtitle: requiredString(item.subtitle ?? '', 'item.subtitle'),
           description: requiredString(item.description ?? '', 'item.description'),
           notes: item.notes.map((note) => requiredString(note, 'item.notes')),
-          price: normalizePrice(item.price, { sectionId })
+          price: normalizePrice(item.price, { sectionId }),
+          translations: normalizeTranslations(item.translations)
         };
       })
     };

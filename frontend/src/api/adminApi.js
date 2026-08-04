@@ -110,3 +110,8 @@ export async function updateAdminMenuItem(id, item) {
 export async function deleteAdminMenuItem(id) {
   return normalizeMenuSections(await adminRequest(`/admin/menu/items/${encodeURIComponent(id)}`, { method: 'DELETE' }));
 }
+
+export async function backfillAdminMenuTranslations() {
+  const response = await adminRequest('/admin/menu/translations/backfill', { method: 'POST' });
+  return { ...response, sections: normalizeMenuSections(response.sections) };
+}
